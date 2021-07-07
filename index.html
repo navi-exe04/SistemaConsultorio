@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Consultorio Pediatrico </title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&family=Quicksand:wght@300&family=Staatliches&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="contenedor" id="headerInicio">
+        <div id="header-pagina">
+            <nav>
+                <div id="header-logo-dr">
+                    <a href="index.html" id="logo-header">
+                        <h2 class="logo">Dr. Raúl Langle Galindo</h2>
+                        <span>MEDICO PEDIATRA</span>
+                    </a>
+                </div>
+                <button type="button" id="boton-menu"><i class="fas fa-bars"></i></button>
+                <div id="menu-nav">
+                    <ul>
+                        <li><a href="/index.html" class="activo">Inicio</a></li>
+                        <li><a href="/citas.html">Citas</a></li>
+                        <li><a href="/contacto.html">Contacto</a></li>
+                        <li><a href="#" id="btn-login">Iniciar Sesión</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <h1 class="main-title">¡Bienvenido!</h1>
+
+        <!-- Slider -->
+        <div class="slider">
+            <div class="slides">
+                <!-- Botones -->
+                <input type="radio" name="radio-btn" id="radio1">
+                <input type="radio" name="radio-btn" id="radio2">
+                <input type="radio" name="radio-btn" id="radio3">
+                <input type="radio" name="radio-btn" id="radio4">
+                <input type="radio" name="radio-btn" id="radio5">
+                <input type="radio" name="radio-btn" id="radio6">
+                <!-- Fin de botones -->
+                <!-- Imagenes -->
+                <div class="slide first">
+                    <img id="img1" src="img/Consultorio/lg-slide1-ext.jpg" alt="foto-ext-1">
+                </div>
+                <div class="slide">
+                    <img id="img2" src="img/Consultorio/lg-slide2-ext.jpg" alt="foto-ext-2">
+                </div>
+                <div class="slide">
+                    <img id="img3" src="img/Consultorio/lg-slide3-int.jpg" alt="foto-int-1">
+                </div>
+                <div class="slide">
+                    <img id="img4" src="img/Consultorio/lg-slide4-int.jpg" alt="foto-int-2">
+                </div>
+                <div class="slide">
+                    <img id="img5" src="img/Consultorio/lg-slide5-dr.jpg" alt="foto-dr-1">
+                </div>
+                <div class="slide">
+                    <img id="img6" src="img/Consultorio/lg-slide6-dr.jpg" alt="foto-dr-2">
+                </div>
+                <!-- Fin de imagenes -->
+                <!--Navegacion automatica-->
+                <div class="navegacion-auto">
+                    <div class="auto-btn1"></div>
+                    <div class="auto-btn2"></div>
+                    <div class="auto-btn3"></div>
+                    <div class="auto-btn4"></div>
+                    <div class="auto-btn5"></div>
+                    <div class="auto-btn6"></div>
+                </div>
+                <!--fin de navegacion automatica-->
+            </div>
+            <!--Navegacion manual-->
+            <div class="navegacion-manual">
+                <label for="radio1" class="manual-btn"></label>
+                <label for="radio2" class="manual-btn"></label>
+                <label for="radio3" class="manual-btn"></label>
+                <label for="radio4" class="manual-btn"></label>
+                <label for="radio5" class="manual-btn"></label>
+                <label for="radio6" class="manual-btn"></label>
+            </div>
+            <!--fin de navegacion manual-->
+        </div>
+        <!-- Fin de slider -->
+
+        <div class="container">
+            <div id="info-bienvenida" class="contenedor-blanco">
+                <h2 class="sub-title">¡LO MÁS VALIOSO DE SU VIDA EN BUENAS MANOS!</h2>
+                <div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12">
+                            <div class="imagen-medico">
+                                <img src="img/img-doctor/dr-lg1.png" alt="foto-doctor1" class="center">
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-12 parrafo-info">
+                            <div>
+                                <p>
+                                    26 años de experiencia en la práctica pediátrica
+                                    en medios público y privado en la región
+                                    avalan nuestro profesionalismo.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div id="info-general">
+                <div class="row">
+                    <div class="col-md-4 col-xs-12">
+                        <a href="#" id="info-profesional">
+                            <div class="info-container" id="profesional-bg">
+                            </div>
+                            <h2 class="info-title">Información profesional</h2>
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <a href="#" id="info-mision">
+                            <div class="info-container" id="mision-bg">
+                            </div>
+                            <h2 class="info-title">Misión y Visión</h2>
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <a href="#" id="info-valores">
+                            <div class="info-container" id="valores-bg">
+                            </div>
+                            <h2 class="info-title">Valores y Objetivo</h2>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-xs-12">
+                        <a href="#" id="info-servicios">
+                            <div class="info-container" id="servicios-bg">
+                            </div>
+                            <h2 class="info-title">Servicios</h2>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        <a href="#" id="info-covid">
+                            <div class="info-container" id="covid-bg">
+                            </div>
+                            <h2 class="info-title">COVID-19</h2>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-centrado">
+            <button onclick="location.href='#headerInicio'" class="boton">Regresar arriba</button>
+        </div>
+
+    </main>
+
+    <div class="popup-info" id="popup-profesional">
+        <button type="button" id="boton-cerrarProfesional" class="boton-cerrar"><i
+                class="fas fa-window-close"></i></button>
+        <h2 class="sub-title">Información profesional</h2>
+        <div>
+            <p>Medico Pediatra</p>
+            <p>Postgraduado del HOSPITAL DEL NIÑO POBLANO- BUAP/UNAM</p>
+            <p>Cedula Profesional DGP 1633532</p>
+            <p>Cedula de Especialidad AECEM 15929</p>
+            <p>CMCP 5883</p>
+        </div>
+    </div>
+
+    <div class="popup-info" id="popup-mision">
+        <button type="button" id="boton-cerrarMision" class="boton-cerrar"><i class="fas fa-window-close"></i></button>
+        <h2 class="sub-title">Misión</h2>
+        <div class="center">
+            <p>
+                Como Pediatra fomentar y proteger la salud integral y el bienestar de los niños y sus
+                familias en nuestra área de influencia regional con una atención de calidad esmerada y
+                eficacia a través de la excelencia asistencial.
+            </p>
+        </div>
+        <h2 class="sub-title">Visión</h2>
+        <div class="center">
+            <p>
+                Ser la referencia asistencial de calidad en salud infantil a nivel regional.
+            </p>
+        </div>
+    </div>
+
+    <div class="popup-info" id="popup-valores">
+        <button type="button" id="boton-cerrarValores" class="boton-cerrar"><i class="fas fa-window-close"></i></button>
+        <h2 class="sub-title">Objetivo</h2>
+        <div class="center">
+            <p>
+                Orientar, capacitar y asesorar a los padres en el cuidado de la salud
+                de sus hijos
+                desde el nacimiento y hasta los 18 años, vigilando el crecimiento y desarrollo de los
+                mismos,
+                diagnosticar y tratar las enfermedades propias de la infancia, así como detectar de
+                manera temprana
+                futuras enfermedades que se manifestarían en la adultez, con atención ética y
+                profesional a los
+                pacientes.
+            </p>
+        </div>
+        <h2 class="sub-title">Valores</h2>
+        <div class="center">
+            <li>Compromiso con los pacientes y su familia</li>
+            <li>Integridad</li>
+            <li>Respeto</li>
+            <li>Confidencialidad</li>
+            <li>Competencia clinica</li>
+            <li>Eficiencia</li>
+            <li>Honestidad</li>
+            <li>Etica</li>
+            <li>Profesionalismo</li>
+            <li>Innovación en base a la actualización constante.</li>
+        </div>
+    </div>
+
+    <div class="popup-info" id="popup-servicios">
+        <button type="button" id="boton-cerrarServicios" class="boton-cerrar"><i
+                class="fas fa-window-close"></i></button>
+        <h2 class="sub-title">Servicios</h2>
+        <div class="center">
+            <li>Atención de recién nacidos</li>
+            <li>Vigilancia de crecimiento y desarrollo</li>
+            <li>Capacitación de lactancia materna</li>
+            <li>Alimentación de lactante menor de un año y años subsecuentes</li>
+            <li>Control de peso y talla</li>
+            <li>Enfermedades de recién nacidos, lactantes, pre-escolares, escolares y adolescentes</li>
+            <li>Tratamiento hospitalario en caso necesario</li>
+            <li>Cirugía pediátrica</li>
+            <li>Medicina del adolescente</li>
+            <li>Interconsulta a subespecialistas renombrados en la región si el caso lo requiere</li>
+            <li>Risaterapia</li>
+            <li>Ponencias y capacitación a grupos de adolescentes, grupos de padres de familia y personal de la salud.
+            </li>
+        </div>
+    </div>
+
+    <div class="popup-info" id="popup-covid">
+        <button type="button" id="boton-cerrarCovid" class="boton-cerrar"><i class="fas fa-window-close"></i></button>
+        <h2 class="sub-title">COVID-19</h2>
+        <div class="center">
+            <p>POR LA SEGURIDAD DE SUS PEQUEÑ@S Y LA DE SU FAMILIA RESPETAMOS ESTRICTAMENTE LAS MEDIDAS SANITARIAS
+                PREVENTIVAS POR CONTIGENCIA COVID 19:</p>
+            <br>
+            <li>Consulta preferentemente previa cita en horarios pre-establecidos</li>
+            <li>Ingreso controlado a sala de espera en caso de no contar con cita</li>
+            <li>Ingreso de solo un familiar con cubrebocas</li>
+            <li>Menores de un año sin protección, de un año a 2 años cubrebocas y/o careta protectora, mayores de 2 años
+                cubrebocas <b>OBLIGATORIO.</b></li>
+            <li>Al ingresar usar tapete sanitizante de calzado y uso de gel antibacterial</li>
+            <li>Sillas en sala de espera con distancia de 1.5 a 2 mts de distancia </li>
+            <li>Evitar convivencia de los pequeños pacientes entre si</li>
+            <li>Prohíbo ingreso de familiares enfermos con catarro, tos, flemas o fiebre </li>
+            <li>Notificar si tiene algún familiar sospechoso o confirmado de covid 19 </li>
+            <li>Señalética en sala de espera y consultorio así como micas de protección y aislamiento</li>
+            <li>Asistente recepcionista de consultorio y médico pediatra con EPP (equipo de protección personal). </li>
+        </div>
+    </div>
+
+
+    <div class="popup-info" id="popup-login">
+        <button type="button" id="boton-cerrarLogin" class="boton-cerrar"><i class="fas fa-window-close"></i></button>
+        <div id="inicio-sesion">
+            <h2 class="sub-title">Inicio de Sesión</h2>
+            <div class="center">
+                <div id="img-user" class="center">
+                    <i class="far fa-user center"></i>
+                </div>
+                <form action="">
+                    <input type="text" placeholder="Correo Electrónico" id="email-user">
+                    <input type="password" placeholder="Contraseña" id="contraseña-user">
+                    <button type="submit" id="boton-login" class="boton">Entrar</button>
+                </form>
+                <span>¿No tienes una cuenta?<br> <a href="#" target="_blank" id="aRegistro">Registrate aqui</a></span>
+            </div>
+        </div>
+        <div id="registro-usuario" class="hide">
+            <h2 class="sub-title">Registrar usuario</h2>
+            <div class="center">
+                <form action="">
+                    <input type="text" placeholder="Correo Electrónico" id="email-user">
+                    <input type="password" placeholder="Contraseña" id="contraseña1-user">
+                    <input type="password" placeholder="Repita su contraseña" id="contraseña2-user">
+                    <button type="submit" id="boton-registrar" class="boton">Registrarse</button>
+                </form>
+                <span>¿Ya tienes una cuenta?<br> <a href="#" target="_blank" id="aLogin">Registrate aqui</a></span>
+            </div>
+        </div>
+    </div>
+
+
+    <footer id="page-footer" class="contenedor">
+        <div>
+            <p>
+                Copyright <i class="fas fa-copyright"></i>
+                2020. Todos los
+                derechos reservados
+            </p>
+        </div>
+    </footer>
+
+
+    <script src="/js/script-index.js"></script>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+</body>
+
+</html>

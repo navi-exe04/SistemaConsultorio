@@ -1,0 +1,846 @@
+            /*==== ESTILOS GENERALES ====*/
+:root {
+    --colorVino: #55020A;
+    --colorCarne: #E99F5F;
+    --colorBlanco: #fff;
+    --fondoBlanco: rgba(240, 240, 240, 0.85);
+    --fondoVino: rgba(85, 2, 10, 0.95);
+    --sombraNegra: rgba(0,0,0,0.5);
+    --sombraCarne: rgba(233,159,95,0.9);
+    --fuenteTitulos: 'Staatliches', cursive;
+    --fuenteSubTitulos: 'Open Sans Condensed', sans-serif;
+    --fuenteTextos: 'Quicksand', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.noScroll {
+    overflow: hidden;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    background-color: var(--colorCarne);
+}
+
+body p {
+    margin: 0px 0px 0px 0px;
+    font-family: var(--fuenteTextos);
+    font-size: 24px;
+    color: black;
+}
+
+.contenedor {
+    margin: auto;
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: var(--colorVino);
+    padding-top: 2%;
+    padding-bottom: 0.5%;
+    color: var(--colorBlanco);
+    box-shadow: 0px 2px 16px 10px var(--sombraNegra);
+}
+
+.contenedor-blanco {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    background: var(--colorBlanco);
+    box-shadow: 0px 2px 16px 2px var(--sombraNegra);
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+div.btn-centrado {
+    display: flex;
+    justify-content: center;
+}
+                /*==== FIN DE ESTILOS GENERALES ====*/
+
+
+
+                /*==== ESTILOS DEL HEADER ====*/
+header#headerInicio {
+    transition: all 0.5s;
+    padding: 0;
+    height: fit-content;
+}
+
+header div#header-pagina {
+    padding: 15px 30px;
+}
+
+header div nav{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    padding: 0;
+}
+
+a#logo-header {
+    text-decoration: none;
+}
+
+div#header-logo-dr {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+div#header-logo-dr span {
+    text-decoration: none;
+    color: var(--colorBlanco);
+    font-family: var(--fuenteSubTitulos);
+    font-weight: bolder;
+    font-size: 22px;
+}
+
+h2.logo {
+    font-size: 42px;
+    font-family: var(--fuenteTitulos);
+    text-shadow: 2px 2px var(--sombraCarne);
+    color: var(--colorBlanco);
+    margin-bottom: 0;
+}
+
+div#menu-nav {
+    z-index: 2;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+div#menu-nav ul {
+    padding: 0;
+    margin: 0;
+}
+
+div#menu-nav ul li {
+    display: inline-flex;
+    margin: 0;
+}
+
+div#menu-nav a {
+    transition: all 0.5s;
+    height: fit-content;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: var(--fuenteTextos);
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--colorBlanco);
+}
+
+div#menu-nav a:hover, div#menu-nav a.activo{
+    background-color: var(--colorCarne);
+    color: var(--colorVino);
+}
+
+header div nav button {
+    display: none;
+}
+
+@media (max-width: 767px) {
+
+    div#menu-nav {
+        position: fixed;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        background: var(--colorVino);
+        top: 0;
+        right: -100%;
+        transition: all 0.5s;
+        background: var(--fondoVino);
+        backdrop-filter: blur(2px);
+    }
+
+    div#menu-nav.show {
+        right: 0;
+    }
+
+    div#menu-nav ul li {
+        display: block;
+        margin: 50px 0;
+        line-height: 30px;
+        text-align: center;
+    }
+
+    header div nav button {
+        position: static;
+        display: inline;
+        width: fit-content;
+        height: fit-content;
+        background: none;
+        padding: 10px;
+        border: 2px solid var(--colorBlanco);
+        border-radius: 10px;
+        z-index: 4;
+    }
+
+    header div nav button i {
+        font-size: 25px;
+        color: var(--colorBlanco);
+    }
+    
+}
+                /*==== FIN DE ESTILOS DEL HEADER ====*/
+
+
+
+                /*==== ESTILOS DEL INDEX ====*/
+main {
+    transition: all 0.2s;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+main.active, header.active, footer.active {
+    transition: .5s;
+    filter: blur(4px);
+}
+
+h1.main-title { 
+    font-family: var(--fuenteTitulos);
+    color: var(--colorVino);
+    font-size: 58px;
+    text-align: center;
+    text-shadow: 2px 2px var(--sombraNegra);
+}
+
+h2.sub-title { 
+    font-family: var(--fuenteSubTitulos);
+    color: var(--colorVino);
+    font-size: 42px;
+    text-shadow: 2px 2px var(--sombraNegra);
+    text-align: center;
+    font-weight: bolder;
+}
+
+/* Estilos del Slider */
+.slider {
+    margin: 0px auto;
+    width: fit-content;
+    height: fit-content;
+    z-index: 1;
+}
+.slides {
+    width: 648px;
+    height: 432px;
+    display: flex;
+}
+.slides input {
+    display: none;
+}
+.slide {
+    transition: 1s;
+}
+.slide img {
+    display: block;
+    width: fit-content;
+    height: fit-content;
+    transition: 1s;
+    filter: opacity(60%);
+}
+.navegacion-manual {
+    position: absolute;
+    width: 648px;
+    margin-top: -30px;
+    display: flex;
+    justify-content: center;
+}
+.manual-btn {
+    border: 2px solid var(--colorCarne);
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+.manual-btn:not(:last-child) {
+    margin-right: 40px;
+}
+.manual-btn:hover {
+    background-color: var(--colorCarne);
+} 
+#radio1:checked ~ .first {
+    margin-left: 0%;
+}
+#radio1:checked ~ div.slide img#img1 {
+    transition: 1s;
+    filter: none;
+}
+#radio2:checked ~ .first {
+    margin-left: -100%;
+}
+#radio2:checked ~ div.slide img#img2 {
+    transition: 1s;
+    filter: none;
+}
+#radio3:checked ~ .first {
+    margin-left: -200%;
+}
+#radio3:checked ~ div.slide img#img3 {
+    transition: 1s;
+    filter: none;
+}
+#radio4:checked ~ .first {
+    margin-left: -300%;
+}
+#radio4:checked ~ div.slide img#img4 {
+    transition: 1s;
+    filter: none;
+}
+#radio5:checked ~ .first {
+    margin-left: -400%;
+}
+#radio5:checked ~ div.slide img#img5 {
+    transition: 1s;
+    filter: none;
+}
+#radio6:checked ~ .first {
+    margin-left: -500%;
+}
+#radio6:checked ~ div.slide img#img6 {
+    transition: 1s;
+    filter: none;
+}
+.navegacion-auto {
+    position: absolute;
+    display: flex;
+    width: 648px;
+    justify-content: center;
+    margin-top: 432px;
+}
+.navegacion-auto div {
+    display: none;
+    border: 2px solid var(--colorCarne);
+    padding: 5px;
+    border-radius: 10px;
+    transition: 1s;
+}
+.navegacion-auto div:not(:last-child) {
+    margin-right: auto;
+}
+#radio1:checked ~ .navegacion-auto .auto-btn {
+    background-color: var(--colorCarne);
+}
+#radio2:checked ~ .navegacion-auto .auto-btn {
+    background-color: var(--colorCarne);
+}
+#radio3:checked ~ .navegacion-auto .auto-btn {
+    background-color: var(--colorCarne);
+}
+#radio4:checked ~ .navegacion-auto .auto-btn {
+    background-color: var(--colorCarne);
+}
+#radio5:checked ~ .navegacion-auto .auto-btn {
+    background-color: var(--colorCarne);
+}
+#radio6:checked ~ .navegacion-auto .auto-btn {
+    background-color: var(--colorCarne);
+}
+/* Fin de estilos del Slider */
+
+/* Estilos de bienvenida */
+div#info-bienvenida {
+    margin-top: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+div.imagen-medico {
+    margin: auto;
+    display: block;
+    padding-left: 10px;
+}
+
+div.parrafo-info {
+    display: flex;
+    align-items: center;
+}
+
+div.parrafo-info div {
+    padding: 20px;
+}
+
+div.parrafo-info div p {
+    position: relative;
+    font-size: 40px;
+    font-weight: bolder;
+    text-align: center;
+    vertical-align: middle;
+}
+/* Fin de estilos de bienvenida */
+
+/* Estilos de info del medico */
+div#info-general {
+    margin-top: 45px;
+    align-content: center;
+    justify-content: center;
+}
+
+div#info-general div.row {
+    margin-bottom: 0;
+}
+
+div#info-general div.row div{
+    padding: 0;
+    margin-bottom: 10px;
+
+}
+
+div#info-general div.row a:hover h2 {
+    transition: 0.5s;
+    padding-top: 1.5em;
+}
+
+div#info-general div.row a:hover div.info-container {
+    transition: 1s;
+    padding-top: 50px;
+    box-shadow: 0px 2px 16px 10px var(--sombraNegra);
+    filter: blur(2px);
+}
+
+div#info-general a:hover {
+    text-decoration: none;
+}
+
+div.info-container {
+    max-width: 100%;
+    height: 250px;
+    border-radius: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-size: cover;
+    background-position: 50%;   
+}
+
+h2.info-title { 
+    transition: 0.2s;
+    font-family: var(--fuenteTitulos);
+    color: var(--colorCarne);
+    font-size: 40px;
+    text-shadow: 2px 2px var(--sombraNegra);
+    text-align: center;
+    -webkit-text-stroke: 1.5px black;
+
+}
+
+div#info-general h2.info-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 40px;
+}
+
+div#profesional-bg {
+    background-image: url("../img/professional-img.jpg");
+}
+
+div#mision-bg {
+    background-image: url("../img/mision-img.jpg");
+}
+
+div#valores-bg {
+    background-image: url("../img/valores-img.jpg");
+}
+
+div#servicios-bg {
+    background-image: url("../img/servicios-img.jpg");
+}
+
+div#covid-bg {
+    background-image: url("../img/covid-img.jpg");
+}
+
+div.popup-info {
+    position: fixed;
+    border-radius: 10px;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 70%;
+    height: auto;
+    max-height: 80%;
+    overflow-y: scroll;
+    background: var(--fondoBlanco);
+    box-shadow: 2px 2px 2px var(--sombraNegra);
+    padding: 35px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+    text-align: center;
+    justify-content: center;
+}
+
+div.popup-info div {
+    margin-bottom: 20px;
+}
+
+button.boton-cerrar {
+    top: 2%;
+    left: 2%;
+    position: absolute;
+    border: none;
+    width: fit-content;
+    height: fit-content;
+    padding: 0%;
+    background: none;
+    text-decoration: none;
+    color: var(--colorVino);
+    font-size: 35px;
+    align-content: center;
+}
+
+div.popup-info.active {
+    top: 50%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+div.popup-info p {
+    font-weight: bolder;
+    text-align: left;
+}
+
+div#popup-profesional p {
+    text-align: center;
+}
+
+div#popup-mision p, div#popup-valores p {
+    margin: 15px;
+}
+/* Fin estilos de info del medico */
+
+/* Estilos del login */
+div#popup-login {
+    transition: 0.5s;
+    display: flex;
+    align-items: center;
+    width: 35%;
+    height: fit-content;
+    z-index: 4;
+    padding: 20px 0px;
+}
+
+div#popup-login input {
+    width: 250px;
+    background: transparent;
+    border: 2px solid var(--colorVino);
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-family: var(--fuenteTextos);
+    font-weight: bold;
+}
+
+div#img-user {
+    text-align: center;
+    width: 110px;
+    height: 110px;
+    border: 8px solid var(--colorVino);
+    box-shadow: 2px 2px 2px var(--sombraNegra);
+    border-radius: 100%;
+}
+
+div#img-user i {
+    line-height: 90px;
+    color: var(--colorVino);
+    font-size: 60px;
+}
+
+div.popup-info li {
+    margin-left: 10px;
+    font-size: 24px;
+    font-family: var(--fuenteTextos);
+    font-weight: bolder;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+button.boton {
+    transition: all 0.2s;
+    padding: 10px 15px;
+    margin: 20px 0;
+    background-color: transparent;
+    width: fit-content;
+    border-radius: 5px;
+    border: 2px solid var(--colorVino);
+    font-family: var(--fuenteTitulos);
+    color: var(--colorVino);
+}
+
+button.boton:hover {
+    background-color: var(--colorVino);
+    color: var(--colorBlanco);
+}
+
+div#inicio-sesion, div#registro-usuario {
+    width: fit-content;
+    transition: all 0.5s;
+    margin: 0px;
+}
+
+div#inicio-sesion > div.center, div#registro-usuario > div.center {
+    margin: 0;
+}
+
+div#inicio-sesion {
+    transform: translate(50%,0%);
+}
+
+div#registro-usuario {
+    transform: translate(-50%,0%);
+}
+
+div#inicio-sesion.hide, div#registro-usuario.hide {
+    transition: 0.5s;
+}
+
+div#inicio-sesion.hide {
+    transform: translate(350%,0%);
+}
+
+div#registro-usuario.hide {
+    transform: translate(150%,0%);
+}
+
+/* Fin de estilos del login */
+
+@media (max-width: 991px) {
+
+    div.popup-info#popup-login {
+        width: 85%;
+    }
+
+}
+
+@media (max-width: 767px) {
+
+    h2.sub-title {
+        margin: 10px;
+        font-size: 38px;
+    }
+
+    div.parrafo-info div p {
+        font-size: 30px;
+    }
+
+}
+
+@media (min-width: 576px) and (max-width: 991px) {
+
+    .slides {
+        width: 518px;
+        height: 345px;
+    }
+
+    .navegacion-manual {
+        width: 518px;
+    }
+
+    img#img1 {
+        content: url("../img/Consultorio/med-slide1-ext.jpg");
+    }
+    img#img2 {
+        content: url("../img/Consultorio/med-slide2-ext.jpg");
+    }
+    img#img3 {
+        content: url("../img/Consultorio/med-slide3-int.jpg");
+    }
+    img#img4 {
+        content: url("../img/Consultorio/med-slide4-int.jpg");
+    }
+    img#img5 {
+        content: url("../img/Consultorio/med-slide5-dr.jpg");
+    }
+    img#img6 {
+        content: url("../img/Consultorio/med-slide6-dr.jpg");
+    }
+
+}
+
+@media (max-width: 575px) {
+
+    .slides {
+        width: 345px;
+        height: 230px;
+    }
+
+    .navegacion-manual {
+        width: 345px;
+    }
+
+    img#img1 {
+        content: url("../img/Consultorio/sm-slide1-ext.jpg");
+    }
+    img#img2 {
+        content: url("../img/Consultorio/sm-slide2-ext.jpg");
+    }
+    img#img3 {
+        content: url("../img/Consultorio/sm-slide3-int.jpg");
+    }
+    img#img4 {
+        content: url("../img/Consultorio/sm-slide4-int.jpg");
+    }
+    img#img5 {
+        content: url("../img/Consultorio/sm-slide5-dr.jpg");
+    }
+    img#img6 {
+        content: url("../img/Consultorio/sm-slide6-dr.jpg");
+    }
+
+    div#info-medico p {
+        font-size: 28px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    div.popup-info {
+        width: 90%;
+    }
+
+}
+                    /*==== FIN DE ESTILOS DEL INDEX ====*/
+
+
+
+                    /*==== ESTILOS DE CITAS ====*/
+div#div-citas {
+    width: 100%;
+    height: 60vh;
+    padding: 15px;
+}
+
+div#div-citas div {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+div#div-citas span {
+    font-size: 22px;
+    font-family: var(--fuenteTextos);
+}
+
+div#div-citas input, div#div-citas select {
+    border: 2px solid var(--colorVino);
+    border-radius: 5px;
+    width: fit-content;
+    font-size: 20px;
+    text-align: center;
+}
+div#div-citas select {
+    width: fit-content;
+}
+
+div#div-citas button {
+    margin-top: 50px;
+}
+
+div#mapa-consultorio iframe {
+    border-radius: 10px;
+    width: 100%;
+    height: 60vh;
+    border: 0;
+}
+
+@media (max-width: 767px) {
+    div.container-citas {
+        margin-bottom: 20px;
+    }
+}
+                    /*==== FIN DE ESTILOS DE CITAS ====*/
+
+
+
+                    /*==== ESTILOS DE CONTACTO ====*/
+div#div-contacto {
+    text-align: center;
+}
+
+div#div-contacto div.row div {
+    padding: 10px;
+}
+
+div#div-contacto a {
+    text-decoration: none;
+}
+
+div#div-contacto a span {
+    transition: 0.5s;
+    color: #000;
+}
+
+div.div-medios i {
+    transition: 0.5s;
+    margin-top: 20px;
+    font-size: 70px;
+    color: var(--colorVino);
+}
+
+div#div-contacto a:hover div.div-medios {
+    transition: 0.5s;
+    border-radius: 15px;
+    background-color: var(--colorVino);
+}
+
+div#div-contacto a:hover div.div-medios p,
+div#div-contacto a:hover div.div-medios span,
+div#div-contacto a:hover div.div-medios i {
+    transition: 0.5s;
+    color: var(--colorBlanco);
+}
+
+div iframe {
+    width: 95%;
+    height: 40vh;
+    border: none;
+    border-radius: 15px;
+}
+                    /*==== FIN DE ESTILOS DE CONTACTO ====*/
+
+
+
+                    /*==== ESTILOS DE REGISTRO ====*/
+
+                    /*==== FIN DE ESTILOS DE REGISTRO ====*/
+
+
+
+                    /*==== ESTILOS DEL FOOTER ====*/
+footer {
+    z-index: 1;
+}
+footer#page-footer {
+    transition: 1s;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    font-size: 20px;
+}
+
+footer#page-footer p {
+    font-family: var(--fuenteTitulos);
+    color: white;
+    font-weight: normal;
+    text-align: center;
+}
+                    /*==== FIN DE ESTILOS DEL FOOTER ====*/
