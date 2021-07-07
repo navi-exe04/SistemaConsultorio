@@ -64,6 +64,23 @@ div.btn-centrado {
     display: flex;
     justify-content: center;
 }
+
+button.boton {
+    transition: all 0.2s;
+    padding: 10px 15px;
+    margin: 20px 0;
+    background-color: transparent;
+    width: fit-content;
+    border-radius: 5px;
+    border: 2px solid var(--colorVino);
+    font-family: var(--fuenteTitulos);
+    color: var(--colorVino);
+}
+
+button.boton:hover {
+    background-color: var(--colorVino);
+    color: var(--colorBlanco);
+}
                 /*==== FIN DE ESTILOS GENERALES ====*/
 
 
@@ -524,111 +541,6 @@ div#popup-mision p, div#popup-valores p {
     margin: 15px;
 }
 /* Fin estilos de info del medico */
-
-/* Estilos del login */
-div#popup-login {
-    transition: 0.5s;
-    display: flex;
-    align-items: center;
-    width: 35%;
-    height: fit-content;
-    z-index: 4;
-    padding: 20px 0px;
-}
-
-div#popup-login input {
-    width: 250px;
-    background: transparent;
-    border: 2px solid var(--colorVino);
-    border-radius: 5px;
-    padding: 5px;
-    margin-top: 10px;
-    text-align: center;
-    font-weight: bold;
-    font-family: var(--fuenteTextos);
-    font-weight: bold;
-}
-
-div#img-user {
-    text-align: center;
-    width: 110px;
-    height: 110px;
-    border: 8px solid var(--colorVino);
-    box-shadow: 2px 2px 2px var(--sombraNegra);
-    border-radius: 100%;
-}
-
-div#img-user i {
-    line-height: 90px;
-    color: var(--colorVino);
-    font-size: 60px;
-}
-
-div.popup-info li {
-    margin-left: 10px;
-    font-size: 24px;
-    font-family: var(--fuenteTextos);
-    font-weight: bolder;
-    margin-bottom: 5px;
-    text-align: left;
-}
-
-button.boton {
-    transition: all 0.2s;
-    padding: 10px 15px;
-    margin: 20px 0;
-    background-color: transparent;
-    width: fit-content;
-    border-radius: 5px;
-    border: 2px solid var(--colorVino);
-    font-family: var(--fuenteTitulos);
-    color: var(--colorVino);
-}
-
-button.boton:hover {
-    background-color: var(--colorVino);
-    color: var(--colorBlanco);
-}
-
-div#inicio-sesion, div#registro-usuario {
-    width: fit-content;
-    transition: all 0.5s;
-    margin: 0px;
-}
-
-div#inicio-sesion > div.center, div#registro-usuario > div.center {
-    margin: 0;
-}
-
-div#inicio-sesion {
-    transform: translate(50%,0%);
-}
-
-div#registro-usuario {
-    transform: translate(-50%,0%);
-}
-
-div#inicio-sesion.hide, div#registro-usuario.hide {
-    transition: 0.5s;
-}
-
-div#inicio-sesion.hide {
-    transform: translate(350%,0%);
-}
-
-div#registro-usuario.hide {
-    transform: translate(150%,0%);
-}
-
-/* Fin de estilos del login */
-
-@media (max-width: 991px) {
-
-    div.popup-info#popup-login {
-        width: 85%;
-    }
-
-}
 
 @media (max-width: 767px) {
 

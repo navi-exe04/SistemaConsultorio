@@ -6,7 +6,6 @@ const divMenu = document.getElementById("menu-nav");
 window.onload = () => {
     botonesInformacion();
     sliderAutomatico();
-    cambiaLoginARegistro();
 }
 
 
@@ -29,13 +28,6 @@ function sliderAutomatico() {
 }
 //Funcion encargada de los eventos de los botones de informacion
 function botonesInformacion() {
-
-    //Eventos para el apartado del Login
-    const botonLogin = document.getElementById("btn-login");
-    const botonCerrarLogin = document.getElementById("boton-cerrarLogin");
-    const idLogin = "popup-login";
-    botonLogin.addEventListener('click', abreInfo(idLogin));
-    botonCerrarLogin.addEventListener('click', abreInfo(idLogin));
 
     //Eventos para el menu desplegable
     botonMenu.addEventListener('click', (e) => {
@@ -104,26 +96,4 @@ function blurMain() {
     blurBody.classList.toggle('active');
     blurHeader.classList.toggle('active');
     blurFooter.classList.toggle('active');
-}
-
-//Funcion para ver ventana de login o registro
-function cambiaLoginARegistro() {
-
-    const divLogin = document.getElementById('inicio-sesion');
-    const divRegistro = document.getElementById('registro-usuario');
-    const botonARegistro = document.getElementById('aRegistro');
-    const botonALogin = document.getElementById('aLogin');
-
-    botonARegistro.addEventListener('click', (e) => {
-        e.preventDefault();
-        divLogin.classList.add('hide');
-        divRegistro.classList.remove('hide');
-    });
-
-    botonALogin.addEventListener('click', (e) => {
-        e.preventDefault();
-        divRegistro.classList.add('hide');
-        divLogin.classList.remove('hide');
-    });
-
 }
