@@ -47,15 +47,14 @@
         <h1 class="main-title">Citas</h1>
 
         <div class="container">
-            <div class="row">
+            <div class="row" id="main-citas">
                 <div class="col-md-6 col-xs-12 container-citas">
                     <h2 class="sub-title">Generar cita</h2>
                     <div id="div-citas" class="contenedor-blanco center">
                         <form action="#" id="form-citas">
                             <div>
-                                <span>¿Para que paciente es la consulta?</span><br>
-                                <select aria-placeholder="Nombre del paciente" id="paciente-citas">
-                                </select>
+                                <span>Ingrese el nombre del paciente</span><br>
+                                <input type="text" name="nombre" id="nombre-citas">
                             </div>
                             <div>
                                 <span>Fecha de la consulta</span><br>
@@ -66,6 +65,10 @@
                                 <span>Hora de la consulta:</span><br>
                                 <select name="hora" id="hora-citas" required>
                                 </select>
+                            </div>
+                            <div>
+                                <span>Razon de la cita</span><br>
+                                <input type="text" name="razon" id="razon-citas">
                             </div>
                             <div class="btn-centrado">
                                 <button type="submit" id="submit-citas" class="boton">Generar cita</button>
