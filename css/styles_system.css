@@ -11,6 +11,10 @@
     --fuenteTextos: 'Quicksand', sans-serif;
 }
 
+header {
+    margin: 20px;
+}
+
 body#login-sistema {
     background: linear-gradient(to bottom right, var(--colorVino), var(--colorCarne));
     background-repeat: no-repeat;
@@ -24,18 +28,25 @@ main#main-login {
 }
 
 section.main-container {
+    display: flex;
+    justify-content: center;
     background: var(--fondoBlanco);
+    box-shadow: 2px 2px 2px var(--sombraNegra);
     backdrop-filter: blur(5px);
     border-radius: 5px;
     width: 35%;
     height: fit-content;
     padding: 20px;
-}   
+}
+
+#inicio-sesion {
+    text-align: center;
+}
 
 #img-user {
-    text-align: center;
     width: 110px;
     height: 110px;
+    margin: 0px auto    ;
     border: 8px solid var(--colorVino);
     box-shadow: 2px 2px 2px var(--sombraNegra);
     border-radius: 100%;
