@@ -1,0 +1,58 @@
+/*==== ESTILOS DE CONTACTO ====*/
+:root {
+    --colorVino: #55020A;
+    --colorCarne: #E99F5F;
+    --colorBlanco: #fff;
+    --fondoBlanco: rgba(240, 240, 240, 0.85);
+    --fondoVino: rgba(85, 2, 10, 0.95);
+    --sombraNegra: rgba(0,0,0,0.5);
+    --sombraCarne: rgba(233,159,95,0.9);
+    --fuenteTitulos: 'Staatliches', cursive;
+    --fuenteSubTitulos: 'Open Sans Condensed', sans-serif;
+    --fuenteTextos: 'Quicksand', sans-serif;
+}
+
+div#div-contacto {
+    text-align: center;
+}
+
+div#div-contacto div.row div {
+    padding: 10px;
+}
+
+div#div-contacto a {
+    text-decoration: none;
+}
+
+div#div-contacto a span {
+    transition: 0.5s;
+    color: #000;
+}
+
+div.div-medios i {
+    transition: 0.5s;
+    margin-top: 20px;
+    font-size: 70px;
+    color: var(--colorVino);
+}
+
+div#div-contacto a:hover div.div-medios {
+    transition: 0.5s;
+    border-radius: 15px;
+    background-color: var(--colorVino);
+}
+
+div#div-contacto a:hover div.div-medios p,
+div#div-contacto a:hover div.div-medios span,
+div#div-contacto a:hover div.div-medios i {
+    transition: 0.5s;
+    color: var(--colorBlanco);
+}
+
+div iframe {
+    width: 95%;
+    height: 40vh;
+    border: none;
+    border-radius: 15px;
+}
+                    /*==== FIN DE ESTILOS DE CONTACTO ====*/

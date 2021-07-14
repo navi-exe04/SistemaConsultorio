@@ -1,0 +1,398 @@
+                /*==== ESTILOS DEL INDEX ====*/
+:root {
+    --colorVino: #55020A;
+    --colorCarne: #E99F5F;
+    --colorBlanco: #fff;
+    --fondoBlanco: rgba(240, 240, 240, 0.85);
+    --fondoVino: rgba(85, 2, 10, 0.95);
+    --sombraNegra: rgba(0,0,0,0.5);
+    --sombraCarne: rgba(233,159,95,0.9);
+    --fuenteTitulos: 'Staatliches', cursive;
+    --fuenteSubTitulos: 'Open Sans Condensed', sans-serif;
+    --fuenteTextos: 'Quicksand', sans-serif;
+}
+
+/* Estilos del Slider */
+.slider {
+    margin: 0px auto;
+    width: fit-content;
+    height: fit-content;
+    z-index: 1;
+}
+.slides {
+    width: 648px;
+    height: 432px;
+    display: flex;
+}
+.slides input {
+    display: none;
+}
+.slide {
+    transition: 1s;
+}
+.slide img {
+    display: block;
+    width: fit-content;
+    height: fit-content;
+    transition: 1s;
+    filter: opacity(60%);
+}
+.navegacion-manual {
+    position: absolute;
+    width: 648px;
+    margin-top: -30px;
+    display: flex;
+    justify-content: center;
+}
+.manual-btn {
+    border: 2px solid var(--colorCarne);
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+.manual-btn:not(:last-child) {
+    margin-right: 40px;
+}
+.manual-btn:hover {
+    background-color: var(--colorCarne);
+} 
+#radio1:checked ~ .first {
+    margin-left: 0%;
+}
+#radio1:checked ~ div.slide img#img1 {
+    transition: 1s;
+    filter: none;
+}
+#radio2:checked ~ .first {
+    margin-left: -100%;
+}
+#radio2:checked ~ div.slide img#img2 {
+    transition: 1s;
+    filter: none;
+}
+#radio3:checked ~ .first {
+    margin-left: -200%;
+}
+#radio3:checked ~ div.slide img#img3 {
+    transition: 1s;
+    filter: none;
+}
+#radio4:checked ~ .first {
+    margin-left: -300%;
+}
+#radio4:checked ~ div.slide img#img4 {
+    transition: 1s;
+    filter: none;
+}
+#radio5:checked ~ .first {
+    margin-left: -400%;
+}
+#radio5:checked ~ div.slide img#img5 {
+    transition: 1s;
+    filter: none;
+}
+#radio6:checked ~ .first {
+    margin-left: -500%;
+}
+#radio6:checked ~ div.slide img#img6 {
+    transition: 1s;
+    filter: none;
+}
+.navegacion-auto {
+    position: absolute;
+    display: flex;
+    width: 648px;
+    justify-content: center;
+    margin-top: 432px;
+}
+.navegacion-auto div {
+    display: none;
+    border: 2px solid var(--colorCarne);
+    padding: 5px;
+    border-radius: 10px;
+    transition: 1s;
+}
+.navegacion-auto div:not(:last-child) {
+    margin-right: auto;
+}
+#radio1:checked ~ .navegacion-auto .auto-btn {
+    background-color: var(--colorCarne);
+}
+#radio2:checked ~ .navegacion-auto .auto-btn {
+    background-color: var(--colorCarne);
+}
+#radio3:checked ~ .navegacion-auto .auto-btn {
+    background-color: var(--colorCarne);
+}
+#radio4:checked ~ .navegacion-auto .auto-btn {
+    background-color: var(--colorCarne);
+}
+#radio5:checked ~ .navegacion-auto .auto-btn {
+    background-color: var(--colorCarne);
+}
+#radio6:checked ~ .navegacion-auto .auto-btn {
+    background-color: var(--colorCarne);
+}
+/* Fin de estilos del Slider */
+
+/* Estilos de bienvenida */
+div#info-bienvenida {
+    margin-top: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+div.imagen-medico {
+    margin: auto;
+    display: block;
+    padding-left: 10px;
+}
+
+div.parrafo-info {
+    display: flex;
+    align-items: center;
+}
+
+div.parrafo-info div {
+    padding: 20px;
+}
+
+div.parrafo-info div p {
+    position: relative;
+    font-size: 40px;
+    font-weight: bolder;
+    text-align: center;
+    vertical-align: middle;
+}
+/* Fin de estilos de bienvenida */
+
+/* Estilos de info del medico */
+div#info-general {
+    margin-top: 45px;
+    align-content: center;
+    justify-content: center;
+}
+
+div#info-general div.row {
+    margin-bottom: 0;
+}
+
+div#info-general div.row div{
+    padding: 0;
+    margin-bottom: 10px;
+
+}
+
+div#info-general div.row a:hover h2 {
+    transition: 0.5s;
+    padding-top: 1.5em;
+}
+
+div#info-general div.row a:hover div.info-container {
+    transition: 1s;
+    padding-top: 50px;
+    box-shadow: 0px 2px 16px 10px var(--sombraNegra);
+    filter: blur(2px);
+}
+
+div#info-general a:hover {
+    text-decoration: none;
+}
+
+div.info-container {
+    max-width: 100%;
+    height: 250px;
+    border-radius: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-size: cover;
+    background-position: 50%;   
+}
+
+h2.info-title { 
+    transition: 0.2s;
+    font-family: var(--fuenteTitulos);
+    color: var(--colorCarne);
+    font-size: 40px;
+    text-shadow: 2px 2px var(--sombraNegra);
+    text-align: center;
+    -webkit-text-stroke: 1.5px black;
+}
+
+div#info-general h2.info-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 40px;
+}
+
+div#profesional-bg {
+    background-image: url("../img/professional-img.jpg");
+}
+
+div#mision-bg {
+    background-image: url("../img/mision-img.jpg");
+}
+
+div#valores-bg {
+    background-image: url("../img/valores-img.jpg");
+}
+
+div#servicios-bg {
+    background-image: url("../img/servicios-img.jpg");
+}
+
+div#covid-bg {
+    background-image: url("../img/covid-img.jpg");
+}
+
+div.popup-info {
+    position: fixed;
+    border-radius: 10px;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 70%;
+    height: auto;
+    max-height: 80%;
+    overflow-y: scroll;
+    background: var(--fondoBlanco);
+    box-shadow: 2px 2px 2px var(--sombraNegra);
+    padding: 35px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+    text-align: center;
+    justify-content: center;
+}
+
+div.popup-info div {
+    margin-bottom: 20px;
+}
+
+button.boton-cerrar {
+    top: 2%;
+    left: 2%;
+    position: absolute;
+    border: none;
+    width: fit-content;
+    height: fit-content;
+    padding: 0%;
+    background: none;
+    text-decoration: none;
+    color: var(--colorVino);
+    font-size: 35px;
+    align-content: center;
+}
+
+div.popup-info.active {
+    top: 50%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+div.popup-info p {
+    font-weight: bolder;
+    text-align: left;
+}
+
+div#popup-profesional p {
+    text-align: center;
+}
+
+div#popup-mision p, div#popup-valores p {
+    margin: 15px;
+}
+/* Fin estilos de info del medico */
+
+@media (max-width: 767px) {
+
+    h2.sub-title {
+        margin: 10px;
+        font-size: 38px;
+    }
+
+    div.parrafo-info div p {
+        font-size: 30px;
+    }
+
+}
+
+@media (min-width: 576px) and (max-width: 991px) {
+
+    .slides {
+        width: 518px;
+        height: 345px;
+    }
+
+    .navegacion-manual {
+        width: 518px;
+    }
+
+    img#img1 {
+        content: url("../img/Consultorio/med-slide1-ext.jpg");
+    }
+    img#img2 {
+        content: url("../img/Consultorio/med-slide2-ext.jpg");
+    }
+    img#img3 {
+        content: url("../img/Consultorio/med-slide3-int.jpg");
+    }
+    img#img4 {
+        content: url("../img/Consultorio/med-slide4-int.jpg");
+    }
+    img#img5 {
+        content: url("../img/Consultorio/med-slide5-dr.jpg");
+    }
+    img#img6 {
+        content: url("../img/Consultorio/med-slide6-dr.jpg");
+    }
+
+}
+
+@media (max-width: 575px) {
+
+    .slides {
+        width: 345px;
+        height: 230px;
+    }
+
+    .navegacion-manual {
+        width: 345px;
+    }
+
+    img#img1 {
+        content: url("../img/Consultorio/sm-slide1-ext.jpg");
+    }
+    img#img2 {
+        content: url("../img/Consultorio/sm-slide2-ext.jpg");
+    }
+    img#img3 {
+        content: url("../img/Consultorio/sm-slide3-int.jpg");
+    }
+    img#img4 {
+        content: url("../img/Consultorio/sm-slide4-int.jpg");
+    }
+    img#img5 {
+        content: url("../img/Consultorio/sm-slide5-dr.jpg");
+    }
+    img#img6 {
+        content: url("../img/Consultorio/sm-slide6-dr.jpg");
+    }
+
+    div#info-medico p {
+        font-size: 28px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    div.popup-info {
+        width: 90%;
+    }
+
+}
+                    /*==== FIN DE ESTILOS DEL INDEX ====*/

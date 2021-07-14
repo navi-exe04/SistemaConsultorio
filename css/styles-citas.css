@@ -1,0 +1,66 @@
+                /*==== ESTILOS DE CITAS ====*/
+:root {
+    --colorVino: #55020A;
+    --colorCarne: #E99F5F;
+    --colorBlanco: #fff;
+    --fondoBlanco: rgba(240, 240, 240, 0.85);
+    --fondoVino: rgba(85, 2, 10, 0.95);
+    --sombraNegra: rgba(0,0,0,0.5);
+    --sombraCarne: rgba(233,159,95,0.9);
+    --fuenteTitulos: 'Staatliches', cursive;
+    --fuenteSubTitulos: 'Open Sans Condensed', sans-serif;
+    --fuenteTextos: 'Quicksand', sans-serif;
+}
+
+div#main-citas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div#div-citas {
+    width: 100%;
+    height: fit-content;
+    padding: 15px;
+}
+
+div#div-citas div {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+div#div-citas span {
+    font-size: 22px;
+    font-family: var(--fuenteTextos);
+}
+
+div#div-citas input, div#div-citas select {
+    border: 2px solid var(--colorVino);
+    border-radius: 5px;
+    width: fit-content;
+    font-size: 20px;
+    text-align: center;
+}
+div#div-citas select {
+    width: fit-content;
+}
+
+div#div-citas button {
+    margin-top: 50px;
+}
+
+div#mapa-consultorio iframe {
+    border-radius: 10px;
+    width: 100%;
+    height: 60vh;
+    border: 0;
+}
+
+@media (max-width: 767px) {
+    div.container-citas {
+        margin-bottom: 20px;
+    }
+}
+                    /*==== FIN DE ESTILOS DE CITAS ====*/
