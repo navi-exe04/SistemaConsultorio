@@ -1,16 +1,4 @@
                 /*==== ESTILOS DEL INDEX ====*/
-:root {
-    --colorVino: #55020A;
-    --colorCarne: #E99F5F;
-    --colorBlanco: #fff;
-    --fondoBlanco: rgba(240, 240, 240, 0.85);
-    --fondoVino: rgba(85, 2, 10, 0.95);
-    --sombraNegra: rgba(0,0,0,0.5);
-    --sombraCarne: rgba(233,159,95,0.9);
-    --fuenteTitulos: 'Staatliches', cursive;
-    --fuenteSubTitulos: 'Open Sans Condensed', sans-serif;
-    --fuenteTextos: 'Quicksand', sans-serif;
-}
 
 /* Estilos del Slider */
 .slider {
@@ -137,90 +125,72 @@
 /* Fin de estilos del Slider */
 
 /* Estilos de bienvenida */
-div#info-bienvenida {
+#info-bienvenida {
     margin-top: 40px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 20px 0;
 }
 
-div.imagen-medico {
-    margin: auto;
-    display: block;
-    padding-left: 10px;
-}
-
-div.parrafo-info {
+.imagen-medico, .parrafo-info{
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 
-div.parrafo-info div {
-    padding: 20px;
+.parrafo-info div {
+    padding: 10px;
 }
 
-div.parrafo-info div p {
-    position: relative;
+.parrafo-info div p {
     font-size: 40px;
     font-weight: bolder;
     text-align: center;
-    vertical-align: middle;
 }
 /* Fin de estilos de bienvenida */
 
 /* Estilos de info del medico */
-div#info-general {
+#info-general {
     margin-top: 45px;
-    align-content: center;
-    justify-content: center;
 }
 
-div#info-general div.row {
+#info-general div.row {
     margin-bottom: 0;
 }
 
-div#info-general div.row div{
+#info-general div.row div{
+    transition: all 0.5s;
     padding: 0;
-    margin-bottom: 10px;
-
+    margin-bottom: 5px;
 }
 
-div#info-general div.row a:hover h2 {
-    transition: 0.5s;
+#info-general div.row a:hover h2 {
     padding-top: 1.5em;
 }
 
-div#info-general div.row a:hover div.info-container {
-    transition: 1s;
+#info-general div.row a:hover .info-container {
     padding-top: 50px;
-    box-shadow: 0px 2px 16px 10px var(--sombraNegra);
-    filter: blur(2px);
+    box-shadow: 5px 5px 10px var(--sombraNegra);
 }
 
-div#info-general a:hover {
+#info-general a:hover {
     text-decoration: none;
 }
 
-div.info-container {
+.info-container {
     max-width: 100%;
     height: 250px;
-    border-radius: 15px;
-    margin-left: 5px;
-    margin-right: 5px;
+    border-radius: 10px;
+    margin: 0 5px;
     background-size: cover;
     background-position: 50%;   
 }
 
-h2.info-title { 
+.info-title { 
     transition: 0.2s;
     font-family: var(--fuenteTitulos);
     color: var(--colorCarne);
     font-size: 40px;
     text-shadow: 2px 2px var(--sombraNegra);
-    text-align: center;
     -webkit-text-stroke: 1.5px black;
-}
-
-div#info-general h2.info-title {
     position: absolute;
     top: 0;
     left: 0;
@@ -229,58 +199,52 @@ div#info-general h2.info-title {
     margin: 40px;
 }
 
-div#profesional-bg {
+#profesional-bg {
     background-image: url("../img/professional-img.jpg");
 }
 
-div#mision-bg {
+#mision-bg {
     background-image: url("../img/mision-img.jpg");
 }
 
-div#valores-bg {
+#valores-bg {
     background-image: url("../img/valores-img.jpg");
 }
 
-div#servicios-bg {
+#servicios-bg {
     background-image: url("../img/servicios-img.jpg");
 }
 
-div#covid-bg {
+#covid-bg {
     background-image: url("../img/covid-img.jpg");
 }
 
-div.popup-info {
+.popup-info {
+    transition: all 0.2s;
     position: fixed;
     border-radius: 10px;
     top: 40%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 70%;
+    width: 55%;
     height: auto;
     max-height: 80%;
     overflow-y: scroll;
     background: var(--fondoBlanco);
     box-shadow: 2px 2px 2px var(--sombraNegra);
-    padding: 35px;
+    padding: 45px;
     visibility: hidden;
     opacity: 0;
-    transition: 0.5s;
-    text-align: center;
-    justify-content: center;
 }
 
-div.popup-info div {
-    margin-bottom: 20px;
-}
-
-button.boton-cerrar {
+.boton-cerrar {
     top: 2%;
     left: 2%;
     position: absolute;
     border: none;
     width: fit-content;
     height: fit-content;
-    padding: 0%;
+    padding: 0;
     background: none;
     text-decoration: none;
     color: var(--colorVino);
@@ -288,36 +252,40 @@ button.boton-cerrar {
     align-content: center;
 }
 
-div.popup-info.active {
+.popup-info.active {
     top: 50%;
     visibility: visible;
     opacity: 1;
-    transition: 0.5s;
 }
 
-div.popup-info p {
+.popup-info p {
     font-weight: bolder;
-    text-align: left;
+    text-align: justify;
 }
 
-div#popup-profesional p {
+#popup-profesional p {
     text-align: center;
-}
-
-div#popup-mision p, div#popup-valores p {
-    margin: 15px;
 }
 /* Fin estilos de info del medico */
 
 @media (max-width: 767px) {
 
-    h2.sub-title {
+    .sub-title {
         margin: 10px;
         font-size: 38px;
     }
 
-    div.parrafo-info div p {
+    .parrafo-info div p {
         font-size: 30px;
+    }
+
+}
+
+@media (min-width: 992px) and (max-width:1199px) {
+
+    .imagen-medico img {
+        padding: 0;
+        width: 95%;
     }
 
 }
@@ -333,22 +301,22 @@ div#popup-mision p, div#popup-valores p {
         width: 518px;
     }
 
-    img#img1 {
+    #img1 {
         content: url("../img/Consultorio/med-slide1-ext.jpg");
     }
-    img#img2 {
+    #img2 {
         content: url("../img/Consultorio/med-slide2-ext.jpg");
     }
-    img#img3 {
+    #img3 {
         content: url("../img/Consultorio/med-slide3-int.jpg");
     }
-    img#img4 {
+    #img4 {
         content: url("../img/Consultorio/med-slide4-int.jpg");
     }
-    img#img5 {
+    #img5 {
         content: url("../img/Consultorio/med-slide5-dr.jpg");
     }
-    img#img6 {
+    #img6 {
         content: url("../img/Consultorio/med-slide6-dr.jpg");
     }
 
@@ -365,32 +333,32 @@ div#popup-mision p, div#popup-valores p {
         width: 345px;
     }
 
-    img#img1 {
+    #img1 {
         content: url("../img/Consultorio/sm-slide1-ext.jpg");
     }
-    img#img2 {
+    #img2 {
         content: url("../img/Consultorio/sm-slide2-ext.jpg");
     }
-    img#img3 {
+    #img3 {
         content: url("../img/Consultorio/sm-slide3-int.jpg");
     }
-    img#img4 {
+    #img4 {
         content: url("../img/Consultorio/sm-slide4-int.jpg");
     }
-    img#img5 {
+    #img5 {
         content: url("../img/Consultorio/sm-slide5-dr.jpg");
     }
-    img#img6 {
+    #img6 {
         content: url("../img/Consultorio/sm-slide6-dr.jpg");
     }
 
-    div#info-medico p {
+    #info-medico p {
         font-size: 28px;
         padding-left: 20px;
         padding-right: 20px;
     }
 
-    div.popup-info {
+    .popup-info {
         width: 90%;
     }
 

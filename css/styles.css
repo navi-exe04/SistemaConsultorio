@@ -12,9 +12,15 @@
     --fuenteTextos: 'Quicksand', sans-serif;
 }
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 html {
     scroll-behavior: smooth;
-    height: 100%;
+    height: 100vh;
 }
 
 .noScroll {
@@ -30,7 +36,7 @@ body {
 }
 
 body p, body li {
-    margin: 0px 0px 0px 0px;
+    margin: 0;
     font-family: var(--fuenteTextos);
     font-size: 24px;
     font-weight: bolder;
@@ -40,13 +46,10 @@ body p, body li {
 
 .contenedor {
     margin: auto;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding: 20px 0;
     background-color: var(--colorVino);
-    padding-top: 2%;
-    padding-bottom: 0.5%;
     color: var(--colorBlanco);
-    box-shadow: 0px 2px 16px 10px var(--sombraNegra);
+    box-shadow: 0px 0px 10px 8px var(--sombraNegra);
 }
 
 .contenedor-blanco {
@@ -54,24 +57,18 @@ body p, body li {
     height: 100%;
     border-radius: 15px;
     background: var(--colorBlanco);
-    box-shadow: 0px 2px 16px 2px var(--sombraNegra);
+    box-shadow: 6px 6px 8px var(--sombraNegra);
 }
 
-.center {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-}
-
-div.btn-centrado {
+.btn-centrado {
     display: flex;
     justify-content: center;
 }
 
-button.boton {
+.boton {
     transition: all 0.2s;
     padding: 10px 15px;
-    margin: 20px 0;
+    margin: 20px;
     background-color: transparent;
     width: fit-content;
     border-radius: 5px;
@@ -87,8 +84,7 @@ button.boton:hover {
 
 main {
     transition: all 0.2s;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding: 15px 0;
 }
 
 main.active, header.active, footer.active {
@@ -96,20 +92,20 @@ main.active, header.active, footer.active {
     filter: blur(4px);
 }
 
-h1.main-title { 
-    font-family: var(--fuenteTitulos);
+h1, h2 {
     color: var(--colorVino);
-    font-size: 58px;
-    text-align: center;
     text-shadow: 2px 2px var(--sombraNegra);
+    text-align: center;
 }
 
-h2.sub-title { 
+.main-title { 
+    font-family: var(--fuenteTitulos);
+    font-size: 58px;
+}
+
+.sub-title { 
     font-family: var(--fuenteSubTitulos);
-    color: var(--colorVino);
-    font-size: 42px;
-    text-shadow: 2px 2px var(--sombraNegra);
-    text-align: center;
+    font-size: 40px;
     font-weight: bolder;
 }
                 /*==== FIN DE ESTILOS GENERALES ====*/
@@ -117,91 +113,88 @@ h2.sub-title {
 
 
                 /*==== ESTILOS DEL HEADER ====*/
-header#headerInicio {
+#headerInicio {
     transition: all 0.5s;
     padding: 0;
     height: fit-content;
 }
 
-header div#header-pagina {
+#header-pagina {
     padding: 15px 30px;
 }
 
-header div nav{
+#header-pagina nav{
     display: flex;
     justify-content: space-between;
     align-content: center;
     padding: 0;
 }
 
-a#logo-header {
+#logo-header {
     text-decoration: none;
 }
 
-div#header-logo-dr {
+#header-logo-dr {
     display: flex;
     justify-content: center;
     text-align: center;
 }
 
-div#header-logo-dr span {
+#header-logo-dr span {
     text-decoration: none;
     color: var(--colorBlanco);
     font-family: var(--fuenteSubTitulos);
     font-weight: bolder;
-    font-size: 22px;
+    font-size: 20px;
 }
 
 h2.logo {
     font-size: 42px;
     font-family: var(--fuenteTitulos);
-    text-shadow: 2px 2px var(--sombraCarne);
+    text-shadow: 2px 2px var(--sombraNegra);
     color: var(--colorBlanco);
     margin-bottom: 0;
 }
 
-div#menu-nav {
+#menu-nav {
     z-index: 2;
-    padding: 0;
     display: flex;
     align-items: center;
 }
 
-div#menu-nav ul {
+#menu-nav ul {
     padding: 0;
     margin: 0;
 }
 
-div#menu-nav ul li {
-    display: inline-flex;
-    justify-content: space-around;
+#menu-nav ul li {
+    display: inline-block;
     margin: 0 15px;
 }
 
-div#menu-nav a {
+#menu-nav a {
     transition: all 0.5s;
     height: fit-content;
     padding: 10px;
     border-radius: 5px;
     font-size: 18px;
-    font-family: var(--fuenteTextos);
-    font-weight: bold;
+    font-weight: bolder;
     text-decoration: none;
     color: var(--colorBlanco);
 }
 
-div#menu-nav a:hover, div#menu-nav a.activo{
+#menu-nav a:hover, #menu-nav a.activo{
     background-color: var(--colorCarne);
     color: var(--colorVino);
 }
 
-header div nav button {
+#boton-menu {
     display: none;
 }
 
 @media (max-width: 767px) {
 
-    div#menu-nav {
+    #menu-nav {
         position: fixed;
         justify-content: center;
         width: 100%;
@@ -214,18 +207,18 @@ header div nav button {
         backdrop-filter: blur(2px);
     }
 
-    div#menu-nav.show {
+    #menu-nav.show {
         right: 0;
     }
 
-    div#menu-nav ul li {
+    #menu-nav ul li {
         display: block;
         margin: 50px 0;
         line-height: 30px;
         text-align: center;
     }
 
-    header div nav button {
+    #boton-menu {
         position: static;
         display: inline;
         width: fit-content;
@@ -233,11 +226,11 @@ header div nav button {
         background: none;
         padding: 10px;
         border: 2px solid var(--colorBlanco);
-        border-radius: 10px;
+        border-radius: 5px;
         z-index: 4;
     }
 
-    header div nav button i {
+    #boton-menu i {
         font-size: 25px;
         color: var(--colorBlanco);
     }
@@ -245,22 +238,19 @@ header div nav button {
 }
                 /*==== FIN DE ESTILOS DEL HEADER ====*/
 
-                
+
 
                     /*==== ESTILOS DEL FOOTER ====*/
-footer {
+#page-footer {
     z-index: 1;
-}
-footer#page-footer {
-    transition: 1s;
-    margin: 0;
+    transition: all 0.5s;
     display: flex;
     justify-content: center;
     align-content: center;
     font-size: 20px;
 }
 
-footer#page-footer p {
+#page-footer p {
     font-family: var(--fuenteTitulos);
     color: white;
     font-weight: normal;

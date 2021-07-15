@@ -1,16 +1,4 @@
 /*==== ESTILOS DE CONTACTO ====*/
-:root {
-    --colorVino: #55020A;
-    --colorCarne: #E99F5F;
-    --colorBlanco: #fff;
-    --fondoBlanco: rgba(240, 240, 240, 0.85);
-    --fondoVino: rgba(85, 2, 10, 0.95);
-    --sombraNegra: rgba(0,0,0,0.5);
-    --sombraCarne: rgba(233,159,95,0.9);
-    --fuenteTitulos: 'Staatliches', cursive;
-    --fuenteSubTitulos: 'Open Sans Condensed', sans-serif;
-    --fuenteTextos: 'Quicksand', sans-serif;
-}
 
 div#div-contacto {
     text-align: center;
