@@ -85,10 +85,11 @@ button.boton:hover {
 main {
     transition: all 0.2s;
     padding: 15px 0;
+    margin: 15px 0;
 }
 
 main.active, header.active, footer.active {
-    transition: .5s;
+    transition: all .5s;
     filter: blur(4px);
 }
 

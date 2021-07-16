@@ -26,7 +26,7 @@
             <nav>
                 <div id="header-logo-dr">
                     <a href="index.html" id="logo-header">
-                        <h2 class="logo">Dr. Andrián Raúl Langle Galindo</h2>
+                        <h2 class="logo">Dr. Raúl Langle Galindo</h2>
                         <span>MEDICO PEDIATRA</span>
                     </a>
                 </div>
@@ -50,29 +50,26 @@
             <div class="row" id="main-citas">
                 <div class="col-md-6 col-xs-12 container-citas">
                     <h2 class="sub-title">Generar cita</h2>
-                    <div id="div-citas" class="contenedor-blanco center">
+                    <div id="div-citas" class="contenedor-blanco">
+                        <p>Por favor de completar los campos siguientes:</p>
                         <form action="#" id="form-citas">
-                            <div>
-                                <span>Ingrese el nombre del paciente</span><br>
-                                <input type="text" name="nombre" id="nombre-citas">
-                            </div>
-                            <div>
-                                <span>Fecha de la consulta</span><br>
-                                <input type="date" name="fecha" id="fecha-citas" onchange="calendarioConsultorio();"
-                                    onblur="calendarioConsultorio();" required="required">
-                            </div>
-                            <div>
-                                <span>Hora de la consulta:</span><br>
-                                <select name="hora" id="hora-citas" required>
-                                </select>
-                            </div>
-                            <div>
-                                <span>Razon de la cita</span><br>
-                                <input type="text" name="razon" id="razon-citas">
-                            </div>
-                            <div class="btn-centrado">
-                                <button type="submit" id="submit-citas" class="boton">Generar cita</button>
-                            </div>
+                            <label for="nombre-citas">
+                                <input type="text" name="nombre-citas" id="nombre-citas" placeholder="Nombre(s) y Apellidos del paciente" required>
+                            </label>
+                            <label for="fecha-citas">
+                                <span>Fecha de la consulta</span>
+                                <input type="date" name="fecha-citas" id="fecha-citas" onchange="calendarioConsultorio();"
+                                    onblur="calendarioConsultorio();" required >
+                            </label>
+                            <label for="hora-citas">
+                                <input list="hora-citas" placeholder="Hora de la cita" required>
+                                <datalist id="hora-citas">
+                                </datalist>
+                            </label>
+                            <label for="razon-citas">
+                                <input type="text" name="razon-citas" id="razon-citas" placeholder="Razón de la cita">
+                            </label>
+                            <button type="submit" id="submit-citas" class="boton">Generar cita</button>
                         </form>
                     </div>
                 </div>

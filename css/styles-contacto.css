@@ -1,38 +1,42 @@
 /*==== ESTILOS DE CONTACTO ====*/
 
-div#div-contacto {
+#div-contacto {
     text-align: center;
 }
 
-div#div-contacto div.row div {
+#div-contacto div.row div {
     padding: 10px;
 }
 
-div#div-contacto a {
+#div-contacto a {
     text-decoration: none;
 }
 
-div#div-contacto a span {
+#div-contacto a span {
     transition: 0.5s;
     color: #000;
 }
 
-div.div-medios i {
+#div-contacto p {
+    text-align: center;
+}
+
+.div-medios i {
     transition: 0.5s;
     margin-top: 20px;
     font-size: 70px;
     color: var(--colorVino);
 }
 
-div#div-contacto a:hover div.div-medios {
+#div-contacto a:hover .div-medios {
     transition: 0.5s;
     border-radius: 15px;
     background-color: var(--colorVino);
 }
 
-div#div-contacto a:hover div.div-medios p,
-div#div-contacto a:hover div.div-medios span,
-div#div-contacto a:hover div.div-medios i {
+#div-contacto a:hover .div-medios p,
+#div-contacto a:hover .div-medios span,
+#div-contacto a:hover .div-medios i {
     transition: 0.5s;
     color: var(--colorBlanco);
 }

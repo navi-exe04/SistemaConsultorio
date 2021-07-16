@@ -64,22 +64,16 @@ function muestraHoras(hora, horaCierre) {
         const opcion1 = document.createElement('option');
         const opcion2 = document.createElement('option');
         if (i >= 10 && i < 12) {
-            opcion1.value = `${i}am`;
-            opcion1.textContent = `${i}:00 am`;
-            opcion2.value = `${i}.5am`;
-            opcion2.textContent = `${i}:30 am`;
+            opcion1.value = `${i}:00 am`;
+            opcion2.value = `${i}:30 am`;
         } else if (i == 12) {
-            opcion1.value = `${i}pm`;
-            opcion1.textContent = `${i}:00 pm`;
-            opcion2.value = `${i}.5pm`;
-            opcion2.textContent = `${i}:30 pm`;
+            opcion1.value = `${i}:00 pm`;
+            opcion2.value = `${i}:30 pm`;
         } else if ((i > 12 && i <= 13) || (i >= 16 && i <= 19)) {
-            opcion1.value = `${i - 12}pm`;
-            opcion1.textContent = `${i - 12}:00 pm`;
-            opcion2.value = `${i - 12}.5pm`;
-            opcion2.textContent = `${i - 12}:30 pm`;
+            opcion1.value = `${i - 12}:00 pm`;
+            opcion2.value = `${i - 12}:30 pm`;
         }
-        if (opcion1.textContent !== "" || opcion2.textContent !== "") {
+        if (opcion1.value !== "" || opcion2.value !== "") {
             selectHoras.appendChild(opcion1);
             selectHoras.appendChild(opcion2);
         }
