@@ -1,27 +1,29 @@
+                    /*==== ESTILOS DEL LOGIN ====*/
 header {
     margin: 20px;
 }
 
-body#login-sistema {
+#body-login {
     background: linear-gradient(to bottom right, var(--colorVino), var(--colorCarne));
     background-repeat: no-repeat;
 }
 
-main#main-login {
+#main-login {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 40px 0;
 }
 
-section.main-container {
+.main-container {
     display: flex;
     justify-content: center;
+    align-items: center;
     background: var(--fondoBlanco);
-    box-shadow: 2px 2px 2px var(--sombraNegra);
-    backdrop-filter: blur(5px);
+    box-shadow: 6px 6px 8px var(--sombraNegra);
+    backdrop-filter: blur(1px);
     border-radius: 5px;
-    width: 35%;
+    width: 60vh;
     height: fit-content;
     padding: 20px;
 }
@@ -33,7 +35,7 @@ section.main-container {
 #img-user {
     width: 110px;
     height: 110px;
-    margin: 0px auto    ;
+    margin: 20px auto    ;
     border: 8px solid var(--colorVino);
     box-shadow: 2px 2px 2px var(--sombraNegra);
     border-radius: 100%;
@@ -45,15 +47,38 @@ section.main-container {
     font-size: 60px;
 }
 
-#inicio-sesion input {
-    width: 250px;
+#form-login {
+    margin-top: 25px;
+}
+
+#form-login label{
+    display: block;
+    margin: 10px;
+}
+
+#form-login input {
+    width: 100%;
     background: transparent;
     border: 2px solid var(--colorVino);
     border-radius: 5px;
     padding: 5px;
-    margin-top: 10px;
     text-align: center;
     font-weight: bold;
     font-family: var(--fuenteTextos);
-    font-weight: bold;
 }
+
+@media (max-width: 575px) {
+
+    header {
+        margin-top: 15px;
+    }
+
+    #main-login {
+        margin: 10px 0;
+    }
+
+    .main-container {
+        width: 80%;
+    }
+}
+/*==== FIN DE ESTILOS DEL LOGIN ====*/

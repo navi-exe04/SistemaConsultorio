@@ -18,7 +18,7 @@
         rel="stylesheet">
 </head>
 
-<body id="login-sistema">
+<body id="body-login">
 
     <header>
         <div id="header-login">
@@ -40,9 +40,13 @@
                 <div id="img-user">
                     <i class="far fa-user"></i>
                 </div>
-                <form action="#">
-                    <input type="text" placeholder="Correo Electrónico" id="email-user"><br>
-                    <input type="password" placeholder="Contraseña" id="contraseña-user"><br>
+                <form action="#" id="form-login">
+                    <label for="email-user">
+                        <input type="text" placeholder="Correo Electrónico" id="email-user" required>
+                    </label>
+                    <label for="password-user">
+                        <input type="password" placeholder="Contraseña" id="password-user" required>
+                    </label>
                     <button type="submit" id="boton-login" class="boton">Entrar</button><br>
                 </form>
             </div>
