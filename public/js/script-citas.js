@@ -12,7 +12,6 @@ window.onload = () => {
     botonesInformacion();
 }
 
-
 /******** FUNCIONES *********/
 
 //Funcion encargada de los eventos de los botones de informacion
@@ -85,4 +84,12 @@ function limpiarHTML(elementToClean) {
     while (elementToClean.firstChild) {
         elementToClean.removeChild(elementToClean.firstChild);
     }
+}
+
+//Funcion que almacena los datos a guardar en la base de datos
+var enviardatos = function (){
+    var nombre = document.getElementById("nombre-citas").value;
+    var fecha = document.getElementById("fecha-citas").value;
+    var hora = document.getElementById("hora-cita").value;
+    var razon = document.getElementById("razon-citas").value;
 }

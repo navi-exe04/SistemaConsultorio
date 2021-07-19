@@ -62,14 +62,14 @@
                                     onblur="calendarioConsultorio();" required >
                             </label>
                             <label for="hora-citas">
-                                <input list="hora-citas" placeholder="Hora de la cita" required>
+                                <input list="hora-citas"  id="hora-cita" placeholder="Hora de la cita" required>
                                 <datalist id="hora-citas">
                                 </datalist>
                             </label>
                             <label for="razon-citas">
                                 <input type="text" name="razon-citas" id="razon-citas" placeholder="Razón de la cita">
                             </label>
-                            <button type="submit" id="submit-citas" class="boton">Generar cita</button>
+                            <button type="submit"  onclick="enviardatos()" id="submit-citas" class="boton">Generar cita</button>
                         </form>
                     </div>
                 </div>
@@ -95,8 +95,6 @@
             </p>
         </div>
     </footer>
-
-
     <script src="resources/js/script-citas.js"></script>
     <script src="resources/js/jquery-3.5.1.min.js"></script>
     <script src="resources/js/bootstrap.min.js"></script>
