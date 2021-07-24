@@ -4,7 +4,7 @@ header {
 }
 
 #body-login {
-    background: linear-gradient(to bottom right, var(--colorVino), var(--colorCarne));
+    background: var(--fondoCarne);
     background-repeat: no-repeat;
 }
 

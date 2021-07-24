@@ -5,6 +5,7 @@
     --colorBlanco: #fff;
     --fondoBlanco: rgba(240, 240, 240, 0.85);
     --fondoVino: rgba(85, 2, 10, 0.95);
+    --fondoCarne: linear-gradient(128deg, rgba(255,168,94,1) 10%, rgba(233,159,95,1) 18%);
     --sombraNegra: rgba(0,0,0,0.5);
     --sombraCarne: rgba(233,159,95,0.9);
     --fuenteTitulos: 'Staatliches', cursive;
@@ -32,7 +33,7 @@ html {
 }
 
 body {
-    background-color: var(--colorCarne);
+    background: var(--fondoCarne);
 }
 
 body p, body li {
