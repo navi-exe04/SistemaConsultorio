@@ -22,7 +22,9 @@ app.get('/contacto',(req,res) => {
 app.get('/login',(req,res) => {
     res.render('login');
 });
-
+app.get('/system',(req,res) => {
+    res.render('system');
+});
 //Se inicializa el servidor
 app.listen(3000,(req,res) => {
     console.log('SERVIDOR INICIADO EN PORT 3000');

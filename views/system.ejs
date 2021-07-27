@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar sesión</title>
+    <title>Sistema Consultorio</title>
     <link rel="stylesheet" href="resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="resources/css/styles.css">
     <link rel="stylesheet" href="resources/css/styles_system.css">
@@ -25,32 +25,47 @@
             <nav>
                 <div id="header-logo-dr">
                     <a href="/" id="logo-header">
-                        <h2 class="logo">Dr. Raúl Langle Galindo</h2>
-                        <span>MEDICO PEDIATRA</span>
+                        <h2 class="logo">¡Bienvenido Dr. Raúl Langle Galindo!</h2>
                     </a>
                 </div>
             </nav>
         </div>
     </header>
 
-    <main id="main-system">
-        <section class="main-container">
-            <div id="inicio-sesion">
-                <h2 class="sub-title">Inicio de Sesión</h2>
-                <div id="img-user">
-                    <i class="far fa-user"></i>
+    <main id="main-system" class="container">
+
+        <div class="row">
+
+            <section class="col-sm-4 col-xs-12">
+                <div id="consulta" class="opcion-container">
+                    <h2 class="sub-title">Ver consultas</h2>
+                    <div class="img-opcion">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
                 </div>
-                <form action="#" id="form-login">
-                    <label for="email-user">
-                        <input type="text" placeholder="Correo Electrónico" id="email-user" required>
-                    </label>
-                    <label for="password-user">
-                        <input type="password" placeholder="Contraseña" id="password-user" required>
-                    </label>
-                    <button type="submit" id="boton-login" class="boton">Entrar</button><br>
-                </form>
-            </div>
-        </section>
+            </section>
+    
+            <section class="col-sm-4 col-xs-12">
+                <div id="expediente" class="opcion-container">
+                    <h2 class="sub-title">Expedientes</h2>
+                    <div class="img-opcion">
+                        <i class="fas fa-file-medical-alt"></i>
+                    </div>
+                </div>
+            </section>
+    
+            <section class="col-sm-4 col-xs-12">
+                <div id="citas" class="opcion-container">
+                    <h2 class="sub-title">Citas</h2>
+                    <div class="img-opcion">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+
     </main>
 
     <footer>
