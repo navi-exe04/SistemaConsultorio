@@ -5,7 +5,7 @@ header {
 
 #main-system {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     height: 80vh;
 }
@@ -30,7 +30,7 @@ header {
 #img-user {
     width: 110px;
     height: 110px;
-    margin: 20px auto    ;
+    margin: 20px auto;
     border: 8px solid var(--colorVino);
     box-shadow: 2px 2px 2px var(--sombraNegra);
     border-radius: 100%;
@@ -80,19 +80,41 @@ header {
 
 
                 /*==== ESTILOS DEL SISTEMA ====*/
-.opcion-container {
-    display: block;
-    background: var(--fondoBlanco);
-    width: 100%;
-    height: 100%;
-    padding: 2rem;
-    margin: 2rem;
-    border-radius: 1rem;
+.main-menu {
+    flex-wrap: wrap;
+    padding: 3rem;
 }
 
-.img-opcion i::before {
-    width: 100%;
-    margin: 0 auto;
+.section-opcion {
+    display: flex;
+    justify-content: center;
+    width: 33%;
+    max-width: 420px;
+}
+
+.opcion-container {
+    width: 95%;
+    height: 20rem;
+    padding: 1rem;
+    background: var(--fondoBlanco);
+    border-radius: .5rem;
+    text-align: center;
+}
+.opcion-container i {
     color: var(--colorVino);
+    font-size: 8rem;
+}
+
+@media (max-width: 767px) {
+    .section-opcion {
+        width: 50%;
+        margin-bottom: 1rem;
+    }
+}
+@media (max-width: 575px) {
+    .section-opcion {
+        width: 100%;
+        min-width: 340px;
+    }
 }
                 /*==== FIN DE ESTILOS DEL LOGIN ====*/

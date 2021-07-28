@@ -22,10 +22,10 @@ function sliderAutomatico() {
         if(counter > 6) {
             counter = 1;    
         }
-    }, 4500);
-
+    }, 2500);
 
 }
+
 //Funcion encargada de los eventos de los botones de informacion
 function botonesInformacion() {
 
