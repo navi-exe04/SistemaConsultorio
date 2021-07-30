@@ -40,14 +40,14 @@
                 <div id="img-user">
                     <i class="far fa-user"></i>
                 </div>
-                <form action="#" id="form-login">
+                <form action="/auth" id="form-login" method="POST">
                     <label for="email-user">
-                        <input type="text" placeholder="Correo Electrónico" id="email-user" required>
+                        <input type="email" placeholder="Correo Electrónico" name="email" id="email">
                     </label>
                     <label for="password-user">
-                        <input type="password" placeholder="Contraseña" id="password-user" required>
+                        <input type="password" placeholder="Contraseña" name="password" id="password">
                     </label>
-                    <button type="submit" id="boton-login" class="boton">Entrar</button><br>
+                    <button type="submit" class="boton">Entrar</button><br>
                 </form>
             </div>
         </section>
@@ -56,6 +56,24 @@
     <footer>
 
     </footer>
+
+    <!--Usaremos sweet alert para las alertas-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!--Esto nos permite especificar codigo para el ejs y sweet alert-->
+    <% if(typeof alert !=  "undefined") { %>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                text: '<%= alertMessage %>',
+                icon: '<%= alertIcon %>',
+                showConfirmButton: <%= showConfirmButton %>,
+                timer: <%= timer %>
+            }).then(() => {
+                window.location = '/<%= ruta %>'
+            })
+        </script>
+    <% } %>
 
 </body>
 

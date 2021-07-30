@@ -25,7 +25,7 @@
             <nav>
                 <div id="header-logo-dr">
                     <a href="/" id="logo-header">
-                        <h2 class="logo">¡Bienvenido Dr. Raúl Langle Galindo!</h2>
+                        
                     </a>
                 </div>
             </nav>
@@ -34,26 +34,39 @@
 
     <main id="main-system" class="main-menu">
 
-        <section class="section-opcion">
-            <div id="consulta" class="opcion-container">
-                <h2 class="sub-title">Ver consultas</h2>
-                <i class="fas fa-stethoscope"></i>
-            </div>
-        </section>
+        <% if( login ) { %>
 
-        <section class="section-opcion">
-            <div id="expediente" class="opcion-container">
-                <h2 class="sub-title">Expedientes</h2>
-                <i class="fas fa-file-medical-alt"></i>
-            </div>
-        </section>
+            <h1> Bienvenido <%= name %></h1>
+            <a href="logout">Cerrar Sesion</a>
 
-        <section class="section-opcion">
-            <div id="citas" class="opcion-container">
-                <h2 class="sub-title">Citas</h2>
-                <i class="fas fa-calendar-alt"></i>
-            </div>
-        </section>
+            <section class="section-opcion">
+                <div id="consulta" class="opcion-container">
+                    <h2 class="sub-title">Ver consultas</h2>
+                    <i class="fas fa-stethoscope"></i>
+                </div>
+            </section>
+    
+            <section class="section-opcion">
+                <div id="expediente" class="opcion-container">
+                    <h2 class="sub-title">Expedientes</h2>
+                    <i class="fas fa-file-medical-alt"></i>
+                </div>
+            </section>
+    
+            <section class="section-opcion">
+                <div id="citas" class="opcion-container">
+                    <h2 class="sub-title">Citas</h2>
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+            </section>
+
+        <% } else { %>
+            <h1>
+                Ups, tu no deberias estar aca...
+                O tal vez, se te olvido iniciar sesion.
+            </h1>
+            <a href="login">Ir a inicio de sesion.</a>
+        <% } %>
 
     </main>
 
