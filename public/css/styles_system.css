@@ -1,19 +1,11 @@
                     /*==== ESTILOS DEL LOGIN ====*/
-header {
-    margin: 20px;
-}
-
-#main-system {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    height: 80vh;
-}
-
-.main-container {
+.center-flex {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.main-container {
     background: var(--fondoBlanco);
     box-shadow: 6px 6px 8px var(--sombraNegra);
     backdrop-filter: blur(1px);
@@ -64,25 +56,34 @@ header {
 
 @media (max-width: 575px) {
 
-    header {
-        margin-top: 15px;
-    }
-
-    #main-login {
-        margin: 10px 0;
-    }
-
     .main-container {
-        width: 80%;
+        width: 90%;
+        max-width: 400px;
     }
+
 }
                 /*==== FIN DE ESTILOS DEL LOGIN ====*/
 
 
                 /*==== ESTILOS DEL SISTEMA ====*/
 .main-menu {
+    width: 100%;
+    height: 100%;
+    margin: 2rem 0;
+}
+
+.main-menu *{
+    display: block;
+}
+
+.top-menu {
+    margin-bottom: 2rem;
+}
+
+.option-menu {
+    display: flex;
+    justify-content: space-evenly;
     flex-wrap: wrap;
-    padding: 3rem;
 }
 
 .section-opcion {
@@ -93,16 +94,37 @@ header {
 }
 
 .opcion-container {
-    width: 95%;
-    height: 20rem;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 19em;
     padding: 1rem;
-    background: var(--fondoBlanco);
+    margin: .5rem;
     border-radius: .5rem;
     text-align: center;
+    background-size: cover;
 }
+
+.opcion-container:hover {
+    text-decoration: none;
+}
+
 .opcion-container i {
+    margin: 1rem;
     color: var(--colorVino);
-    font-size: 8rem;
+    font-size: 6rem;
+}
+
+#consulta {
+    background-image: url(../img/consulta_cover.jpg);
+}
+#expediente {
+    background-image: url(../img/expediente_cover.jpg);
+}
+#citas {
+    background-image: url(../img/citas_cover.jpg);
 }
 
 @media (max-width: 767px) {
@@ -117,4 +139,28 @@ header {
         min-width: 340px;
     }
 }
-                /*==== FIN DE ESTILOS DEL LOGIN ====*/
+
+.error-page {
+    margin: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.error-page img {
+    width: 20rem;
+}
+
+.error-page p {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.error-page div {
+    flex-direction: column;
+}
+
+.error-page button {
+    margin: 0 auto;
+}
+                /*==== FIN DE ESTILOS DEL SISTEMA ====*/

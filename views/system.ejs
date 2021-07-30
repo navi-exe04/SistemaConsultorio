@@ -20,58 +20,92 @@
 
 <body>
 
-    <header>
-        <div id="header-login">
+    <header class="contenedor" id="headerInicio">
+        <div id="header-pagina">
             <nav>
                 <div id="header-logo-dr">
                     <a href="/" id="logo-header">
-                        
+                        <h2 class="logo">Dr. Raúl Langle Galindo</h2>
+                        <span>MEDICO PEDIATRA</span>
                     </a>
                 </div>
+                <% if( login ) { %>
+                    <button type="button" id="boton-menu"><i class="fas fa-bars"></i></button>
+                    <div id="menu-nav">
+                        <ul>
+                            <li><a href="/config">Configuracion</a></li>
+                            <li><a href="/logout">Cerrar Sesión</a></li>
+                        </ul>
+                    </div>
+                <% } %>
             </nav>
         </div>
     </header>
 
-    <main id="main-system" class="main-menu">
+    <main class="main-menu">
+        
+        <section class="menu-content center-flex">
 
-        <% if( login ) { %>
+            <% if( login ) { %>
 
-            <h1> Bienvenido <%= name %></h1>
-            <a href="logout">Cerrar Sesion</a>
-
-            <section class="section-opcion">
-                <div id="consulta" class="opcion-container">
-                    <h2 class="sub-title">Ver consultas</h2>
-                    <i class="fas fa-stethoscope"></i>
+                <div class="top-menu">
+                    <h1> ¡Bienvenido <%= name %>!</h1>
                 </div>
-            </section>
+
+                <div class="option-menu">
+                    <section class="section-opcion">
+                        <a href="/consultas_system" class="opcion-container" id="consulta">
+                            <div>
+                                <h2 class="sub-title">Ver consultas</h2>
+                                <i class="fas fa-stethoscope"></i>
+                            </div>
+                        </a>
+                    </section>
+            
+                    <section class="section-opcion">
+                        <a href="/exp_system" class="opcion-container" id="expediente">
+                            <div>
+                                <h2 class="sub-title">Expedientes</h2>
+                                <i class="fas fa-file-medical-alt"></i>
+                            </div>
+                        </a>
+                    </section>
+            
+                    <section class="section-opcion">
+                        <a href="/citas_system" class="opcion-container" id="citas">
+                            <div>
+                                <h2 class="sub-title">Citas</h2>
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                        </a>
+                    </section>
+                </div>
     
-            <section class="section-opcion">
-                <div id="expediente" class="opcion-container">
-                    <h2 class="sub-title">Expedientes</h2>
-                    <i class="fas fa-file-medical-alt"></i>
+            <% } else { %>
+                <div class="error-page">
+                    <img src="resources/img/error_page.png" alt="">
+                    <div>
+                        <p>
+                            Ups, tu no deberias estar aca... <br>
+                            O tal vez, se te olvido iniciar sesion.
+                        </p><br>
+                        <button onclick="location.href='/login'" class="boton">Ir a iniciar sesión</button>
+                    </div>
                 </div>
-            </section>
-    
-            <section class="section-opcion">
-                <div id="citas" class="opcion-container">
-                    <h2 class="sub-title">Citas</h2>
-                    <i class="fas fa-calendar-alt"></i>
-                </div>
-            </section>
+            <% } %>
 
-        <% } else { %>
-            <h1>
-                Ups, tu no deberias estar aca...
-                O tal vez, se te olvido iniciar sesion.
-            </h1>
-            <a href="login">Ir a inicio de sesion.</a>
-        <% } %>
+        </section>
 
     </main>
 
-    <footer>
-
+    <footer id="page-footer" class="contenedor">
+        <div>
+            <p>
+                Copyright <i class="fas fa-copyright"></i>
+                2020. Todos los
+                derechos reservados
+            </p>
+        </div>
     </footer>
 
 </body>
