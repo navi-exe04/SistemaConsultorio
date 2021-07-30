@@ -2,10 +2,10 @@
 const allHTML = document;
 const botonMenu = document.getElementById("boton-menu");
 const divMenu = document.getElementById("menu-nav");
-const dateCitas = document.getElementById('fecha-citas');
+const dateCitas = document.getElementById('fecha_citas');
 const formCitas = document.getElementById('form-citas');
 const submitCitas = document.getElementById('submit-citas');
-const selectHoras = document.getElementById('hora-citas');
+const selectHoras = document.getElementById('hora_citas');
 
 //Al iniciar la pagina
 window.onload = () => {
@@ -66,12 +66,16 @@ function muestraHoras(hora, horaCierre) {
         if (i >= 10 && i < 12) {
             opcion1.value = `${i}:00 am`;
             opcion2.value = `${i}:30 am`;
+            opcion1.textContent = `${i}:00 am`;
+            opcion2.textContent = `${i}:30 am`;
         } else if (i == 12) {
             opcion1.value = `${i}:00 pm`;
             opcion2.value = `${i}:30 pm`;
+            opcion1.textContent = `${i}:00 pm`;
+            opcion2.textContent = `${i}:30 pm`;
         } else if ((i > 12 && i <= 13) || (i >= 16 && i <= 19)) {
-            opcion1.value = `${i - 12}:00 pm`;
-            opcion2.value = `${i - 12}:30 pm`;
+            opcion1.textContent = `${i - 12}:00 pm`;
+            opcion2.textContent = `${i - 12}:30 pm`;
         }
         if (opcion1.value !== "" || opcion2.value !== "") {
             selectHoras.appendChild(opcion1);
