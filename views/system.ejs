@@ -29,70 +29,53 @@
                         <span>MEDICO PEDIATRA</span>
                     </a>
                 </div>
-                <% if( login ) { %>
-                    <button type="button" id="boton-menu"><i class="fas fa-bars"></i></button>
-                    <div id="menu-nav">
-                        <ul>
-                            <li><a href="/config">Configuracion</a></li>
-                            <li><a href="/logout">Cerrar Sesión</a></li>
-                        </ul>
-                    </div>
-                <% } %>
+                <button type="button" id="boton-menu"><i class="fas fa-bars"></i></button>
+                <div id="menu-nav">
+                    <ul>
+                        <li><a href="/config"><i class="fas fa-cog"></i> Configuracion</a></li>
+                        <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
+                    </ul>
+                </div>
             </nav>
         </div>
     </header>
 
     <main class="main-menu">
-        
+
         <section class="menu-content center-flex">
 
-            <% if( login ) { %>
+            <div class="top-menu">
+                <h1> ¡Bienvenido <%= name %>!</h1>
+            </div>
 
-                <div class="top-menu">
-                    <h1> ¡Bienvenido <%= name %>!</h1>
-                </div>
+            <div class="option-menu">
+                <section class="section-opcion">
+                    <a href="/consultas_system" class="opcion-container" id="consulta">
+                        <div>
+                            <h2 class="sub-title">Ver consultas</h2>
+                            <i class="fas fa-stethoscope"></i>
+                        </div>
+                    </a>
+                </section>
 
-                <div class="option-menu">
-                    <section class="section-opcion">
-                        <a href="/consultas_system" class="opcion-container" id="consulta">
-                            <div>
-                                <h2 class="sub-title">Ver consultas</h2>
-                                <i class="fas fa-stethoscope"></i>
-                            </div>
-                        </a>
-                    </section>
-            
-                    <section class="section-opcion">
-                        <a href="/exp_system" class="opcion-container" id="expediente">
-                            <div>
-                                <h2 class="sub-title">Expedientes</h2>
-                                <i class="fas fa-file-medical-alt"></i>
-                            </div>
-                        </a>
-                    </section>
-            
-                    <section class="section-opcion">
-                        <a href="/citas_system" class="opcion-container" id="citas">
-                            <div>
-                                <h2 class="sub-title">Citas</h2>
-                                <i class="fas fa-calendar-alt"></i>
-                            </div>
-                        </a>
-                    </section>
-                </div>
-    
-            <% } else { %>
-                <div class="error-page">
-                    <img src="resources/img/error_page.png" alt="">
-                    <div>
-                        <p>
-                            Ups, tu no deberias estar aca... <br>
-                            O tal vez, se te olvido iniciar sesion.
-                        </p><br>
-                        <button onclick="location.href='/login'" class="boton">Ir a iniciar sesión</button>
-                    </div>
-                </div>
-            <% } %>
+                <section class="section-opcion">
+                    <a href="/exp_system" class="opcion-container" id="expediente">
+                        <div>
+                            <h2 class="sub-title">Expedientes</h2>
+                            <i class="fas fa-file-medical-alt"></i>
+                        </div>
+                    </a>
+                </section>
+
+                <section class="section-opcion">
+                    <a href="/citas_system" class="opcion-container" id="citas">
+                        <div>
+                            <h2 class="sub-title">Citas</h2>
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                    </a>
+                </section>
+            </div>
 
         </section>
 
@@ -107,6 +90,8 @@
             </p>
         </div>
     </footer>
+
+    <script type="module" src="resources/js/script.js"></script>
 
 </body>
 

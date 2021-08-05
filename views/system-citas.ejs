@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Consultorio</title>
+    <link rel="stylesheet" href="resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/css/styles.css">
+    <link rel="stylesheet" href="resources/css/styles_system.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&family=Quicksand:wght@300&family=Staatliches&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="contenedor" id="headerInicio">
+        <div id="header-pagina">
+            <nav>
+                <div id="header-logo-dr">
+                    <a href="/" id="logo-header">
+                        <h2 class="logo">Dr. Raúl Langle Galindo</h2>
+                        <span>MEDICO PEDIATRA</span>
+                    </a>
+                </div>
+                <button type="button" id="boton-menu"><i class="fas fa-bars"></i></button>
+                <div id="menu-nav">
+                    <ul>
+                        <li><a href="/system"><i class="fas fa-home"></i> Inicio</a></li>
+                        <li><a href="/config"><i class="fas fa-cog"></i> Configuracion</a></li>
+                        <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-menu">
+
+        <section class="menu-content center-flex">
+
+            <div class="top-menu">
+                <h1>Proximas citas</h1>
+            </div>
+
+            <div class="citas_div">
+                <% citas.forEach( cita => { %>
+                    <section class="section_cita">
+                        <div class="div_cita">
+                            <ul>
+                                <li> <%= cita.name %> </li>
+                                <li> <%= cita.date %> </li>
+                                <li> <%= cita.hour %> </li>
+                                <li> <%= cita.reason %> </li>
+                            </ul>
+                        </div>
+                    </section>
+                <% }); %>
+            </div>
+            
+        </section>
+
+    </main>
+
+    <footer id="page-footer" class="contenedor">
+        <div>
+            <p>
+                Copyright <i class="fas fa-copyright"></i>
+                2020. Todos los
+                derechos reservados
+            </p>
+        </div>
+    </footer>
+
+    <script type="module" src="resources/js/script.js"></script>
+
+</body>
+
+</html>

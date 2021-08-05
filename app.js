@@ -20,6 +20,10 @@ app.use('/resources', express.static(__dirname + '/public'));
 //Invocamos a bcryptjs para las password
 const bcryptjs = require('bcryptjs');
 
+//Invocamos a moment
+const moment = require('moment');
+moment.locale('es');
+
 //Invocamos a las variables de sesion
 const session = require('express-session');
 app.use(session({
@@ -30,8 +34,6 @@ app.use(session({
 
 //Invocamos al modulo de conexion de BD
 const connection = require('./database/db');
-
-
 
 /*Rutas y metodos para el usuario (paciente)*/
 //Ruta para la pagina principal
@@ -164,10 +166,10 @@ app.post('/auth', async (req, res) => {
     if (email && pass) {
 
         connection.query('SELECT * FROM users WHERE email = ?', [email], async (error, results) => {
-            
+
             //Si la consulta no regresa nada o la contraseña es incorrecta
             if (results.length == 0 || !(await bcryptjs.compare(pass, results[0].password))) {
-                
+
                 //Mandamos variables para la configuracion de la alerta de sweet alert
                 res.render('login', {
                     alert: true,
@@ -180,14 +182,14 @@ app.post('/auth', async (req, res) => {
                 });
 
             } else { //El usuario y contraseña son correctos
-                
+
                 //Creamos variables de sesion
                 req.session.loggedin = true; //Esto nos permite saber si el usuario esta autenticado
                 req.session.name = results[0].name; //Obtenemos el nombre del usuario que esta ingresando
                 req.session.rol = results[0].rol; //Obtenemos el rol del usuario contectado
-                
+
                 //Mandamos variables para la configuracion de la alerta de sweet alert
-                res.render('login', { 
+                res.render('login', {
                     alert: true,
                     alertTitle: "!CONEXION EXITOSA!",
                     alertMessage: `Bienvenido ${results[0].name}.`,
@@ -225,19 +227,55 @@ app.get('/system', (req, res) => {
     if (req.session.loggedin) {
 
         res.render('system', {
-            login: true, //El usuario esta logeado
             name: req.session.name, //Se manda el nombre del usuario
             rol: req.session.rol //Se manda el rol del usuario
         });
 
     } else { //El usuario no ha ingresado
 
-        res.render('system', {
-            login: false, //El usuario no esta logeado
+        res.render('login', {
+            alert: true,
+            alertTitle: "¡Lo siento!",
+            alertMessage: "Debe ingresar sesión.",
+            alertIcon: 'warning',
+            showConfirmButton: true,
+            timer: false,
+            ruta: 'login'
         });
 
     }
 
+});
+
+app.get('/citas_system', (req, res) => {
+    //El usuario esta logeado
+    if (req.session.loggedin) {
+
+        connection.query('SELECT * FROM citas', (error, results) => {
+
+            let citas = results;
+            results.forEach(cita => {
+                cita.date = moment(cita.date).format('LL');
+            });
+            res.render('system-citas', {
+                citas: citas
+            })
+
+        });
+
+    } else { //El usuario no ha ingresado
+
+        res.render('login', {
+            alert: true,
+            alertTitle: "¡UPS!",
+            alertMessage: "Debe iniciar sesión para continuar",
+            alertIcon: 'warning',
+            showConfirmButton: true,
+            timer: false,
+            ruta: 'login'
+        });
+
+    }
 });
 
 //Logout
@@ -246,7 +284,7 @@ app.get('/logout', (req, res) => {
     req.session.destroy(() => { //Se "destruye la sesion"
         res.redirect('/login')
     });
-    
+
 });
 
 //Se inicializa el servidor
