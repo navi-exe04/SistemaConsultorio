@@ -127,6 +127,46 @@
     background-image: url(../img/citas_cover.jpg);
 }
 
+.popup-info {
+    z-index: 4;
+    transition: all 0.2s;
+    position: fixed;
+    border-radius: 10px;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 55%;
+    height: auto;
+    max-height: 80%;
+    overflow-y: scroll;
+    background: var(--fondoBlanco);
+    box-shadow: 2px 2px 2px var(--sombraNegra);
+    padding: 45px;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.boton-cerrar {
+    top: 2%;
+    left: 2%;
+    position: absolute;
+    border: none;
+    width: fit-content;
+    height: fit-content;
+    padding: 0;
+    background: none;
+    text-decoration: none;
+    color: var(--colorVino);
+    font-size: 35px;
+    align-content: center;
+}
+
+.popup-info.active {
+    top: 50%;
+    visibility: visible;
+    opacity: 1;
+}
+
 @media (max-width: 767px) {
     .section-opcion {
         width: 50%;

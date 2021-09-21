@@ -39,10 +39,23 @@ router.get('/system', (req, res) => {
     //El usuario ha ingresado correctamente
     if (req.session.loggedin) {
 
-        res.render('system', {
-            name: req.session.name, //Se manda el nombre del usuario
-            rol: req.session.rol //Se manda el rol del usuario
-        });
+        let users;
+        if(req.session.rol == "admin") {
+            connection.query('SELECT * FROM users', (error, results) => {
+                users = results;
+                res.render('system', {
+                    name: req.session.name, //Se manda el nombre del usuario
+                    rol: req.session.rol, //Se manda el rol del usuario
+                    users: users
+                });
+            });
+        } else {
+            res.render('system', {
+                name: req.session.name, //Se manda el nombre del usuario
+                rol: req.session.rol, //Se manda el rol del usuario
+            });
+        }
+
 
     } else { //El usuario no ha ingresado
 

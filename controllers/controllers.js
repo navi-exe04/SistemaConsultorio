@@ -131,7 +131,7 @@ exports.auth = async (req, res) => {
                 //Creamos variables de sesion
                 req.session.loggedin = true; //Esto nos permite saber si el usuario esta autenticado
                 req.session.name = results[0].name; //Obtenemos el nombre del usuario que esta ingresando
-                req.session.rol = results[0].rol; //Obtenemos el rol del usuario contectado
+                req.session.rol = results[0].type; //Obtenemos el rol del usuario contectado
 
                 //Mandamos variables para la configuracion de la alerta de sweet alert
                 res.render('login', {

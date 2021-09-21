@@ -32,7 +32,7 @@
                 <button type="button" id="boton-menu"><i class="fas fa-bars"></i></button>
                 <div id="menu-nav">
                     <ul>
-                        <li><a href="/config"><i class="fas fa-cog"></i> Configuracion</a></li>
+                        <li><a href="" id="boton-config"><i class="fas fa-cog"></i> Configuracion</a></li>
                         <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
                     </ul>
                 </div>
@@ -81,6 +81,26 @@
 
     </main>
 
+    <div class="popup-info" id="popup-config">
+        <button type="button" id="boton-cerrarConfig" class="boton-cerrar"><i
+            class="fas fa-window-close"></i></button>
+        <h2 class="sub-title">Configuración de usuarios</h2>
+        <div id="section_cita">
+            <% users.forEach( user => { %>
+                <div class="div_cita">
+                    <ul>
+                        <li><%= user.name %></li>
+                        <li><%= user.email %></li>
+                        <li><%= user.type %></li>
+                    </ul>
+                    <% if(user.type != "admin") { %>
+                        <a href="/borrar/<%= user.id %>" class="btn-delete"><i class="fas fa-trash-alt"></i></a>
+                    <% } %>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+
     <footer id="page-footer" class="contenedor">
         <div>
             <p>
@@ -92,6 +112,7 @@
     </footer>
 
     <script type="module" src="resources/js/script.js"></script>
+    <script type="module" src="resources/js/script-system.js"></script>
 
 </body>
 
