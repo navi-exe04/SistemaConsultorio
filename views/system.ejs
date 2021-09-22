@@ -85,19 +85,43 @@
         <button type="button" id="boton-cerrarConfig" class="boton-cerrar"><i
             class="fas fa-window-close"></i></button>
         <h2 class="sub-title">Configuración de usuarios</h2>
-        <div id="section_cita">
-            <% users.forEach( user => { %>
-                <div class="div_cita">
-                    <ul>
-                        <li><%= user.name %></li>
-                        <li><%= user.email %></li>
-                        <li><%= user.type %></li>
-                    </ul>
-                    <% if(user.type != "admin") { %>
-                        <a href="/borrar/<%= user.id %>" class="btn-delete"><i class="fas fa-trash-alt"></i></a>
-                    <% } %>
-                </div>
-            <% }); %>
+        <button class="boton">Agregar usuario</button>
+        <div class="config-user">
+            <div class="lista-user">
+                <% users.forEach( user => { %>
+                    <div class="div_user">
+                        <ul>
+                            <li><%= user.name %></li>
+                            <li><%= user.email %></li>
+                            <li><%= user.type %></li>
+                        </ul>
+                        <% if(user.type != "admin") { %>
+                            <a href="/borrar/<%= user.id %>" class="btn-delete"><i class="fas fa-trash-alt"></i></a>
+                        <% } %>
+                    </div>
+                <% }); %>
+            </div>
+            <div id="agregar-user">
+                <form action="/crearUsuario" id="form-user" method="POST">
+                    <label for="nombre_usuario">
+                        <input type="text" name="nombre_usuario" id="nombre_usuario" placeholder="Nombre del usuario" required>
+                    </label>
+                    <label for="email_usuario">
+                        <input type="email" name="email_usuario" id="email_usuario" placeholder="Correo electronico" required>
+                    </label>
+                    <label for="tipo_usuario">
+                        <span>Tipo de usuario:</span><br>
+                        <select id="tipo_usuario" name="tipo_usuario" required>
+                            <option value="admin">admin</option>
+                            <option value="secretaria">secretaria</option>
+                        </select>
+                    </label>
+                    <label for="pass_usuario">
+                        <input type="password" name="pass_usuario" id="pass_usuario" placeholder="Contraseña" required>
+                    </label>
+                    <button type="submit" id="submit-usuario" class="boton">Agregar</button>
+                </form>
+            </div>
         </div>
     </div>
 

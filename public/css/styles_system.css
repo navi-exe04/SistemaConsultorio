@@ -127,6 +127,7 @@
     background-image: url(../img/citas_cover.jpg);
 }
 
+/*Estilo del popup de configuracion de usuario*/
 .popup-info {
     z-index: 4;
     transition: all 0.2s;
@@ -136,7 +137,7 @@
     left: 50%;
     transform: translate(-50%,-50%);
     width: 55%;
-    height: auto;
+    height: fit-content;
     max-height: 80%;
     overflow-y: scroll;
     background: var(--fondoBlanco);
@@ -157,7 +158,7 @@
     background: none;
     text-decoration: none;
     color: var(--colorVino);
-    font-size: 35px;
+    font-size: 2rem;
     align-content: center;
 }
 
@@ -165,6 +166,38 @@
     top: 50%;
     visibility: visible;
     opacity: 1;
+}
+
+.lista-user {
+    display: flex;
+    justify-content: center;
+}
+
+.div_user {
+    border-radius: 0.5rem;
+    background-color: var(--colorCarne);
+    padding: 1rem;
+}
+
+.div_user li {
+    list-style: none;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+#agregar-user {
+    width: 80%;
+    position: absolute;
+    top: 35%;
+}
+
+#form-user {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+#form-user label {
+    display: block;
 }
 
 @media (max-width: 767px) {
@@ -180,51 +213,3 @@
     }
 }
                 /*==== FIN DE ESTILOS DEL SISTEMA ====*/
-
-
-                /*==== ESTILOS DE CITAS ====*/
-.section_cita {
-    transition: all 0.1s;
-    display: flex;
-    justify-content: center;
-    width: 25%;
-}
-.div_cita {
-    background-color: var(--fondoBlanco);
-    width: 100%;
-    height: 90%;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    margin: 0.5rem;
-}
-.div_cita * {
-    margin: auto 0;
-    text-align: center;
-    font-size: 1rem;
-}
-
-.btn-delete {
-    background-color: var(--colorVino);
-    margin: 1rem auto;
-    padding: 0.5rem 1rem;
-    width: fit-content;
-    border-radius: 0.5rem;
-    color: white;
-}
-
-@media (max-width: 991px) {
-    .section_cita {
-        width: 33%;
-    }
-}
-@media (max-width: 767px) {
-    .section_cita {
-        width: 50%;
-    }
-}
-@media (max-width: 422px) {
-    .section_cita {
-        width: 100%;
-    }
-}
-                /*==== FIN DE ESTILOS DE CITAS ====*/
