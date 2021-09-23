@@ -164,3 +164,75 @@ exports.auth = async (req, res) => {
     }
 
 }
+
+//Metodo para crear un nuevo usuario para el sistema
+exports.crearUsuario = async (req, res) => {
+
+    const name = req.body.nombre_usuario;
+    const email = req.body.email_usuario;
+    const type = req.body.tipo_usuario;
+    const pass = req.body.pass_usuario;
+
+    //Comprueba que los datos del usuario no existan en la BD
+    connection.query(`SELECT * FROM users WHERE email = '${email}'`, async (error, results) => {
+
+        //No hay coincidencias
+        if(results.length == 0) {
+
+            let passHash = bcryptjs.hashSync(pass,10);
+
+            connection.query('INSERT INTO users SET ?', {
+                name: name,
+                email: email,
+                type: type,
+                password: passHash
+            }, async(error, results) => {
+
+                //SI hubo un error al mandar los datos
+                if(error) {
+
+                    res.render('system', {
+                        name: req.session.name, //Se manda el nombre del usuario
+                        rol: req.session.rol,
+                        alert: true,
+                        alertTitle: "Error",
+                        alertMessage: "Hubo un error, por favor, intentalo mas tarde",
+                        alertIcon: 'error',
+                        showConfirmButton: true,
+                        timer: false,
+                        ruta: 'system'
+                    });
+
+                } else {
+
+                    res.render('system', {
+                        alert: true,
+                        alertTitle: "Usuario creado.",
+                        alertMessage: "El usuario se creo con exito.",
+                        alertIcon: 'success',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        ruta: 'system'
+                    });
+
+                }
+
+            });
+
+        } else {
+
+            res.render('system', {
+                alert: true,
+                alertTitle: "Error",
+                alertMessage: "Este usuario ya existe.",
+                alertIcon: 'error',
+                showConfirmButton: true,
+                timer: false,
+                ruta: 'system'
+            });
+
+        }
+
+    });
+
+}

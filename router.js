@@ -135,5 +135,6 @@ router.get('/logout', (req, res) => {
 const controllers = require('./controllers/controllers');
 router.post('/generarCita', controllers.generarCita);
 router.post('/auth', controllers.auth);
+router.post('/crearUsuario', controllers.crearUsuario);
 
 module.exports = router; //Exportamos las rutas

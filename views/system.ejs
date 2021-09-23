@@ -81,13 +81,13 @@
 
     </main>
 
-    <div class="popup-info" id="popup-config">
+    <div id="popup-config">
         <button type="button" id="boton-cerrarConfig" class="boton-cerrar"><i
             class="fas fa-window-close"></i></button>
-        <h2 class="sub-title">Configuración de usuarios</h2>
-        <button class="boton">Agregar usuario</button>
         <div class="config-user">
-            <div class="lista-user">
+            <div id="lista-user" class="div-config active">
+                <h2 class="sub-title">Configuración de usuarios</h2>
+                <button class="boton" id="botonAgregar-Config"><i class="fas fa-user-plus"></i></button>
                 <% users.forEach( user => { %>
                     <div class="div_user">
                         <ul>
@@ -101,7 +101,9 @@
                     </div>
                 <% }); %>
             </div>
-            <div id="agregar-user">
+            <div id="agregar-user" class="div-config">
+                <h2 class="sub-title">Crear usuario</h2>
+                <button class="boton" id="botonRegresar-Config"><i class="fas fa-arrow-left"></i></button>
                 <form action="/crearUsuario" id="form-user" method="POST">
                     <label for="nombre_usuario">
                         <input type="text" name="nombre_usuario" id="nombre_usuario" placeholder="Nombre del usuario" required>
