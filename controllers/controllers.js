@@ -179,7 +179,7 @@ exports.crearUsuario = async (req, res) => {
         //No hay coincidencias
         if(results.length == 0) {
 
-            let passHash = bcryptjs.hashSync(pass,10);
+            let passHash = await bcryptjs.hashSync(pass,10);
 
             connection.query('INSERT INTO users SET ?', {
                 name: name,
@@ -191,7 +191,7 @@ exports.crearUsuario = async (req, res) => {
                 //SI hubo un error al mandar los datos
                 if(error) {
 
-                    res.render('system', {
+                    res.render('system', {  
                         name: req.session.name, //Se manda el nombre del usuario
                         rol: req.session.rol,
                         alert: true,

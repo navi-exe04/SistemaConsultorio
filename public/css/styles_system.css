@@ -66,6 +66,14 @@
 
 
                 /*==== ESTILOS DEL SISTEMA ====*/
+.btn-delete {
+    width: fit-content;
+    padding: 0.5rem;
+    background-color: var(--colorVino);
+    color: var(--colorBlanco);
+    border-radius: 0.5rem;
+}
+
 .main-menu {
     width: 100%;
     height: 100%;
@@ -187,14 +195,14 @@
     transform: translate(0,0);
 }
 
-.div_user {
+.div_user, .div_cita {
     width: fit-content;
     border-radius: 0.5rem;
     background-color: var(--colorCarne);
     padding: 1rem;
 }
 
-.div_user li {
+.div_user li, .div_cita li {
     list-style: none;
     font-size: 1.2rem;
     text-align: center;
@@ -244,3 +252,10 @@
     }
 }
                 /*==== FIN DE ESTILOS DEL SISTEMA ====*/
+
+                 /*==== ESTILOS DE CITAS DEL SISTEMA ====*/               
+.div_cita {
+    background-color: var(--colorBlanco);
+}
+
+                /*==== FIN DE ESTILOS DE CITAS DEL SISTEMA ====*/

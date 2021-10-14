@@ -80,14 +80,29 @@ router.get('/citas_system', (req, res) => {
 
         connection.query('SELECT * FROM citas', (error, results) => {
 
-            let citas = results;
-            results.forEach(cita => {
+            const citas = results;
+            citas.forEach(cita => {
                 cita.date = moment(cita.date).format('LL');
             });
-            res.render('system-citas', {
-                citas: results
-            })
 
+            if(req.session.rol == "admin") {
+
+                connection.query('SELECT * FROM users', (error, results) => {
+                    users = results;
+                    res.render('system-citas', {
+                        citas: citas,
+                        users: users
+                    })
+                });
+
+            } else {
+
+                res.render('system-citas', {
+                    citas: citas
+                });
+            
+            }
+            
         });
 
     } else { //El usuario no ha ingresado
