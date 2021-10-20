@@ -86,8 +86,6 @@ button.boton:hover {
 main {
     transition: all 0.2s;
     padding: 15px 0;
-    padding-bottom: 6rem;
-    padding-top: 6rem;
     margin: 25px 0;
 }
 
@@ -119,9 +117,6 @@ h1, h2 {
                 /*==== ESTILOS DEL HEADER ====*/
 #headerInicio {
     z-index: 1;
-    position: fixed;
-    width: 100%;
-    top: 0;
     transition: all 0.5s;
     padding: 0;
     height: fit-content;
@@ -250,10 +245,6 @@ h2.logo {
 
                     /*==== ESTILOS DEL FOOTER ====*/
 #page-footer {
-    position: fixed;
-    width: 100%;
-    height: 4rem;
-    bottom: 0;
     z-index: 1;
     transition: all 0.5s;
     display: flex;

@@ -137,6 +137,23 @@ router.get('/borrar/:id', (req, res) => {
 
 });
 
+//Funcion para eliminar usuarios
+router.get('/borrarUser/:id', (req, res) => {
+
+    const id = req.params.id;
+    
+    connection.query('DELETE FROM users WHERE id = ?',[id], (error, results) => {
+        
+        if(error) {
+            console.error(error);
+        } else {
+            res.redirect('/system');
+        }
+    
+    });
+
+})
+
 //Logout
 router.get('/logout', (req, res) => {
 

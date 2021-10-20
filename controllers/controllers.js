@@ -6,98 +6,124 @@ const connection = require('../database/db');
 //Invocamos a bcryptjs para las password
 const bcryptjs = require('bcryptjs');
 
+//Invocamos a moment
+const moment = require('moment');
+moment.locale('es');
+
 //Metodo recolectar los datos de una cita y apartarla
 exports.generarCita = async (req, res) => {
+    
     //Obtenemos los valores del formulario de citas
     const name = req.body.nombre_citas;
     const date = req.body.fecha_citas;
     const hour = req.body.hora_citas;
     const reason = req.body.razon_citas;
 
-    //Comprueba que la informacion ingresada no exista dentro de la BD
-    connection.query(`SELECT * FROM citas WHERE name = '${name}' AND date = '${date}' AND hour = '${hour}' AND reason = '${reason}'`, async (error, results) => {
+    //Se comprueba que no sea una fecha anterior a la actual
+    if (moment(date).format('L') < moment().format('L')) {
 
-        //Si la consulta NO encontro campos duplicados
-        if (results.length == 0) {
+        console.log(moment(date).format('L'));
+        console.log(moment().format('L'));
 
-            //Comprueba que la fecha y hora ingresadas no esten ocupadas
-            connection.query(`SELECT * FROM citas WHERE date = '${date}' AND hour = '${hour}'`, async (error, results) => {
+        res.render('citas', {
+            alert: true,
+            alertTitle: "Error",
+            alertMessage: "Fecha y horario invalido, por favor seleccione otro.",
+            alertIcon: 'error',
+            showConfirmButton: true,
+            timer: false,
+            ruta: 'citas'
+        });
 
-                //Si la consulta no encontro horas y fechas ocupadas    
-                if (results.length == 0) {
+    } else {
 
-                    //Se insertar los datos a la BD
-                    connection.query('INSERT INTO citas SET ?', {
-                        name: name,
-                        date: date,
-                        hour: hour,
-                        reason: reason
-                    }, async (error, results) => {
+        //Comprueba que la informacion ingresada no exista dentro de la BD
+        connection.query(`SELECT * FROM citas WHERE name = '${name}' AND date = '${date}' AND hour = '${hour}' AND reason = '${reason}'`, async (error, results) => {
 
-                        //Si hubo un error al mandar los datos
-                        if (error) {
+            //Si la consulta NO encontro campos duplicados
+            if (results.length == 0) {
 
-                            //Mandamos variables para la configuracion de la alerta de sweet alert
-                            res.render('citas', {
-                                alert: true,
-                                alertTitle: "Error",
-                                alertMessage: "Hubo un error, por favor, intentalo mas tarde",
-                                alertIcon: 'error',
-                                showConfirmButton: true,
-                                timer: false,
-                                ruta: 'citas'
-                            });
+                //Comprueba que la fecha y hora ingresadas no esten ocupadas
+                connection.query(`SELECT * FROM citas WHERE date = '${date}' AND hour = '${hour}'`, async (error, results) => {
 
-                        } else { //Si todo salio correctamente
+                    //Si la consulta no encontro horas y fechas ocupadas    
+                    if (results.length == 0) {
 
-                            //Mandamos variables para la configuracion de la alerta de sweet alert
-                            res.render('citas', {
-                                alert: true,
-                                alertTitle: "¡Cita registrada!",
-                                alertMessage: `Su cita ha sido registrada con exito. Lo esperamos el dia ${date}, a las ${hour} en el consultorio del Dr. Langle.`,
-                                alertIcon: 'success',
-                                showConfirmButton: true,
-                                timer: false,
-                                ruta: 'citas'
-                            });
+                        //Se insertar los datos a la BD
+                        connection.query('INSERT INTO citas SET ?', {
+                            name: name,
+                            date: date,
+                            hour: hour,
+                            reason: reason
+                        }, async (error, results) => {
 
-                        }
+                            //Si hubo un error al mandar los datos
+                            if (error) {
 
-                    });
+                                //Mandamos variables para la configuracion de la alerta de sweet alert
+                                res.render('citas', {
+                                    alert: true,
+                                    alertTitle: "Error",
+                                    alertMessage: "Hubo un error, por favor, intentalo mas tarde",
+                                    alertIcon: 'error',
+                                    showConfirmButton: true,
+                                    timer: false,
+                                    ruta: 'citas'
+                                });
 
-                } else { //Si ya hay horarios ocupados
+                            } else { //Si todo salio correctamente
 
-                    //Mandamos variables para la configuracion de la alerta de sweet alert
-                    res.render('citas', {
-                        alert: true,
-                        alertTitle: "Error",
-                        alertMessage: "Fecha y hora ocupadas. Selecciona otra por favor.",
-                        alertIcon: 'error',
-                        showConfirmButton: true,
-                        timer: false,
-                        ruta: 'citas'
-                    });
+                                //Mandamos variables para la configuracion de la alerta de sweet alert
+                                res.render('citas', {
+                                    alert: true,
+                                    alertTitle: "¡Cita registrada!",
+                                    alertMessage: `Su cita ha sido registrada con exito. Lo esperamos el dia ${date}, a las ${hour} en el consultorio del Dr. Langle.`,
+                                    alertIcon: 'success',
+                                    showConfirmButton: true,
+                                    timer: false,
+                                    ruta: 'citas'
+                                });
 
-                }
+                            }
 
-            });
+                        });
 
-        } else { //Si hay informacion duplicada
+                    } else { //Si ya hay horarios ocupados
 
-            //Mandamos variables para la configuracion de la alerta de sweet alert
-            res.render('citas', {
-                alert: true,
-                alertTitle: "Error",
-                alertMessage: "Esta cita ya esta registrada.",
-                alertIcon: 'error',
-                showConfirmButton: true,
-                timer: false,
-                ruta: 'citas'
-            });
+                        //Mandamos variables para la configuracion de la alerta de sweet alert
+                        res.render('citas', {
+                            alert: true,
+                            alertTitle: "Error",
+                            alertMessage: "Fecha y hora ocupadas. Selecciona otra por favor.",
+                            alertIcon: 'error',
+                            showConfirmButton: true,
+                            timer: false,
+                            ruta: 'citas'
+                        });
 
-        }
+                    }
 
-    });
+                });
+
+            } else { //Si hay informacion duplicada
+
+                //Mandamos variables para la configuracion de la alerta de sweet alert
+                res.render('citas', {
+                    alert: true,
+                    alertTitle: "Error",
+                    alertMessage: "Esta cita ya esta registrada.",
+                    alertIcon: 'error',
+                    showConfirmButton: true,
+                    timer: false,
+                    ruta: 'citas'
+                });
+
+            }
+
+        });
+
+    }
+
 }
 
 //Metodo de autenticacion de usuario en login
@@ -177,61 +203,22 @@ exports.crearUsuario = async (req, res) => {
     connection.query(`SELECT * FROM users WHERE email = '${email}'`, async (error, results) => {
 
         //No hay coincidencias
-        if(results.length == 0) {
+        if (results.length == 0) {
 
-            let passHash = await bcryptjs.hashSync(pass,10);
+            let passHash = await bcryptjs.hashSync(pass, 10);
 
             connection.query('INSERT INTO users SET ?', {
                 name: name,
                 email: email,
                 type: type,
                 password: passHash
-            }, async(error, results) => {
+            }, async (error, results) => {
 
-                //SI hubo un error al mandar los datos
-                if(error) {
-
-                    res.render('system', {  
-                        name: req.session.name, //Se manda el nombre del usuario
-                        rol: req.session.rol,
-                        alert: true,
-                        alertTitle: "Error",
-                        alertMessage: "Hubo un error, por favor, intentalo mas tarde",
-                        alertIcon: 'error',
-                        showConfirmButton: true,
-                        timer: false,
-                        ruta: 'system'
-                    });
-
-                } else {
-
-                    res.render('system', {
-                        alert: true,
-                        alertTitle: "Usuario creado.",
-                        alertMessage: "El usuario se creo con exito.",
-                        alertIcon: 'success',
-                        showConfirmButton: false,
-                        timer: 1500,
-                        ruta: 'system'
-                    });
-
-                }
+                res.redirect('/system')
 
             });
 
-        } else {
-
-            res.render('system', {
-                alert: true,
-                alertTitle: "Error",
-                alertMessage: "Este usuario ya existe.",
-                alertIcon: 'error',
-                showConfirmButton: true,
-                timer: false,
-                ruta: 'system'
-            });
-
-        }
+        } 
 
     });
 
