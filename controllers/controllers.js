@@ -167,7 +167,8 @@ exports.auth = async (req, res) => {
                     alertIcon: 'success',
                     showConfirmButton: false,
                     timer: 2000,
-                    ruta: 'system'
+                    ruta: 'system',
+                    rol: results[0].type
                 });
 
             }

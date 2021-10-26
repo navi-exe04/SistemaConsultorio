@@ -48,35 +48,10 @@
         <section class="menu-content center-flex">
 
             <div class="top-menu">
-                <h1>Proximas citas</h1>
+                <h1>Expedientes</h1>
             </div>
 
-            <div class="citas_div">
-                <% if(citas.length == 0) { %>
-                    <section class="alert_message">
-                        <div>
-                            <p>Al parecer no hay citas pendientes.</p>
-                        </div>
-                        <div>
-                            <img src="resources/img/free_time.png" alt="">
-                        </div>
-                    </section>
-                <% } else { %>
-                    <% citas.forEach( cita => { %>
-                        <section class="section_cita">
-                            <div class="div_cita">
-                                <ul>
-                                    <li> <%= cita.name %> </li>
-                                    <li> <%= cita.date %> </li>
-                                    <li> <%= cita.hour %> </li>
-                                    <li> <%= cita.reason %> </li>
-                                </ul>
-                                <a href="/borrar/<%= cita.id %>" class="btn-delete"><i class="fas fa-trash-alt"></i></a>
-                            </div>
-                        </section>
-                    <% }); %>
-                <% } %>
-            </div>
+            
             
         </section>
 

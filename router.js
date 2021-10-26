@@ -91,14 +91,16 @@ router.get('/citas_system', (req, res) => {
                     users = results;
                     res.render('system-citas', {
                         citas: citas,
-                        users: users
+                        users: users,
+                        rol: req.session.rol
                     })
                 });
 
             } else {
 
                 res.render('system-citas', {
-                    citas: citas
+                    citas: citas,
+                    rol: req.session.rol
                 });
             
             }
@@ -118,6 +120,43 @@ router.get('/citas_system', (req, res) => {
         });
 
     }
+});
+
+//Ruta para la vista de expedientes del consultorio
+router.get('/exp_system', (req, res) => {
+
+    //El usuario ha ingresado correctamente
+    if (req.session.loggedin) {
+
+        let users;
+        if(req.session.rol == "admin") {
+            connection.query('SELECT * FROM users', (error, results) => {
+                users = results;
+                res.render('system_exp', {
+                    rol: req.session.rol, //Se manda el rol del usuario
+                    users: users
+                });
+            });
+        } else {
+            res.render('system_exp', {
+                rol: req.session.rol, //Se manda el rol del usuario
+            });
+        }
+
+    } else { //El usuario no ha ingresado
+
+        res.render('login', {
+            alert: true,
+            alertTitle: "¡Lo siento!",
+            alertMessage: "Debe ingresar sesión.",
+            alertIcon: 'warning',
+            showConfirmButton: true,
+            timer: false,
+            ruta: 'login'
+        });
+
+    }
+
 });
 
 //Funcion para eliminar las citas
