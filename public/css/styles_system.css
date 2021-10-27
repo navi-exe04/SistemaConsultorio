@@ -137,7 +137,7 @@
 }
 
 /*Estilo del popup de configuracion de usuario*/
-#popup-config {
+.popup-system {
     z-index: 4;
     transition: all 0.2s;
     position: fixed;
@@ -171,7 +171,7 @@
     align-content: center;
 }
 
-#popup-config.active {
+.popup-system.active {
     top: 50%;
     visibility: visible;
     opacity: 1;
@@ -249,7 +249,7 @@
 }
 @media (max-width: 575px) {
 
-    #popup-config {
+    .popup-system {
         width: 90%;
     }
 

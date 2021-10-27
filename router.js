@@ -40,7 +40,7 @@ router.get('/system', (req, res) => {
     if (req.session.loggedin) {
 
         let users;
-        if(req.session.rol == "admin") {
+        if (req.session.rol == "admin") {
             connection.query('SELECT * FROM users', (error, results) => {
                 users = results;
                 res.render('system', {
@@ -85,7 +85,7 @@ router.get('/citas_system', (req, res) => {
                 cita.date = moment(cita.date).format('LL');
             });
 
-            if(req.session.rol == "admin") {
+            if (req.session.rol == "admin") {
 
                 connection.query('SELECT * FROM users', (error, results) => {
                     users = results;
@@ -102,9 +102,9 @@ router.get('/citas_system', (req, res) => {
                     citas: citas,
                     rol: req.session.rol
                 });
-            
+
             }
-            
+
         });
 
     } else { //El usuario no ha ingresado
@@ -128,20 +128,14 @@ router.get('/exp_system', (req, res) => {
     //El usuario ha ingresado correctamente
     if (req.session.loggedin) {
 
-        let users;
-        if(req.session.rol == "admin") {
-            connection.query('SELECT * FROM users', (error, results) => {
-                users = results;
-                res.render('system_exp', {
-                    rol: req.session.rol, //Se manda el rol del usuario
-                    users: users
-                });
-            });
-        } else {
+        let pacientes;
+        connection.query('SELECT * FROM pacientes', (error, results) => {
+            pacientes = results;
             res.render('system_exp', {
-                rol: req.session.rol, //Se manda el rol del usuario
+                pacientes: pacientes //Mandamos la lista de pacientes
             });
-        }
+        });
+
 
     } else { //El usuario no ha ingresado
 
@@ -163,15 +157,15 @@ router.get('/exp_system', (req, res) => {
 router.get('/borrar/:id', (req, res) => {
 
     const id = req.params.id;
-    
-    connection.query('DELETE FROM citas WHERE id = ?',[id], (error, results) => {
-        
-        if(error) {
+
+    connection.query('DELETE FROM citas WHERE id = ?', [id], (error, results) => {
+
+        if (error) {
             console.error(error);
         } else {
             res.redirect('/citas_system');
         }
-    
+
     });
 
 });
@@ -180,15 +174,15 @@ router.get('/borrar/:id', (req, res) => {
 router.get('/borrarUser/:id', (req, res) => {
 
     const id = req.params.id;
-    
-    connection.query('DELETE FROM users WHERE id = ?',[id], (error, results) => {
-        
-        if(error) {
+
+    connection.query('DELETE FROM users WHERE id = ?', [id], (error, results) => {
+
+        if (error) {
             console.error(error);
         } else {
             res.redirect('/system');
         }
-    
+
     });
 
 })
@@ -207,5 +201,6 @@ const controllers = require('./controllers/controllers');
 router.post('/generarCita', controllers.generarCita);
 router.post('/auth', controllers.auth);
 router.post('/crearUsuario', controllers.crearUsuario);
+router.post('/crearExpediente', controllers.crearExpediente);
 
 module.exports = router; //Exportamos las rutas

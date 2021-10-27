@@ -33,9 +33,6 @@
                 <div id="menu-nav">
                     <ul>
                         <li><a href="/system"><i class="fas fa-home"></i> Inicio</a></li>
-                        <% if(rol == "admin") { %>
-                            <li><a href="" id="boton-config"><i class="fas fa-cog"></i> Configuracion</a></li>
-                        <% } %>
                         <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
                     </ul>
                 </div>
@@ -51,59 +48,72 @@
                 <h1>Expedientes</h1>
             </div>
 
+            <button id="boton-crear-exp" class="boton">Crear un expediente</button>
             
-            
+            <table class="tabla-expedientes">
+                <tr>
+                    <th>Nombre(s)</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Sexo</th>
+                    <th>Fecha Nacimiento</th>
+                </tr>
+                <% pacientes.forEach( paciente => { %>
+                    <tr>
+                        <td> <% paciente.nombre %> </td>
+                        <td> <% paciente.apellido_paterno %> </td>
+                        <td> <% paciente.apellido_materno %> </td>
+                        <td> <% paciente.sexo %> </td>
+                        <td> <% paciente.fecha_nacimiento %> </td>
+                    </tr>
+                <% }) %>
+            </table>
+
         </section>
 
     </main>
 
-    <% if(rol == "admin") { %>
-        <div id="popup-config">
-            <button type="button" id="boton-cerrarConfig" class="boton-cerrar"><i
-                class="fas fa-window-close"></i></button>
-            <div class="config-user">
-                <div id="lista-user" class="div-config active">
-                    <h2 class="sub-title">Configuración de usuarios</h2>
-                    <button class="boton" id="botonAgregar-Config"><i class="fas fa-user-plus"></i></button>
-                    <% users.forEach( user => { %>
-                        <div class="div_user">
-                            <ul>
-                                <li><%= user.name %></li>
-                                <li><%= user.email %></li>
-                                <li><%= user.type %></li>
-                            </ul>
-                            <% if(user.type != "admin") { %>
-                                <a href="/borrar/<%= user.id %>" class="btn-delete"><i class="fas fa-trash-alt"></i></a>
-                            <% } %>
-                        </div>
-                    <% }); %>
-                </div>
-                <div id="agregar-user" class="div-config">
-                    <h2 class="sub-title">Crear usuario</h2>
-                    <button class="boton" id="botonRegresar-Config"><i class="fas fa-arrow-left"></i></button>
-                    <form action="/crearUsuario" id="form-user" method="POST">
-                        <label for="nombre_usuario">
-                            <input type="text" name="nombre_usuario" id="nombre_usuario" placeholder="Nombre del usuario" required>
-                        </label>
-                        <label for="email_usuario">
-                            <input type="email" name="email_usuario" id="email_usuario" placeholder="Correo electronico" required>
-                        </label>
-                        <label for="tipo_usuario">
-                            <span>Tipo de usuario:</span><br>
-                            <select id="tipo_usuario" name="tipo_usuario" required>
-                                <option value="admin">admin</option>
-                                <option value="secretaria">secretaria</option>
-                            </select>
-                        </label>
-                        <label for="pass_usuario">
-                            <input type="password" name="pass_usuario" id="pass_usuario" placeholder="Contraseña" required>
-                        </label>
-                        <button type="submit" id="submit-usuario" class="boton">Agregar</button>
-                    </form>
-                </div>
-            </div>
+    <div id="popup-exp" class="popup-system">
+        <button type="button" id="boton-cerrarCrearExp" class="boton-cerrar"><i
+            class="fas fa-window-close"></i></button>
+        <div class="exp-paciente">
+            <h2 class="sub-title">Crear un expediente</h2>
+            <form action="/crearExpediente" id="form-exp" method="post">
+                <label for="nombre_paciente">
+                    <input type="text" name="nombre_paciente" id="nombre_paciente" placeholder="Nombre(s) del paciente" required>
+                </label>
+                <label for="apellido_paterno_paciente">
+                    <input type="text" name="apellido_paterno_paciente" id="apellido_paterno_paciente" placeholder="Apellido paterno del paciente" required>
+                </label>
+                <label for="apellido_materno_paciente">
+                    <input type="text" name="apellido_materno_paciente" id="apellido_materno_paciente" placeholder="Apellido materno del paciente" required>
+                </label>
+                <label for="sexo_paciente">
+                    <span>Sexo del paciente:</span><br>
+                    <select id="sexo_paciente" name="sexo_paciente" required>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                    </select>
+                </label>
+                <label for="fecha_nacimiento">
+                    <span>Fecha de nacimiento:</span>
+                    <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Fecha de nacimiento del paciente" required>
+                </label>
+                <label for="derechohabiente_paciente">
+                    <span>Derechohabiente:</span><br>
+                    <select id="derechohabiente_paciente" name="derechohabiente_paciente" required>
+                        <option value="Ninguno">Ninguno</option>
+                        <option value="IMSS">IMSS</option>
+                        <option value="ISSSTE">ISSSTE</option>
+                        <option value="ISSSTEP">ISSSTEP</option>
+                        <option value="Seguro Popular">Seguro Popular</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </label>
+                <button type="submit" id="submit-expediente" class="boton">Crear expediente</button>
+            </form>
         </div>
-    <% } %>
+    </div>
 
     <footer id="page-footer" class="contenedor">
         <div>
@@ -115,8 +125,25 @@
         </div>
     </footer>
 
+    <!--Usaremos sweet alert para las alertas-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!--Esto nos permite especificar codigo para el ejs y sweet alert-->
+    <% if(typeof alert !=  "undefined") { %>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                text: '<%= alertMessage %>',
+                icon: '<%= alertIcon %>',
+                showConfirmButton: <%= showConfirmButton %>,
+                timer: <%= timer %>
+            }).then(() => {
+                window.location = '/<%= ruta %>'
+            })
+        </script>
+    <% } %>
+
     <script type="module" src="resources/js/script.js"></script>
-    <script type="module" src="resources/js/script-system.js"></script>
+    <script type="module" src="resources/js/script-exp.js"></script>
 
 </body>
 

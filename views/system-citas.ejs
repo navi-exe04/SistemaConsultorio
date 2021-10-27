@@ -33,9 +33,6 @@
                 <div id="menu-nav">
                     <ul>
                         <li><a href="/system"><i class="fas fa-home"></i> Inicio</a></li>
-                        <% if(rol == "admin") { %>
-                            <li><a href="" id="boton-config"><i class="fas fa-cog"></i> Configuracion</a></li>
-                        <% } %>
                         <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
                     </ul>
                 </div>
@@ -82,54 +79,6 @@
 
     </main>
 
-    <% if(rol == "admin") { %>
-        <div id="popup-config">
-            <button type="button" id="boton-cerrarConfig" class="boton-cerrar"><i
-                class="fas fa-window-close"></i></button>
-            <div class="config-user">
-                <div id="lista-user" class="div-config active">
-                    <h2 class="sub-title">Configuración de usuarios</h2>
-                    <button class="boton" id="botonAgregar-Config"><i class="fas fa-user-plus"></i></button>
-                    <% users.forEach( user => { %>
-                        <div class="div_user">
-                            <ul>
-                                <li><%= user.name %></li>
-                                <li><%= user.email %></li>
-                                <li><%= user.type %></li>
-                            </ul>
-                            <% if(user.type != "admin") { %>
-                                <a href="/borrar/<%= user.id %>" class="btn-delete"><i class="fas fa-trash-alt"></i></a>
-                            <% } %>
-                        </div>
-                    <% }); %>
-                </div>
-                <div id="agregar-user" class="div-config">
-                    <h2 class="sub-title">Crear usuario</h2>
-                    <button class="boton" id="botonRegresar-Config"><i class="fas fa-arrow-left"></i></button>
-                    <form action="/crearUsuario" id="form-user" method="POST">
-                        <label for="nombre_usuario">
-                            <input type="text" name="nombre_usuario" id="nombre_usuario" placeholder="Nombre del usuario" required>
-                        </label>
-                        <label for="email_usuario">
-                            <input type="email" name="email_usuario" id="email_usuario" placeholder="Correo electronico" required>
-                        </label>
-                        <label for="tipo_usuario">
-                            <span>Tipo de usuario:</span><br>
-                            <select id="tipo_usuario" name="tipo_usuario" required>
-                                <option value="admin">admin</option>
-                                <option value="secretaria">secretaria</option>
-                            </select>
-                        </label>
-                        <label for="pass_usuario">
-                            <input type="password" name="pass_usuario" id="pass_usuario" placeholder="Contraseña" required>
-                        </label>
-                        <button type="submit" id="submit-usuario" class="boton">Agregar</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    <% } %>
-
     <footer id="page-footer" class="contenedor">
         <div>
             <p>
@@ -141,7 +90,6 @@
     </footer>
 
     <script type="module" src="resources/js/script.js"></script>
-    <script type="module" src="resources/js/script-system.js"></script>
 
 </body>
 

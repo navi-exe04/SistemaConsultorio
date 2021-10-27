@@ -12,7 +12,7 @@ moment.locale('es');
 
 //Metodo recolectar los datos de una cita y apartarla
 exports.generarCita = async (req, res) => {
-    
+
     //Obtenemos los valores del formulario de citas
     const name = req.body.nombre_citas;
     const date = req.body.fecha_citas;
@@ -112,9 +112,9 @@ exports.generarCita = async (req, res) => {
                     alert: true,
                     alertTitle: "Error",
                     alertMessage: "Esta cita ya esta registrada.",
-                    alertIcon: 'error',
-                    showConfirmButton: true,
-                    timer: false,
+                    alertIcon: 'success',
+                    showConfirmButton: false,
+                    timer: true,
                     ruta: 'citas'
                 });
 
@@ -219,8 +219,104 @@ exports.crearUsuario = async (req, res) => {
 
             });
 
-        } 
+        }
 
     });
+
+}
+
+//Metodo para crear un nuevo expediente de paciente
+exports.crearExpediente = async (req, res) => {
+
+    const nombre_paciente = req.body.nombre_paciente;
+    const apellido_paterno_paciente = req.body.apellido_paterno_paciente;
+    const apellido_materno_paciente = req.body.apellido_materno_paciente;
+    const sexo_paciente = req.body.sexo_paciente;
+    const fecha_nacimiento = req.body.fecha_nacimiento;
+    const derechohabiente_paciente = req.body.derechohabiente_paciente;
+
+    //Comprueba que los datos del usuario no existan en la BD
+    connection.query(`SELECT * FROM pacientes WHERE nombre = '${nombre_paciente}' AND apellido_paterno = '${apellido_paterno_paciente}' AND apellido_materno = '${apellido_materno_paciente}' AND fecha_nacimiento = '${fecha_nacimiento}'`,
+        async (error, results) => {
+
+            //No hay coincidencias
+            if (results.length == 0) {
+
+                //Insertamos los datos a la tabla de pacientes
+                connection.query('INSERT INTO pacientes SET ?', {
+
+                    nombre: nombre_paciente,
+                    apellido_paterno: apellido_paterno_paciente,
+                    apellido_materno: apellido_materno_paciente,
+                    sexo: sexo_paciente,
+                    fecha_nacimiento: fecha_nacimiento,
+                    derechohabiente: derechohabiente_paciente
+
+                }, async (error, results) => {
+
+                    //Si hay un error se presenta un mensaje
+                    if (error) {
+
+                        console.log(error);
+                        let pacientes;
+                        connection.query('SELECT * FROM pacientes', (error, results) => {
+                            pacientes = results;
+                            //Mandamos variables para la configuracion de la alerta de sweet alert
+                            res.render('system_exp', {
+                                alert: true,
+                                alertTitle: "Error",
+                                alertMessage: "Hubo un error al crear el expediente, intentalo más tarde.",
+                                alertIcon: 'error',
+                                showConfirmButton: true,
+                                timer: false,
+                                ruta: 'exp_system',
+                                pacientes: pacientes //Mandamos la lista de pacientes
+                            });
+                        });
+
+
+                    } else { //Si no hay error
+
+                        let pacientes;
+                        connection.query('SELECT * FROM pacientes', (error, results) => {
+                            pacientes = results;
+                            //Mandamos variables para la configuracion de la alerta de sweet alert
+                            res.render('system_exp', {
+                                alert: true,
+                                alertTitle: "¡Se ha creado un expediente nuevo!",
+                                alertMessage: `El expediente de ${nombre_paciente} se ha creado.`,
+                                alertIcon: 'success',
+                                showConfirmButton: false,
+                                timer: 2000,
+                                ruta: 'exp_system',
+                                pacientes: pacientes //Mandamos la lista de pacientes
+                            });
+                        });
+
+                    }
+
+                });
+
+            } else {
+
+                let pacientes;
+                connection.query('SELECT * FROM pacientes', (error, results) => {
+                    pacientes = results;
+                    //Mandamos variables para la configuracion de la alerta de sweet alert
+                    res.render('system_exp', {
+                        alert: true,
+                        alertTitle: "Error",
+                        alertMessage: "Este expediente ya existe.",
+                        alertIcon: 'error',
+                        showConfirmButton: true,
+                        timer: false,
+                        ruta: 'exp_system',
+                        pacientes: pacientes //Mandamos la lista de pacientes
+                    });
+                });
+
+            }
+
+        });
 
 }
