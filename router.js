@@ -128,12 +128,17 @@ router.get('/exp_system', (req, res) => {
     //El usuario ha ingresado correctamente
     if (req.session.loggedin) {
 
-        let pacientes;
         connection.query('SELECT * FROM pacientes', (error, results) => {
-            pacientes = results;
+            
+            const pacientes = results;
+            pacientes.forEach(paciente => {
+                paciente.fecha_nacimiento = moment(paciente.fecha_nacimiento).format('LL');
+            });
+
             res.render('system_exp', {
                 pacientes: pacientes //Mandamos la lista de pacientes
             });
+            
         });
 
 

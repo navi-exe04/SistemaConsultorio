@@ -228,12 +228,119 @@ exports.crearUsuario = async (req, res) => {
 //Metodo para crear un nuevo expediente de paciente
 exports.crearExpediente = async (req, res) => {
 
+    //Se obtiene la informacion del paciente
     const nombre_paciente = req.body.nombre_paciente;
     const apellido_paterno_paciente = req.body.apellido_paterno_paciente;
     const apellido_materno_paciente = req.body.apellido_materno_paciente;
     const sexo_paciente = req.body.sexo_paciente;
     const fecha_nacimiento = req.body.fecha_nacimiento;
     const derechohabiente_paciente = req.body.derechohabiente_paciente;
+
+    //Se obtiene la informacion de la madre del paciente
+    const nombre_madre = req.body.nombre_madre;
+    const apellido_paterno_madre = req.body.apellido_paterno_madre;
+    const apellido_materno_madre = req.body.apellido_materno_madre;
+    const edad_madre = req.body.edad_madre;
+    const grupo_sanguineo_madre = req.body.grupo_sanguineo_madre;
+    const ocupacion_madre = req.body.ocupacion_madre;
+    const enfermedad_madre = req.body.enfermedad_madre;
+    const antecedentes_madre = req.body.antecedentes_madre;
+    const embarazos_madre = req.body.embarazos_madre;
+    const partos_madre = req.body.partos_madre;
+    const cesareas_madre = req.body.cesareas_madre;
+    const abortos_madre = req.body.abortos_madre;
+
+    //Se obtiene la informacion del padre del paciente
+    const nombre_padre = req.body.nombre_padre;
+    const apellido_paterno_padre = req.body.apellido_paterno_padre;
+    const apellido_materno_padre = req.body.apellido_materno_padre;
+    const edad_padre = req.body.edad_padre;
+    const grupo_sanguineo_padre = req.body.grupo_sanguineo_padre;
+    const ocupacion_padre = req.body.ocupacion_padre;
+    const enfermedad_padre = req.body.enfermedad_padre;
+    const antecedentes_padre = req.body.antecedentes_padre;
+
+    //Se obtiene la informacion de contacto
+    const domicilio_paciente = req.body.domicilio_paciente;
+    const municipio_paciente = req.body.municipio_paciente;
+    const estado_paciente = req.body.estado_paciente;
+    const telefono_paciente = req.body.telefono_paciente;
+    const correo_paciente = req.body.correo_paciente;
+    const familiar_paciente = req.body.familiar_paciente;
+
+    //Inserta la informacion de la madre a la BD
+    //Primero se comprueba que la informacion no exista en la BD
+    connection.query(`SELECT * FROM madres WHERE nombre = '${nombre_madre}' AND apellido_paterno = '${apellido_paterno_madre}' AND apellido_materno = '${apellido_materno_madre}'`,
+        async (error, results) => {
+
+            //No existe la madre registrada en la BD
+            if (results.length == 0) {
+
+                //Insertamos los datos a la tabla de madres
+                connection.query('INSERT INTO madres SET ?', {
+                    nombre: nombre_madre,
+                    apellido_paterno: apellido_paterno_madre,
+                    apellido_materno: apellido_materno_madre,
+                    edad: edad_madre,
+                    grupo_sanguineo: grupo_sanguineo_madre,
+                    ocupacion: ocupacion_madre,
+                    enfermedad: enfermedad_madre,
+                    antecedentes: antecedentes_madre,
+                    embarazos: embarazos_madre,
+                    partos: partos_madre,
+                    cesareas: cesareas_madre,
+                    abortos: abortos_madre
+                });
+
+            }
+
+        });
+
+    //Inserta la informacion del padre a la BD
+    //Primero se comprueba que la informacion no exista en la BD
+    connection.query(`SELECT * FROM padres WHERE nombre = '${nombre_padre}' AND apellido_paterno = '${apellido_paterno_padre}' AND apellido_materno = '${apellido_materno_padre}'`,
+        async (error, results) => {
+
+            //No existe el padre registrado en la BD
+            if (results.length == 0) {
+
+                //Insertamos los datos a la tabla de padres
+                connection.query('INSERT INTO padres SET ?', {
+                    nombre: nombre_padre,
+                    apellido_paterno: apellido_paterno_padre,
+                    apellido_materno: apellido_materno_padre,
+                    edad: edad_padre,
+                    grupo_sanguineo: grupo_sanguineo_padre,
+                    ocupacion: ocupacion_padre,
+                    enfermedad: enfermedad_padre,
+                    antecedentes: antecedentes_padre
+                });
+
+            }
+
+        });
+
+    //Inserta la informacion del contacto a la BD
+    //Primero se comprueba que la informacion no exista en la BD
+    connection.query(`SELECT * FROM contacto WHERE domicilio = '${domicilio_paciente}' AND municipio = '${municipio_paciente}' AND estado = '${estado_paciente}' AND telefono = '${telefono_paciente}' AND correo = '${correo_paciente}' AND familiar = '${familiar_paciente}'`,
+        async (error, results) => {
+
+            //No existe la informacion de contacto registrada en la BD
+            if (results.length == 0) {
+
+                //Insertamos los datos a la tabla de padres
+                connection.query('INSERT INTO contacto SET ?', {
+                    domicilio: domicilio_paciente,
+                    municipio: municipio_paciente,
+                    estado: estado_paciente,
+                    telefono: telefono_paciente,
+                    correo: correo_paciente,
+                    familiar: familiar_paciente
+                });
+
+            }
+
+        });
 
     //Comprueba que los datos del usuario no existan en la BD
     connection.query(`SELECT * FROM pacientes WHERE nombre = '${nombre_paciente}' AND apellido_paterno = '${apellido_paterno_paciente}' AND apellido_materno = '${apellido_materno_paciente}' AND fecha_nacimiento = '${fecha_nacimiento}'`,
@@ -242,60 +349,87 @@ exports.crearExpediente = async (req, res) => {
             //No hay coincidencias
             if (results.length == 0) {
 
-                //Insertamos los datos a la tabla de pacientes
-                connection.query('INSERT INTO pacientes SET ?', {
+                //Obtenemos el id de la madre
+                connection.query(`SELECT * FROM madres WHERE nombre = '${nombre_madre}' AND apellido_paterno = '${apellido_paterno_madre}' AND apellido_materno = '${apellido_materno_madre}'`,
+                    async (error, results) => {
 
-                    nombre: nombre_paciente,
-                    apellido_paterno: apellido_paterno_paciente,
-                    apellido_materno: apellido_materno_paciente,
-                    sexo: sexo_paciente,
-                    fecha_nacimiento: fecha_nacimiento,
-                    derechohabiente: derechohabiente_paciente
+                        const idMadre = results[0].id;
 
-                }, async (error, results) => {
+                        //Obtenemos el id del padre
+                        connection.query(`SELECT * FROM padres WHERE nombre = '${nombre_padre}' AND apellido_paterno = '${apellido_paterno_padre}' AND apellido_materno = '${apellido_materno_padre}'`,
+                            async (error, results) => {
 
-                    //Si hay un error se presenta un mensaje
-                    if (error) {
+                                const idPadre = results[0].id;
 
-                        console.log(error);
-                        let pacientes;
-                        connection.query('SELECT * FROM pacientes', (error, results) => {
-                            pacientes = results;
-                            //Mandamos variables para la configuracion de la alerta de sweet alert
-                            res.render('system_exp', {
-                                alert: true,
-                                alertTitle: "Error",
-                                alertMessage: "Hubo un error al crear el expediente, intentalo más tarde.",
-                                alertIcon: 'error',
-                                showConfirmButton: true,
-                                timer: false,
-                                ruta: 'exp_system',
-                                pacientes: pacientes //Mandamos la lista de pacientes
+                                //Obtenemos el id de informacion de contacto
+                                connection.query(`SELECT * FROM contacto WHERE domicilio = '${domicilio_paciente}' AND municipio = '${municipio_paciente}' AND estado = '${estado_paciente}' AND telefono = '${telefono_paciente}' AND correo = '${correo_paciente}' AND familiar = '${familiar_paciente}'`,
+                                    async (error, results) => {
+
+                                        const idContacto = results[0].id;
+
+                                        //Insertamos los datos a la tabla de pacientes
+                                        connection.query('INSERT INTO pacientes SET ?', {
+
+                                            nombre: nombre_paciente,
+                                            apellido_paterno: apellido_paterno_paciente,
+                                            apellido_materno: apellido_materno_paciente,
+                                            sexo: sexo_paciente,
+                                            fecha_nacimiento: fecha_nacimiento,
+                                            derechohabiente: derechohabiente_paciente,
+                                            id_padre: idPadre,
+                                            id_madre: idMadre,
+                                            id_contacto: idContacto
+
+                                        }, async (error, results) => {
+
+                                            //Si hay un error se presenta un mensaje
+                                            if (error) {
+
+                                                console.log(error);
+                                                let pacientes;
+                                                connection.query('SELECT * FROM pacientes', (error, results) => {
+                                                    pacientes = results;
+                                                    //Mandamos variables para la configuracion de la alerta de sweet alert
+                                                    res.render('system_exp', {
+                                                        alert: true,
+                                                        alertTitle: "Error",
+                                                        alertMessage: "Hubo un error al crear el expediente, intentalo más tarde.",
+                                                        alertIcon: 'error',
+                                                        showConfirmButton: true,
+                                                        timer: false,
+                                                        ruta: 'exp_system',
+                                                        pacientes: pacientes //Mandamos la lista de pacientes
+                                                    });
+                                                });
+
+
+                                            } else { //Si no hay error
+
+                                                let pacientes;
+                                                connection.query('SELECT * FROM pacientes', (error, results) => {
+                                                    pacientes = results;
+                                                    //Mandamos variables para la configuracion de la alerta de sweet alert
+                                                    res.render('system_exp', {
+                                                        alert: true,
+                                                        alertTitle: "¡Se ha creado un expediente nuevo!",
+                                                        alertMessage: `El expediente de ${nombre_paciente} se ha creado.`,
+                                                        alertIcon: 'success',
+                                                        showConfirmButton: false,
+                                                        timer: 2000,
+                                                        ruta: 'exp_system',
+                                                        pacientes: pacientes //Mandamos la lista de pacientes
+                                                    });
+                                                });
+
+                                            }
+
+                                        });
+
+                                    });
+
                             });
-                        });
 
-
-                    } else { //Si no hay error
-
-                        let pacientes;
-                        connection.query('SELECT * FROM pacientes', (error, results) => {
-                            pacientes = results;
-                            //Mandamos variables para la configuracion de la alerta de sweet alert
-                            res.render('system_exp', {
-                                alert: true,
-                                alertTitle: "¡Se ha creado un expediente nuevo!",
-                                alertMessage: `El expediente de ${nombre_paciente} se ha creado.`,
-                                alertIcon: 'success',
-                                showConfirmButton: false,
-                                timer: 2000,
-                                ruta: 'exp_system',
-                                pacientes: pacientes //Mandamos la lista de pacientes
-                            });
-                        });
-
-                    }
-
-                });
+                    });
 
             } else {
 

@@ -49,24 +49,29 @@
             </div>
 
             <button id="boton-crear-exp" class="boton">Crear un expediente</button>
-            
+
             <table class="tabla-expedientes">
-                <tr>
-                    <th>Nombre(s)</th>
-                    <th>Apellido Paterno</th>
-                    <th>Apellido Materno</th>
-                    <th>Sexo</th>
-                    <th>Fecha Nacimiento</th>
-                </tr>
-                <% pacientes.forEach( paciente => { %>
+                <thead>
                     <tr>
-                        <td> <% paciente.nombre %> </td>
-                        <td> <% paciente.apellido_paterno %> </td>
-                        <td> <% paciente.apellido_materno %> </td>
-                        <td> <% paciente.sexo %> </td>
-                        <td> <% paciente.fecha_nacimiento %> </td>
+                        <th scope="col">Nombre(s)</th>
+                        <th scope="col">Apellido Paterno</th>
+                        <th scope="col">Apellido Materno</th>
+                        <th scope="col">Sexo</th>
+                        <th scope="col">Fecha Nacimiento</th>
                     </tr>
-                <% }) %>
+                </thead>
+                <tbody>
+                    <% pacientes.forEach( paciente => { %>
+                        <tr>
+                            <td><%= paciente.nombre %></td>
+                            <td><%= paciente.apellido_paterno %></td>
+                            <td><%= paciente.apellido_materno %></td>
+                            <td><%= paciente.sexo %></td>
+                            <td><%= paciente.fecha_nacimiento %></td>
+                            <td><a href="/borrarExpediente/<%= paciente.id %>" class="btn-delete"><i class="fas fa-trash-alt"></i></a></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
             </table>
 
         </section>
@@ -75,41 +80,188 @@
 
     <div id="popup-exp" class="popup-system">
         <button type="button" id="boton-cerrarCrearExp" class="boton-cerrar"><i
-            class="fas fa-window-close"></i></button>
+                class="fas fa-window-close"></i></button>
         <div class="exp-paciente">
             <h2 class="sub-title">Crear un expediente</h2>
             <form action="/crearExpediente" id="form-exp" method="post">
-                <label for="nombre_paciente">
-                    <input type="text" name="nombre_paciente" id="nombre_paciente" placeholder="Nombre(s) del paciente" required>
-                </label>
-                <label for="apellido_paterno_paciente">
-                    <input type="text" name="apellido_paterno_paciente" id="apellido_paterno_paciente" placeholder="Apellido paterno del paciente" required>
-                </label>
-                <label for="apellido_materno_paciente">
-                    <input type="text" name="apellido_materno_paciente" id="apellido_materno_paciente" placeholder="Apellido materno del paciente" required>
-                </label>
-                <label for="sexo_paciente">
-                    <span>Sexo del paciente:</span><br>
-                    <select id="sexo_paciente" name="sexo_paciente" required>
-                        <option value="Masculino">Masculino</option>
-                        <option value="Femenino">Femenino</option>
-                    </select>
-                </label>
-                <label for="fecha_nacimiento">
-                    <span>Fecha de nacimiento:</span>
-                    <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Fecha de nacimiento del paciente" required>
-                </label>
-                <label for="derechohabiente_paciente">
-                    <span>Derechohabiente:</span><br>
-                    <select id="derechohabiente_paciente" name="derechohabiente_paciente" required>
-                        <option value="Ninguno">Ninguno</option>
-                        <option value="IMSS">IMSS</option>
-                        <option value="ISSSTE">ISSSTE</option>
-                        <option value="ISSSTEP">ISSSTEP</option>
-                        <option value="Seguro Popular">Seguro Popular</option>
-                        <option value="Otro">Otro</option>
-                    </select>
-                </label>
+                <div>
+                    <h2 class="info-title">Información del paciente</h2>
+                    <label for="nombre_paciente">
+                        <input type="text" name="nombre_paciente" id="nombre_paciente"
+                            placeholder="Nombre(s) del paciente" required>
+                    </label>
+                    <label for="apellido_paterno_paciente">
+                        <input type="text" name="apellido_paterno_paciente" id="apellido_paterno_paciente"
+                            placeholder="Apellido paterno del paciente" required>
+                    </label>
+                    <label for="apellido_materno_paciente">
+                        <input type="text" name="apellido_materno_paciente" id="apellido_materno_paciente"
+                            placeholder="Apellido materno del paciente" required>
+                    </label>
+                    <label for="sexo_paciente">
+                        <span>Sexo del paciente:</span><br>
+                        <select id="sexo_paciente" name="sexo_paciente" required>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
+                        </select>
+                    </label>
+                    <label for="fecha_nacimiento">
+                        <span>Fecha de nacimiento:</span>
+                        <input type="date" name="fecha_nacimiento" id="fecha_nacimiento"
+                            placeholder="Fecha de nacimiento del paciente" required>
+                    </label>
+                    <label for="derechohabiente_paciente">
+                        <span>Derechohabiente:</span><br>
+                        <select id="derechohabiente_paciente" name="derechohabiente_paciente" required>
+                            <option value="Ninguno">Ninguno</option>
+                            <option value="IMSS">IMSS</option>
+                            <option value="ISSSTE">ISSSTE</option>
+                            <option value="ISSSTEP">ISSSTEP</option>
+                            <option value="Seguro Popular">Seguro Popular</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </label>
+                </div>
+                <div>
+                    <h2 class="info-title">Información de la madre</h2>
+                    <label for="nombre_madre">
+                        <input type="text" name="nombre_madre" id="nombre_madre" placeholder="Nombre(s) de la madre"
+                            required>
+                    </label>
+                    <label for="apellido_paterno_madre">
+                        <input type="text" name="apellido_paterno_madre" id="apellido_paterno_madre"
+                            placeholder="Apellido paterno de la madre" required>
+                    </label>
+                    <label for="apellido_materno_madre">
+                        <input type="text" name="apellido_materno_madre" id="apellido_materno_madre"
+                            placeholder="Apellido materno de la madre" required>
+                    </label>
+                    <label for="edad_madre">
+                        <input type="number" name="edad_madre" id="edad_madre" placeholder="Edad de la madre" required>
+                    </label>
+                    <label for="grupo_sanguineo_madre">
+                        <span>Grupo sanguineo de la madre:</span>
+                        <select name="grupo_sanguineo_madre" id="grupo_sanguineo_madre" required>
+                            <option value="O-">O-</option>
+                            <option value="O+">O+</option>
+                            <option value="A-">A-</option>
+                            <option value="A+">A+</option>
+                            <option value="B-">B-</option>
+                            <option value="B+">B+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="AB+">AB+</option>
+                    </label>
+                    <label for="ocupacion_madre">
+                        <input type="text" name="ocupacion_madre" id="ocupacion_madre"
+                            placeholder="Ocupacion de la madre" required>
+                    </label>
+                    <label for="enfermedad_madre">
+                        <input type="text" name="enfermedad_madre" id="enfermedad_madre"
+                            placeholder="¿Tiene alguna enfermedad la madre?" required>
+                    </label>
+                    <label for="antecedentes_madre">
+                        <span>
+                            Antecedentes heredofamiliares como Diabetes, Hipertension, Asma, Epilepsia, Obesidad,
+                            Infartos al corazon
+                            Cancer, Insuficiencia Renal, Malformaciones, Drogas, Etc..
+                        </span>
+                        <input type="text" name="antecedentes_madre" id="antecedentes_madre"
+                            placeholder="Antecedentes heredofamiliares de la madre" required>
+                    </label>
+                    <label for="embarazos_madre">
+                        <span>¿Cuantos embarazos ha tenido la madre?</span>
+                        <input type="number" name="embarazos_madre" id="embarazos_madre"
+                            placeholder="Numero de embarazos" required>
+                    </label>
+                    <label for="partos_madre">
+                        <span>¿Cuantos partos ha tenido la madre?</span>
+                        <input type="number" name="partos_madre" id="partos_madre" placeholder="Numero de partos"
+                            required>
+                    </label>
+                    <label for="cesareas_madre">
+                        <span>¿Cuantas cesareas ha tenido la madre?</span>
+                        <input type="number" name="cesareas_madre" id="cesareas_madre" placeholder="Numero de cesareas"
+                            required>
+                    </label>
+                    <label for="abortos_madre">
+                        <span>¿Cuantos abortos ha tenido la madre?</span>
+                        <input type="number" name="abortos_madre" id="abortos_madre" placeholder="Numero de abortos"
+                            required>
+                    </label>
+                </div>
+                <div>
+                    <h2 class="info-title">Información de la padre</h2>
+                    <label for="nombre_padre">
+                        <input type="text" name="nombre_padre" id="nombre_padre" placeholder="Nombre(s) del padre"
+                            required>
+                    </label>
+                    <label for="apellido_paterno_padre">
+                        <input type="text" name="apellido_paterno_padre" id="apellido_paterno_padre"
+                            placeholder="Apellido paterno del padre" required>
+                    </label>
+                    <label for="apellido_materno_padre">
+                        <input type="text" name="apellido_materno_padre" id="apellido_materno_padre"
+                            placeholder="Apellido materno del padre" required>
+                    </label>
+                    <label for="edad_padre">
+                        <input type="number" name="edad_padre" id="edad_padre" placeholder="Edad del padre" required>
+                    </label>
+                    <label for="grupo_sanguineo_padre">
+                        <span>Grupo sanguineo del padre:</span>
+                        <select name="grupo_sanguineo_padre" id="grupo_sanguineo_padre" required>
+                            <option value="O-">O-</option>
+                            <option value="O+">O+</option>
+                            <option value="A-">A-</option>
+                            <option value="A+">A+</option>
+                            <option value="B-">B-</option>
+                            <option value="B+">B+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="AB+">AB+</option>
+                    </label>
+                    <label for="ocupacion_padre">
+                        <input type="text" name="ocupacion_padre" id="ocupacion_padre"
+                            placeholder="Ocupacion del padre" required>
+                    </label>
+                    <label for="enfermedad_padre">
+                        <input type="text" name="enfermedad_padre" id="enfermedad_padre"
+                            placeholder="¿Tiene alguna enfermedad el padre?" required>
+                    </label>
+                    <label for="antecedentes_padre">
+                        <span>
+                            Antecedentes heredofamiliares como Diabetes, Hipertension, Asma, Epilepsia, Obesidad,
+                            Infartos al corazon
+                            Cancer, Insuficiencia Renal, Malformaciones, Drogas, Etc..
+                        </span>
+                        <input type="text" name="antecedentes_padre" id="antecedentes_padre"
+                            placeholder="Antecedentes heredofamiliares del padre" required>
+                    </label>
+                </div>
+                <div>
+                    <h2 class="info-title">Información de contacto</h2>
+                    <label for="domicilio_paciente">
+                        <input type="text" name="domicilio_paciente" id="domicilio_paciente" placeholder="Domicilio donde vive el paciente"
+                            required>
+                    </label>
+                    <label for="municipio_paciente">
+                        <input type="text" name="municipio_paciente" id="municipio_paciente" placeholder="Municipio donde vive el paciente"
+                            required>
+                    </label>
+                    <label for="estado_paciente">
+                        <input type="text" name="estado_paciente" id="estado_paciente" placeholder="Estado donde vide el paciente"
+                            required>
+                    </label>
+                    <label for="telefono_paciente">
+                        <input type="text" name="telefono_paciente" id="telefono_paciente" placeholder="Numero de telefono"
+                            required>
+                    </label>
+                    <label for="correo_paciente">
+                        <input type="email" name="correo_paciente" id="correo_paciente" placeholder="Correo electronico de contacto">
+                    </label>
+                    <label for="familiar_paciente">
+                        <span>Otro familiar responsable del paciente:</span>
+                        <input type="text" name="familiar_paciente" id="familiar_paciente" placeholder="Nombre del familiar">
+                    </label>
+                </div>
                 <button type="submit" id="submit-expediente" class="boton">Crear expediente</button>
             </form>
         </div>
@@ -128,7 +280,7 @@
     <!--Usaremos sweet alert para las alertas-->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!--Esto nos permite especificar codigo para el ejs y sweet alert-->
-    <% if(typeof alert !=  "undefined") { %>
+    <% if(typeof alert !="undefined" ) { %>
         <script>
             Swal.fire({
                 title: '<%= alertTitle %>',
@@ -137,13 +289,13 @@
                 showConfirmButton: <%= showConfirmButton %>,
                 timer: <%= timer %>
             }).then(() => {
-                window.location = '/<%= ruta %>'
-            })
+                    window.location = '/<%= ruta %>'
+                })
         </script>
-    <% } %>
+        <% } %>
 
-    <script type="module" src="resources/js/script.js"></script>
-    <script type="module" src="resources/js/script-exp.js"></script>
+            <script type="module" src="resources/js/script.js"></script>
+            <script type="module" src="resources/js/script-exp.js"></script>
 
 </body>
 
