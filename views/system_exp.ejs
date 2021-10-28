@@ -40,15 +40,15 @@
         </div>
     </header>
 
-    <main class="main-menu">
+    <main class="main-expedientes">
 
-        <section class="menu-content center-flex">
+        <section>
 
             <div class="top-menu">
                 <h1>Expedientes</h1>
             </div>
 
-            <button id="boton-crear-exp" class="boton">Crear un expediente</button>
+            <button id="boton-crear-exp" class="boton"><i class="fas fa-folder-plus"></i> Crear un expediente</button>
 
             <table class="tabla-expedientes">
                 <thead>
@@ -58,6 +58,7 @@
                         <th scope="col">Apellido Materno</th>
                         <th scope="col">Sexo</th>
                         <th scope="col">Fecha Nacimiento</th>
+                        <th scope="col">Funciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -68,7 +69,10 @@
                             <td><%= paciente.apellido_materno %></td>
                             <td><%= paciente.sexo %></td>
                             <td><%= paciente.fecha_nacimiento %></td>
-                            <td><a href="/borrarExpediente/<%= paciente.id %>" class="btn-delete"><i class="fas fa-trash-alt"></i></a></td>
+                            <td>
+                                <a href="/verExpediente/<%= paciente.id %>" class="btn-delete"><i class="fas fa-eye"></i></a>
+                                <a href="/borrarExpediente/<%= paciente.id %>" class="btn-delete"><i class="fas fa-trash-alt"></i></a>
+                            </td>
                         </tr>
                     <% }); %>
                 </tbody>
@@ -81,34 +85,33 @@
     <div id="popup-exp" class="popup-system">
         <button type="button" id="boton-cerrarCrearExp" class="boton-cerrar"><i
                 class="fas fa-window-close"></i></button>
-        <div class="exp-paciente">
+        <div class="exp-paciente div-config">
             <h2 class="sub-title">Crear un expediente</h2>
             <form action="/crearExpediente" id="form-exp" method="post">
                 <div>
-                    <h2 class="info-title">Información del paciente</h2>
+                    <h3 class="tipo-info-title">Información del paciente</h3>
                     <label for="nombre_paciente">
-                        <input type="text" name="nombre_paciente" id="nombre_paciente"
-                            placeholder="Nombre(s) del paciente" required>
+                        <span>Nombre(s):</span><br>
+                        <input type="text" name="nombre_paciente" id="nombre_paciente" required>
                     </label>
                     <label for="apellido_paterno_paciente">
-                        <input type="text" name="apellido_paterno_paciente" id="apellido_paterno_paciente"
-                            placeholder="Apellido paterno del paciente" required>
+                        <span>Apellido paterno:</span><br>
+                        <input type="text" name="apellido_paterno_paciente" id="apellido_paterno_paciente" required>
                     </label>
                     <label for="apellido_materno_paciente">
-                        <input type="text" name="apellido_materno_paciente" id="apellido_materno_paciente"
-                            placeholder="Apellido materno del paciente" required>
+                        <span>Apellido materno:</span><br>
+                        <input type="text" name="apellido_materno_paciente" id="apellido_materno_paciente" required>
                     </label>
                     <label for="sexo_paciente">
-                        <span>Sexo del paciente:</span><br>
+                        <span>Sexo:</span><br>
                         <select id="sexo_paciente" name="sexo_paciente" required>
                             <option value="Masculino">Masculino</option>
                             <option value="Femenino">Femenino</option>
                         </select>
                     </label>
                     <label for="fecha_nacimiento">
-                        <span>Fecha de nacimiento:</span>
-                        <input type="date" name="fecha_nacimiento" id="fecha_nacimiento"
-                            placeholder="Fecha de nacimiento del paciente" required>
+                        <span>Fecha de nacimiento:</span><br>
+                        <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" required>
                     </label>
                     <label for="derechohabiente_paciente">
                         <span>Derechohabiente:</span><br>
@@ -123,24 +126,25 @@
                     </label>
                 </div>
                 <div>
-                    <h2 class="info-title">Información de la madre</h2>
+                    <h3 class="tipo-info-title">Información de la madre</h3>
                     <label for="nombre_madre">
-                        <input type="text" name="nombre_madre" id="nombre_madre" placeholder="Nombre(s) de la madre"
-                            required>
+                        <span>Nombre(s):</span><br>
+                        <input type="text" name="nombre_madre" id="nombre_madre" required>
                     </label>
                     <label for="apellido_paterno_madre">
-                        <input type="text" name="apellido_paterno_madre" id="apellido_paterno_madre"
-                            placeholder="Apellido paterno de la madre" required>
+                        <span>Apellido paterno:</span><br>
+                        <input type="text" name="apellido_paterno_madre" id="apellido_paterno_madre" required>
                     </label>
                     <label for="apellido_materno_madre">
-                        <input type="text" name="apellido_materno_madre" id="apellido_materno_madre"
-                            placeholder="Apellido materno de la madre" required>
+                        <span>Apellido materno:</span><br>
+                        <input type="text" name="apellido_materno_madre" id="apellido_materno_madre" required>
                     </label>
                     <label for="edad_madre">
-                        <input type="number" name="edad_madre" id="edad_madre" placeholder="Edad de la madre" required>
+                        <span>Edad:</span><br>
+                        <input type="number" name="edad_madre" id="edad_madre" required>
                     </label>
                     <label for="grupo_sanguineo_madre">
-                        <span>Grupo sanguineo de la madre:</span>
+                        <span>Grupo sanguineo:</span><br>
                         <select name="grupo_sanguineo_madre" id="grupo_sanguineo_madre" required>
                             <option value="O-">O-</option>
                             <option value="O+">O+</option>
@@ -150,64 +154,60 @@
                             <option value="B+">B+</option>
                             <option value="AB-">AB-</option>
                             <option value="AB+">AB+</option>
+                        </select>
                     </label>
                     <label for="ocupacion_madre">
-                        <input type="text" name="ocupacion_madre" id="ocupacion_madre"
-                            placeholder="Ocupacion de la madre" required>
+                        <span>Ocupacion:</span><br>
+                        <input type="text" name="ocupacion_madre" id="ocupacion_madre" required>
                     </label>
                     <label for="enfermedad_madre">
-                        <input type="text" name="enfermedad_madre" id="enfermedad_madre"
-                            placeholder="¿Tiene alguna enfermedad la madre?" required>
+                        <span>¿Tiene alguna enfermedad?</span><br>
+                        <input type="text" name="enfermedad_madre" id="enfermedad_madre" required>
                     </label>
                     <label for="antecedentes_madre">
                         <span>
-                            Antecedentes heredofamiliares como Diabetes, Hipertension, Asma, Epilepsia, Obesidad,
-                            Infartos al corazon
-                            Cancer, Insuficiencia Renal, Malformaciones, Drogas, Etc..
-                        </span>
-                        <input type="text" name="antecedentes_madre" id="antecedentes_madre"
-                            placeholder="Antecedentes heredofamiliares de la madre" required>
+                            ¿Tiene antecedentes heredofamiliares?<br>(Diabetes, Hipertension, Asma, Epilepsia, Obesidad,
+                            Infartos al corazon, Cancer, Insuficiencia Renal, Malformaciones, Drogas, etc..).
+                        </span><br>
+                        <input type="text" name="antecedentes_madre" id="antecedentes_madre" required>
                     </label>
                     <label for="embarazos_madre">
-                        <span>¿Cuantos embarazos ha tenido la madre?</span>
-                        <input type="number" name="embarazos_madre" id="embarazos_madre"
-                            placeholder="Numero de embarazos" required>
+                        <span>¿Cuantos embarazos ha tenido?</span><br>
+                        <input type="number" name="embarazos_madre" id="embarazos_madre" required>
                     </label>
                     <label for="partos_madre">
-                        <span>¿Cuantos partos ha tenido la madre?</span>
-                        <input type="number" name="partos_madre" id="partos_madre" placeholder="Numero de partos"
-                            required>
+                        <span>¿Cuantos partos ha tenido?</span><br>
+                        <input type="number" name="partos_madre" id="partos_madre" required>
                     </label>
                     <label for="cesareas_madre">
-                        <span>¿Cuantas cesareas ha tenido la madre?</span>
-                        <input type="number" name="cesareas_madre" id="cesareas_madre" placeholder="Numero de cesareas"
-                            required>
+                        <span>¿Cuantas cesareas ha tenido?</span><br>
+                        <input type="number" name="cesareas_madre" id="cesareas_madre" required>
                     </label>
                     <label for="abortos_madre">
-                        <span>¿Cuantos abortos ha tenido la madre?</span>
-                        <input type="number" name="abortos_madre" id="abortos_madre" placeholder="Numero de abortos"
-                            required>
+                        <span>¿Cuantos abortos ha tenido?</span><br>
+                        <input type="number" name="abortos_madre" id="abortos_madre" required>
                     </label>
                 </div>
                 <div>
-                    <h2 class="info-title">Información de la padre</h2>
+                    <h3 class="tipo-info-title">Información del padre</h3>
                     <label for="nombre_padre">
-                        <input type="text" name="nombre_padre" id="nombre_padre" placeholder="Nombre(s) del padre"
-                            required>
+                        <span>Nombre(s):</span><br>
+                        <input type="text" name="nombre_padre" id="nombre_padre" required>
                     </label>
                     <label for="apellido_paterno_padre">
-                        <input type="text" name="apellido_paterno_padre" id="apellido_paterno_padre"
-                            placeholder="Apellido paterno del padre" required>
+                        <span>Apellido paterno:</span><br>
+                        <input type="text" name="apellido_paterno_padre" id="apellido_paterno_padre" required>
                     </label>
-                    <label for="apellido_materno_padre">
-                        <input type="text" name="apellido_materno_padre" id="apellido_materno_padre"
-                            placeholder="Apellido materno del padre" required>
+                    <label for="apellido_materno_padre"><br>
+                        <span>Apellido materno:</span><br>
+                        <input type="text" name="apellido_materno_padre" id="apellido_materno_padre" required>
                     </label>
                     <label for="edad_padre">
-                        <input type="number" name="edad_padre" id="edad_padre" placeholder="Edad del padre" required>
+                        <span>Edad:</span><br>
+                        <input type="number" name="edad_padre" id="edad_padre" required>
                     </label>
                     <label for="grupo_sanguineo_padre">
-                        <span>Grupo sanguineo del padre:</span>
+                        <span>Grupo sanguineo:</span><br>
                         <select name="grupo_sanguineo_padre" id="grupo_sanguineo_padre" required>
                             <option value="O-">O-</option>
                             <option value="O+">O+</option>
@@ -217,52 +217,54 @@
                             <option value="B+">B+</option>
                             <option value="AB-">AB-</option>
                             <option value="AB+">AB+</option>
+                        </select>
                     </label>
                     <label for="ocupacion_padre">
-                        <input type="text" name="ocupacion_padre" id="ocupacion_padre"
-                            placeholder="Ocupacion del padre" required>
+                        <span>Ocupacion:</span><br>
+                        <input type="text" name="ocupacion_padre" id="ocupacion_padre" required>
                     </label>
                     <label for="enfermedad_padre">
-                        <input type="text" name="enfermedad_padre" id="enfermedad_padre"
-                            placeholder="¿Tiene alguna enfermedad el padre?" required>
+                        <span>¿Tiene alguna enfermedad?</span><br>
+                        <input type="text" name="enfermedad_padre" id="enfermedad_padre" required>
                     </label>
                     <label for="antecedentes_padre">
                         <span>
-                            Antecedentes heredofamiliares como Diabetes, Hipertension, Asma, Epilepsia, Obesidad,
-                            Infartos al corazon
-                            Cancer, Insuficiencia Renal, Malformaciones, Drogas, Etc..
-                        </span>
-                        <input type="text" name="antecedentes_padre" id="antecedentes_padre"
-                            placeholder="Antecedentes heredofamiliares del padre" required>
+                            ¿Tiene antecedentes heredofamiliares?<br>(Diabetes, Hipertension, Asma, Epilepsia, Obesidad,
+                            Infartos al corazon, Cancer, Insuficiencia Renal, Malformaciones, Drogas, etc..).
+                        </span><br>
+                        <input type="text" name="antecedentes_padre" id="antecedentes_padre" required>
                     </label>
                 </div>
                 <div>
-                    <h2 class="info-title">Información de contacto</h2>
+                    <h3 class="tipo-info-title">Información de contacto</h3>
                     <label for="domicilio_paciente">
-                        <input type="text" name="domicilio_paciente" id="domicilio_paciente" placeholder="Domicilio donde vive el paciente"
-                            required>
+                        <span>Domicilio: </span><br>
+                        <input type="text" name="domicilio_paciente" id="domicilio_paciente" required>
                     </label>
                     <label for="municipio_paciente">
-                        <input type="text" name="municipio_paciente" id="municipio_paciente" placeholder="Municipio donde vive el paciente"
-                            required>
+                        <span>Municipio:</span><br>
+                        <input type="text" name="municipio_paciente" id="municipio_paciente" required>
                     </label>
                     <label for="estado_paciente">
-                        <input type="text" name="estado_paciente" id="estado_paciente" placeholder="Estado donde vide el paciente"
-                            required>
+                        <span>Estado:</span><br>
+                        <input type="text" name="estado_paciente" id="estado_paciente" required>
                     </label>
                     <label for="telefono_paciente">
-                        <input type="text" name="telefono_paciente" id="telefono_paciente" placeholder="Numero de telefono"
-                            required>
+                        <span>Telefono:</span><br>
+                        <input type="text" name="telefono_paciente" id="telefono_paciente" required>
                     </label>
                     <label for="correo_paciente">
-                        <input type="email" name="correo_paciente" id="correo_paciente" placeholder="Correo electronico de contacto">
+                        <span>Correo electronico:</span><br>
+                        <input type="email" name="correo_paciente" id="correo_paciente">
                     </label>
                     <label for="familiar_paciente">
-                        <span>Otro familiar responsable del paciente:</span>
-                        <input type="text" name="familiar_paciente" id="familiar_paciente" placeholder="Nombre del familiar">
+                        <span>Nombre de otro familiar responsable: (Opcional)</span><br>
+                        <input type="text" name="familiar_paciente" id="familiar_paciente">
                     </label>
                 </div>
-                <button type="submit" id="submit-expediente" class="boton">Crear expediente</button>
+                <div class="btn-centrado">
+                    <button type="submit" id="submit-expediente" class="boton">Crear expediente</button>
+                </div>
             </form>
         </div>
     </div>

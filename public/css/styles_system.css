@@ -210,23 +210,24 @@
     text-align: center;
 }
 
-#form-user {
+#form-user, #form-exp {
     width: 60%;
     margin: 0 auto;
 }
 
-#form-user label {
+#form-user label, #form-exp label {
     display: block;
     text-align: center;
 }
 
-#form-user span {
-    font-size: 18px;
+#form-user span, #form-exp span {
+    font-size: 1rem;
     font-weight: bolder;
     font-family: var(--fuenteTextos);
 }
 
-#form-user input {
+#form-user input, #form-exp input, 
+#form-user select, #form-exp select {
     transition: all 0.2s;
     border: 2px solid var(--colorVino);
     border-radius: 5px;
@@ -236,7 +237,8 @@
     text-align: center;
 }
 
-#form-user input:focus {
+#form-user input:focus, #form-exp input:focus, 
+#form-user select:focus, #form-exp select:focus {
     color: var(--colorBlanco);
     background-color: var(--colorVino);
 }
@@ -253,7 +255,7 @@
         width: 90%;
     }
 
-    #form-user {
+    #form-user, #form-exp {
         width: 100%;
     }
 
@@ -289,3 +291,44 @@
     margin: 0 auto;
 }
                 /*==== FIN DE ESTILOS DE CITAS DEL SISTEMA ====*/
+
+
+
+                /*==== ESTILOS DE EXPEDIENTES ====*/
+.main-expedientes {
+    width: 100%;
+    height: 100%;
+    padding: 3rem;
+}
+
+.tabla-expedientes {
+    text-align: center;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.tabla-expedientes th {
+    padding: 0.5rem 0;
+    background-color: var(--colorVino);
+    color: var(--colorBlanco);
+}
+
+.tabla-expedientes td {
+    padding: 1rem 0;
+    background-color: var(--colorBlanco);
+}
+
+.tabla-expedientes tr {
+    border: 2px solid var(--colorVino);
+}
+
+h3.tipo-info-title {
+    text-align: center;
+    font-family: var(--fuenteTextos);
+    font-weight: bolder;
+}
+
+#form-exp div {
+    margin: 1rem 0;
+}
+                /*==== FIN DE ESTILOS DE EXPEDIENTES ====*/

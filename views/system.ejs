@@ -111,10 +111,12 @@
                     <button class="boton" id="botonRegresar-Config"><i class="fas fa-arrow-left"></i></button>
                     <form action="/crearUsuario" id="form-user" method="POST">
                         <label for="nombre_usuario">
-                            <input type="text" name="nombre_usuario" id="nombre_usuario" placeholder="Nombre del usuario" required>
+                            <span>Nombre(s) del usuario:</span><br>
+                            <input type="text" name="nombre_usuario" id="nombre_usuario" required>
                         </label>
                         <label for="email_usuario">
-                            <input type="email" name="email_usuario" id="email_usuario" placeholder="Correo electronico" required>
+                            <span>Correo electronico:</span><br>
+                            <input type="email" name="email_usuario" id="email_usuario" required>
                         </label>
                         <label for="tipo_usuario">
                             <span>Tipo de usuario:</span><br>
@@ -124,9 +126,12 @@
                             </select>
                         </label>
                         <label for="pass_usuario">
-                            <input type="password" name="pass_usuario" id="pass_usuario" placeholder="Contraseña" required>
+                            <span>Contraseñal:</span><br>
+                            <input type="password" name="pass_usuario" id="pass_usuario" required>
                         </label>
-                        <button type="submit" id="submit-usuario" class="boton">Agregar</button>
+                        <div class="btn-centrado">
+                            <button type="submit" id="submit-usuario" class="boton">Agregar</button>
+                        </div>
                     </form>
                 </div>
             </div>

@@ -158,6 +158,35 @@ router.get('/exp_system', (req, res) => {
 
 });
 
+//Ruta para ver un expediente en especifico
+router.get('/expediente/:id', (req, res) => {
+
+    //El usuario ha ingresado correctamente
+    if (req.session.loggedin) {
+
+        connection.query('SELECT * FROM pacientes', (error, results) => {
+            
+            
+            
+        });
+
+
+    } else { //El usuario no ha ingresado
+
+        res.render('login', {
+            alert: true,
+            alertTitle: "¡Lo siento!",
+            alertMessage: "Debe ingresar sesión.",
+            alertIcon: 'warning',
+            showConfirmButton: true,
+            timer: false,
+            ruta: 'login'
+        });
+
+    }
+
+});
+
 //Funcion para eliminar las citas
 router.get('/borrar/:id', (req, res) => {
 
@@ -191,6 +220,11 @@ router.get('/borrarUser/:id', (req, res) => {
     });
 
 })
+
+//Funcion para eliminar un expediente
+router.get('borrarExpediente/:id', (req, res) => {
+    
+});
 
 //Logout
 router.get('/logout', (req, res) => {
