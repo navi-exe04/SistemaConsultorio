@@ -187,6 +187,56 @@ router.get('/expediente/:id', (req, res) => {
 
 });
 
+//Ruta para borrar un expediente
+router.get('/borrarExpediente/:id', (req, res) => {
+
+    const id = req.params.id;
+    
+    //El usuario ha ingresado correctamente
+    if (req.session.loggedin) {
+
+        connection.query('DELETE FROM pacientes WHERE id = ?', [id], (error, results) => {
+            
+            if(error) {
+                console.log(error);
+            } else {
+
+                let pacientes;
+                connection.query('SELECT * FROM pacientes', (error, results) => {
+                    pacientes = results;
+                    res.render('system_exp', {
+                        alert: true,
+                        alertTitle: "Expediente eliminado.",
+                        alertMessage: `El expediente del paciente con ID ${id} ha sido eliminado.`,
+                        alertIcon: 'success',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        ruta: 'exp_system',
+                        pacientes: pacientes
+                    });
+                })
+
+            }
+            
+        });
+
+
+    } else { //El usuario no ha ingresado
+
+        res.render('login', {
+            alert: true,
+            alertTitle: "¡Lo siento!",
+            alertMessage: "Debe ingresar sesión.",
+            alertIcon: 'warning',
+            showConfirmButton: true,
+            timer: false,
+            ruta: 'login'
+        });
+
+    }
+
+})
+
 //Funcion para eliminar las citas
 router.get('/borrar/:id', (req, res) => {
 
@@ -221,11 +271,6 @@ router.get('/borrarUser/:id', (req, res) => {
 
 })
 
-//Funcion para eliminar un expediente
-router.get('borrarExpediente/:id', (req, res) => {
-    
-});
-
 //Logout
 router.get('/logout', (req, res) => {
 
@@ -237,6 +282,7 @@ router.get('/logout', (req, res) => {
 
 //Solicitamos las funciones del controlador
 const controllers = require('./controllers/controllers');
+const { default: Swal } = require('sweetalert2');
 router.post('/generarCita', controllers.generarCita);
 router.post('/auth', controllers.auth);
 router.post('/crearUsuario', controllers.crearUsuario);
