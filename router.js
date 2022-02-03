@@ -122,6 +122,34 @@ router.get('/citas_system', (req, res) => {
     }
 });
 
+//Funcion para eliminar las citas
+router.get('/borrar/:id', (req, res) => {
+
+    const id = req.params.id;
+
+    connection.query('DELETE FROM citas WHERE id = ?', [id], (error, results) => {
+
+        if (error) {
+
+            console.error(error);
+        
+        } else {
+
+            /* Swal.fire({
+                icon:'success',
+                title: 'Cita eliminada',
+                text: 'La cita se elimino con exito',
+                showConfirmButton: false,
+                timer: 1500
+            }); */
+            res.redirect('/citas_system');
+        
+        }
+
+    });
+
+});
+
 //Ruta para la vista de expedientes del consultorio
 router.get('/exp_system', (req, res) => {
 
@@ -200,26 +228,10 @@ router.get('/borrarExpediente/:id', (req, res) => {
             if(error) {
                 console.log(error);
             } else {
-
-                let pacientes;
-                connection.query('SELECT * FROM pacientes', (error, results) => {
-                    pacientes = results;
-                    res.render('system_exp', {
-                        alert: true,
-                        alertTitle: "Expediente eliminado.",
-                        alertMessage: `El expediente del paciente con ID ${id} ha sido eliminado.`,
-                        alertIcon: 'success',
-                        showConfirmButton: false,
-                        timer: 1500,
-                        ruta: 'exp_system',
-                        pacientes: pacientes
-                    });
-                })
-
+                res.redirect('/exp_system');
             }
             
         });
-
 
     } else { //El usuario no ha ingresado
 
@@ -235,23 +247,6 @@ router.get('/borrarExpediente/:id', (req, res) => {
 
     }
 
-})
-
-//Funcion para eliminar las citas
-router.get('/borrar/:id', (req, res) => {
-
-    const id = req.params.id;
-
-    connection.query('DELETE FROM citas WHERE id = ?', [id], (error, results) => {
-
-        if (error) {
-            console.error(error);
-        } else {
-            res.redirect('/citas_system');
-        }
-
-    });
-
 });
 
 //Funcion para eliminar usuarios
@@ -259,17 +254,34 @@ router.get('/borrarUser/:id', (req, res) => {
 
     const id = req.params.id;
 
-    connection.query('DELETE FROM users WHERE id = ?', [id], (error, results) => {
+    //El usuario ha ingresado correctamente
+    if (req.session.loggedin) {
 
-        if (error) {
-            console.error(error);
-        } else {
-            res.redirect('/system');
-        }
+        connection.query('DELETE FROM users WHERE id = ?', [id], (error, results) => {
 
-    });
+            if (error) {
+                console.error(error);
+            } else {
+                res.redirect('/system');
+            }
+    
+        });
 
-})
+    } else { //El usuario no ha ingresado
+
+        res.render('login', {
+            alert: true,
+            alertTitle: "¡Lo siento!",
+            alertMessage: "Debe ingresar sesión.",
+            alertIcon: 'warning',
+            showConfirmButton: true,
+            timer: false,
+            ruta: 'login'
+        });
+
+    }
+
+});
 
 //Logout
 router.get('/logout', (req, res) => {
@@ -282,7 +294,6 @@ router.get('/logout', (req, res) => {
 
 //Solicitamos las funciones del controlador
 const controllers = require('./controllers/controllers');
-const { default: Swal } = require('sweetalert2');
 router.post('/generarCita', controllers.generarCita);
 router.post('/auth', controllers.auth);
 router.post('/crearUsuario', controllers.crearUsuario);
