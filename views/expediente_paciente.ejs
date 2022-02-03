@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Consultorio</title>
+    <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../resources/css/styles.css">
+    <link rel="stylesheet" href="../resources/css/styles_system.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&family=Quicksand:wght@300&family=Staatliches&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="contenedor" id="headerInicio">
+        <div id="header-pagina">
+            <nav>
+                <div id="header-logo-dr">
+                    <a href="/" id="logo-header">
+                        <h2 class="logo">Dr. Raúl Langle Galindo</h2>
+                        <span>MEDICO PEDIATRA</span>
+                    </a>
+                </div>
+                <button type="button" id="boton-menu"><i class="fas fa-bars"></i></button>
+                <div id="menu-nav">
+                    <ul>
+                        <li><a href="/system"><i class="fas fa-home"></i> Inicio</a></li>
+                        <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-menu">
+
+        <section class="menu-content center-flex">
+
+            <div class="top-menu">
+                <h1>Expediente de <%= paciente[0].nombre %> </h1>
+            </div>
+
+            <div class="div-info_paciente">
+                <h2>Información del paciente</h2>
+                <p>Nombre(s): <%= paciente[0].nombre %></p>
+                <p>Apellido paterno: <%= paciente[0].apellido_paterno %></p>
+                <p>Apellido materno: <%= paciente[0].apellido_materno %></p>
+                <p>Sexo: <%= paciente[0].sexo %></p>
+                <p>Fecha nacimiento: <%= paciente[0].fecha_nacimiento %></p>
+                <p>Derechoambiente: <%= paciente[0].derechohabiente %></p>
+            </div>
+
+            <div class="div-info_madre">
+                <h2>Información de la madre</h2>
+                <p>Nombre(s): <%= madre[0].nombre %></p>
+                <p>Apellido paterno: <%= madre[0].apellido_paterno %></p>
+                <p>Apellido materno: <%= madre[0].apellido_materno %></p>
+                <p>Edad: <%= madre[0].edad %></p>
+                <p>Grupo sanguineo: <%= madre[0].grupo_sanguineo %></p>
+                <p>Ocupacion: <%= madre[0].ocupacion %></p>
+                <p>Enfermedad: <%= madre[0].enfermedad %></p>
+                <p>Antecedentes: <%= madre[0].antecedentes %></p>
+                <p>Embarazos: <%= madre[0].embarazos %></p>
+                <p>Partos: <%= madre[0].partos %></p>
+                <p>Cesareas: <%= madre[0].cesareas %></p>
+                <p>Abortos: <%= madre[0].abortos %></p>
+            </div>
+
+            <div class="div-info_padre">
+                <h2>Información del padre</h2>
+                <p>Nombre(s): <%= padre[0].nombre %></p>
+                <p>Apellido paterno: <%= padre[0].apellido_paterno %></p>
+                <p>Apellido materno: <%= padre[0].apellido_materno %></p>
+                <p>Edad: <%= padre[0].edad %></p>
+                <p>Grupo sanguineo: <%= padre[0].grupo_sanguineo %></p>
+                <p>Ocupacion: <%= padre[0].ocupacion %></p>
+                <p>Enfermedad: <%= padre[0].enfermedad %></p>
+                <p>Antecedentes: <%= padre[0].antecedentes %></p>
+            </div>
+
+            <div class="div-info_contacto">
+                <h2>Información de contacto</h2>
+                <p>Domicilio: <%= contacto[0].domicilio %></p>
+                <p>Municipio: <%= contacto[0].municipio %></p>
+                <p>Estado: <%= contacto[0].estado %></p>
+                <p>Telefono: <%= contacto[0].telefono %></p>
+                <p>Correo: <%= contacto[0].correo %></p>
+                <p>Familiar: <%= contacto[0].familiar %></p>
+            </div>
+            
+        </section>
+
+    </main>
+
+    <footer id="page-footer" class="contenedor">
+        <div>
+            <p>
+                Copyright <i class="fas fa-copyright"></i>
+                2020. Todos los
+                derechos reservados
+            </p>
+        </div>
+    </footer>
+
+    <script type="module" src="../resources/js/script.js"></script>
+
+</body>
+
+</html>

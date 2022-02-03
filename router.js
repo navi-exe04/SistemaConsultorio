@@ -132,7 +132,7 @@ router.get('/borrar/:id', (req, res) => {
         if (error) {
 
             console.error(error);
-        
+
         } else {
 
             /* Swal.fire({
@@ -143,7 +143,7 @@ router.get('/borrar/:id', (req, res) => {
                 timer: 1500
             }); */
             res.redirect('/citas_system');
-        
+
         }
 
     });
@@ -157,7 +157,7 @@ router.get('/exp_system', (req, res) => {
     if (req.session.loggedin) {
 
         connection.query('SELECT * FROM pacientes', (error, results) => {
-            
+
             const pacientes = results;
             pacientes.forEach(paciente => {
                 paciente.fecha_nacimiento = moment(paciente.fecha_nacimiento).format('LL');
@@ -166,7 +166,7 @@ router.get('/exp_system', (req, res) => {
             res.render('system_exp', {
                 pacientes: pacientes //Mandamos la lista de pacientes
             });
-            
+
         });
 
 
@@ -189,15 +189,83 @@ router.get('/exp_system', (req, res) => {
 //Ruta para ver un expediente en especifico
 router.get('/expediente/:id', (req, res) => {
 
+    const id = req.params.id;
+
     //El usuario ha ingresado correctamente
     if (req.session.loggedin) {
 
-        connection.query('SELECT * FROM pacientes', (error, results) => {
-            
-            
-            
-        });
+        //Obtenemos la informacin del paciente registrada en la base de datos
+        connection.query('SELECT * FROM pacientes WHERE id = ?', [id], (error, results) => {
 
+            if (error) {
+
+                console.error(error);
+
+            } else {
+
+                //Se guarda la información de una constate
+                const paciente = results;
+                paciente[0].fecha_nacimiento = moment(paciente[0].fecha_nacimiento).format('LL');
+
+                //Se obtiene la informacion de la madre
+                connection.query('SELECT * FROM madres WHERE id = ?', [paciente[0].id_madre], (error, results) => {
+
+                    if (error) {
+
+                        console.error(error);
+
+                    } else {
+
+                        //Se guarda la informacion de la madre en una constante
+                        const madre = results;
+
+                        //Se obtiene la informacion del padre
+                        connection.query('SELECT * FROM padres WHERE id = ?', [paciente[0].id_padre], (error, results) => {
+
+                            if (error) {
+
+                                console.error(error);
+
+                            } else {
+
+                                //Se guarda la información del padre en una constante
+                                const padre = results;
+
+                                //Se obtiene la informacion de contacto
+                                connection.query('SELECT * FROM contacto WHERE id = ?', [paciente[0].id_contacto], (error, results) => {
+
+                                    if (error) {
+
+                                        console.error(error);
+
+                                    } else {
+
+                                        //Se guarda la información de contacto en una constante
+                                        const contacto = results;
+
+                                        //Se envia la información a la pagina
+                                        res.render('expediente_paciente', {
+                                            paciente: paciente,
+                                            madre: madre,
+                                            padre: padre,
+                                            contacto: contacto
+                                        });
+
+                                    }
+
+                                });
+
+                            }
+
+                        });
+
+                    }
+
+                });
+
+            }
+
+        });
 
     } else { //El usuario no ha ingresado
 
@@ -219,18 +287,18 @@ router.get('/expediente/:id', (req, res) => {
 router.get('/borrarExpediente/:id', (req, res) => {
 
     const id = req.params.id;
-    
+
     //El usuario ha ingresado correctamente
     if (req.session.loggedin) {
 
         connection.query('DELETE FROM pacientes WHERE id = ?', [id], (error, results) => {
-            
-            if(error) {
+
+            if (error) {
                 console.log(error);
             } else {
                 res.redirect('/exp_system');
             }
-            
+
         });
 
     } else { //El usuario no ha ingresado
@@ -264,7 +332,7 @@ router.get('/borrarUser/:id', (req, res) => {
             } else {
                 res.redirect('/system');
             }
-    
+
         });
 
     } else { //El usuario no ha ingresado

@@ -71,7 +71,7 @@
                             <td><%= paciente.fecha_nacimiento %></td>
                             <td>
                                 <a href="/expediente/<%= paciente.id %>" class="btn-delete"><i class="fas fa-eye"></i></a>
-                                <a onclick="avisoBorrado()" href="#" class="btn-delete"><i class="fas fa-trash-alt"></i></a>
+                                <a href="/borrarExpediente/<%= paciente.id %>" class="btn-delete"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
                     <% }); %>
@@ -282,18 +282,7 @@
     <!--Usaremos sweet alert para las alertas-->
     <script src="../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
     <!--Esto nos permite especificar codigo para el ejs y sweet alert-->
-    <script>
-        function avisoBorrado() {
-            Swal({
-                title: 'Expediente borrado.',
-                text: 'El expediente se ha borrado con exito.',
-                icon: 'success',
-                showConfirmButton: false,
-                timer: 1500
-            })
-        }
-    </script>
-    <!-- <% if(typeof alert !="undefined" ) { %>
+    <% if(typeof alert !="undefined" ) { %>
         <script>
             window.location = '/<%= ruta %>'
             Swal.fire({
@@ -304,7 +293,7 @@
                 timer: <%= timer %>
             })
         </script>
-        <% } %> -->
+        <% } %>
     
 
             <script type="module" src="resources/js/script.js"></script>
