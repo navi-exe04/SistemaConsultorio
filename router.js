@@ -243,12 +243,100 @@ router.get('/expediente/:id', (req, res) => {
                                         //Se guarda la información de contacto en una constante
                                         const contacto = results;
 
-                                        //Se envia la información a la pagina
-                                        res.render('expediente_paciente', {
-                                            paciente: paciente,
-                                            madre: madre,
-                                            padre: padre,
-                                            contacto: contacto
+                                        //Se obtiene la información de los antecedentes perinatales del paciente
+                                        connection.query('SELECT * FROM antecedentes_perinatales WHERE id_paciente = ?', [paciente[0].id], (error, results) => {
+
+                                            if (error) {
+
+                                                console.error(error);
+
+                                            } else {
+
+                                                if (results == []) { //El expediente es de primera vez y no incluye la demás informacion del paciente
+
+                                                    let aviso = 0;
+
+                                                    //Se envia la información a la pagina
+                                                    res.render('expediente_paciente', {
+                                                        paciente: paciente,
+                                                        madre: madre,
+                                                        padre: padre,
+                                                        contacto: contacto,
+                                                        aviso: aviso
+                                                    });
+
+                                                } else { //El paciente ya tiene guardada TODA la información dentro del sistema
+
+                                                    let aviso = 1;
+                                                
+                                                    //Se guarda la informacion de antecedentes perinatales en una constante
+                                                    const antecedentes_perinatales = results;
+
+                                                    //Se obtiene la información de la alimentación del paciente
+                                                    connection.query('SELECT * FROM alimentacion WHERE id_paciente = ?', [paciente[0].id], (error, results) => {
+
+                                                        if (error) {
+
+                                                            console.error(error);
+
+                                                        } else {
+
+                                                            //Se guarda la información de alimentación en una constante
+                                                            const alimentacion = results;
+
+                                                            //Se obtiene la información de inmunizaciones del paciente
+                                                            connection.query('SELECT * FROM inmunizaciones WHERE id_paciente = ?', [paciente[0].id], (error, results) => {
+
+                                                                if (error) {
+
+                                                                    console.error(error);
+
+                                                                } else {
+
+                                                                    //Se guarda la información de las inmunizaciones en una constante
+                                                                    const inmunizaciones = results;
+
+                                                                    //Se obtiene la información de antecedentes personales del paciente
+                                                                    connection.query('SELECT * FROM antecedentes_personales WHERE id_paciente = ?', [paciente[0].id], (error, results) => {
+
+                                                                        if (error) {
+
+                                                                            console.error(error);
+
+                                                                        } else {
+
+                                                                            //Se guarda la información de antecedentes personales en una constante
+                                                                            const antecedentes_personales = results;
+
+                                                                            //Se envia la información a la pagina
+                                                                            res.render('expediente_paciente', {
+                                                                                paciente: paciente,
+                                                                                madre: madre,
+                                                                                padre: padre,
+                                                                                contacto: contacto,
+                                                                                antecedentes_perinatales: antecedentes_perinatales,
+                                                                                alimentacion: alimentacion,
+                                                                                inmunizaciones: inmunizaciones,
+                                                                                antecedentes_personales: antecedentes_personales,
+                                                                                aviso: aviso
+                                                                            });
+
+                                                                        }
+
+                                                                    });
+
+                                                                }
+
+                                                            });
+
+                                                        }
+
+                                                    });
+
+                                                }
+
+                                            }
+
                                         });
 
                                     }
