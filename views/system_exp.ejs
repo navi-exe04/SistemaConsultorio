@@ -344,15 +344,261 @@
                 
                 <div>
                     <h3 class="tipo-info-title">Alimentación</h3>
-                    
+                    <label for="seno_materno">
+                        <span>¿Se le dio seno materno?</span>
+                        <select name="seno_materno" id="seno_materno">
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label>
+                    <label for="formulas">
+                        <span>¿Que formulas se utilizaron? (Marca)</span>
+                        <input type="text" name="formulas" id="formulas">
+                    </label>
+                    <label for="ablactacion">
+                        <span>Ablactacion (Edad):</span>
+                        <input type="number" name="ablactacion" id="ablactacion">
+                    </label>
+                    <label for="destete">
+                        <span>Destete (Edad):</span>
+                        <input type="number" name="destete" id="destete">
+                    </label>
+                    <label for="dieta_actual">
+                        <span>Dieta actual del paciente:</span>
+                        <input type="text" name="dieta_actual" id="dieta_actual">
+                    </label>
                 </div>
                 
                 <div>
                     <h3 class="tipo-info-title">Inmunizaciones</h3>
+                    <label for="tamiz_neonatal">
+                        <span>Tamiz neonatal:</span>
+                        <select multiple name="tamiz_neonatal" id="tamiz_neonatal">
+                            <option value="Metábolico">Metábolico</option>
+                            <option value="Auditivo">Auditivo</option>
+                        </select>
+                    </label>
+                    <label for="bcg">
+                        <span>BCG:</span>
+                        <select multiple name="bcg" id="bcg">
+                            <option value="Contra la tuberculosis (al nacimiento)">Tuberculosis (al nacimiento)</option>
+                            <option value="AntiHepatitisB">AntiHepatitisB</option>
+                        </select>
+                    </label>
+                    <label for="poliomelitis">
+                        <span>Poliomelitis (gotas via oral):</span>
+                        <select name="poliomelitis" id="poliomelitis">
+                            <option value="2">2 meses</option>
+                            <option value="4">4 meses</option>
+                            <option value="6">6 meses</option>
+                        </select>
+                    </label>
+                    <label for="pentavalente">
+                        <span>
+                            Pentavalente (Difteria, Tos ferina, Tétanos, Hepatitis B, Haemofilus Influeza) o 
+                            Hexavalente (las anteriores + Polio) intramuscular en muslo: 
+                        </span>
+                        <select name="pentavalente" id="pentavalente">
+                            <option value="2">2 meses</option>
+                            <option value="4">4 meses</option>
+                            <option value="6">6 meses</option>
+                        </select>
+                    </label>
+                    <label for="triple_viral">
+                        <span>Triple viral (sarampión, rubéola, y parotiditis) intramuscular en glúteo al año de edad:</span>
+                        <select name="triple_viral" id="triple_viral">
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label>
+                    <label for="revacunaciones">
+                        <span>Revacunaciones:</span>
+                        <select name="revacunaciones" id="revacunaciones">
+                            <option value="2">2 años</option>
+                            <option value="4">4 años</option>
+                            <option value="6">6 años</option>
+                        </select>
+                    </label>
+                    <label for="influeza">
+                        <span>Influenza: </span>
+                        <select name="influeza" id="influeza">
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label>
+                    <label for="neumococo">
+                        <span>Neumococo:</span>
+                        <select name="neumococo" id="neumococo">
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label>
+                    <label for="hepatitis">
+                        <span>Hepatitis:</span>
+                        <select name="hepatitis" id="hepatitis">
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label>
+                    <label for="varicela">
+                        <span>Varicela:</span>
+                        <select name="varicela" id="varicela">
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label>
+                    <label for="otras_inmunizaciones">
+                        <span>Otras:</span>
+                        <input type="text" name="otras_inmunizaciones" id="otras_inmunizaciones">
+                    </label>
                 </div>
                 
                 <div>
                     <h3 class="tipo-info-title">Antecedentes personales</h3>
+                    <label for="reflujo">
+                        <span>Reflujo gastroesofagico: </span>
+                        <select name="reflujo" id="reflujo">
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label>
+                    <label for="ictericia">
+                        <span>Ictericia:</span>
+                        <select name="ictericia" id="ictericia">
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label>
+                    <label for="onfalitis">
+                        <span>Onfalitis (Inf. de ombligo):</span>
+                        <select name="onfalitis" id="onfalitis">
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label>
+                    <label for="exantematicas">
+                        <span>Exantematicas:</span>
+                        <select multiples name="exantematicas" id="exantematicas">
+                            <option value="Sarampión">Sarampión</option>
+                            <option value="Rubeola">Rubeola</option>
+                            <option value="Varicela">Varicela</option>
+                            <option value="Escarlatina">Escarlatina</option>
+                        </select>
+                    </label>
+                    <label for="anemia">
+                        <span>Anemia:</span>
+                        <select name="anemia" id="anemia">
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label>
+                    <label for="bajo_peso">
+                        <span>Bajo peso:</span>
+                        <select name="bajo_peso" id="bajo_peso">
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label>
+                    <label for="desnutricion">
+                        <span>Desnutrición:</span>
+                        <select name="desnutricion" id="desnutricion">
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label>
+                    <label for="diarreas">
+                        <span>Diarreas:</span>
+                        <select name="diarreas" id="diarreas">
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label>
+                    <label for="deshidratacion">
+                        <span>Deshidratación:</span>
+                        <select name="deshidratacion" id="deshidratacion">
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label>
+                    <label for="conjuntivitis">
+                        <span>Conjuntivitis</span>
+                        <select name="conjuntivitis" id="conjuntivitis">
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label>
+                    <label for="otitis_supurada">
+                        <span>Otitis supurada:</span>
+                        <select name="otitis_supurada" id="otitis_supurada">
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label>
+                    <label for="infecciones_respiratorias">
+                        <span>Infecciones respiratorias:</span>
+                        <select multiple name="infecciones_respiratorias" id="infecciones_respiratorias">
+                            <option value="Catarro">Catarro</option>
+                            <option value="Faringitis">Faringitis</option>
+                            <option value="Rinofaringitis">Rinofaringitis</option>
+                            <option value="Amigdalitis">Amigdalitis</option>
+                            <option value="Sinusitis">Sinusitis</option>
+                            <option value="Traqueitis">Traqueitis</option>
+                            <option value="Bronquitis">Bronquitis</option>
+                            <option value="Bronconeumonia">Bronconeumonia</option>
+                            <option value="Neumonia">Neumonia</option>
+                            <option value="Asma">Asma</option>
+                            <option value="Tuberculosis">Tuberculosis</option>
+                            <option value="Tosferina">Tosferina</option>
+                        </select>
+                    </label>
+                    <label for="paperas">
+                        <span>Paperas:</span>
+                        <select name="paperas" id="paperas">
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label>
+                    <label for="hepatitis">
+                        <span>Hepatitis:</span>
+                        <select name="hepatitis" id="hepatitis">
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label>
+                    <label for="infecciones_urinarias">
+                        <span>Infecciones urinarias:</span>
+                        <select name="infecciones_urinarias" id="infecciones_urinarias">
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label>
+                    <label for="tifoidea">
+                        <span>Tifoidea:</span>
+                        <select name="tifoidea" id="tifoidea">
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label>
+                    <label for="alergias_medicamentos">
+                        <span>Alergias a medicamentos:</span>
+                        <input type="text" name="alergias_medicamentos" id="alergias_medicamentos">
+                    </label>
+                    <label for="alergias_alimentos">
+                        <span>Alergias a alimentos:</span>
+                        <input type="text" name="alergias_alimentos" id="alergias_alimentos">
+                    </label>
+                    <label for="alergias_otros">
+                        <span>Otras alergias:</span>
+                        <input type="text" name="alergias_otros" id="alergias_otros">
+                    </label>
+                    <label for="hospitalizaciones">
+                        <span>Hospitalizaciones previas (edad y razon):</span>
+                        <input type="text" name="hospitalizaciones" id="hospitalizaciones">
+                    </label>
+                    <label for="operaciones">
+                        <span>¿Le han operado? (edad y razon)</span>
+                        <input type="text" name="operaciones" id="operaciones">
+                    </label>
                 </div>
                 
                 <div class="btn-centrado">
