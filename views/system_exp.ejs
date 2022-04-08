@@ -29,11 +29,11 @@
                         <span>MEDICO PEDIATRA</span>
                     </a>
                 </div>
-                <button type="button" id="boton-menu"><i class="fas fa-bars"></i></button>
+                <button type="button" id="boton-menu"><em class="fas fa-bars"></em></button>
                 <div id="menu-nav">
                     <ul>
-                        <li><a href="/system"><i class="fas fa-home"></i> Inicio</a></li>
-                        <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
+                        <li><a href="/system"><em class="fas fa-home"></em> Inicio</a></li>
+                        <li><a href="/logout"><em class="fas fa-sign-out-alt"></em> Cerrar Sesión</a></li>
                     </ul>
                 </div>
             </nav>
@@ -48,9 +48,10 @@
                 <h1>Expedientes</h1>
             </div>
 
-            <button id="boton-crear-exp" class="boton"><i class="fas fa-folder-plus"></i> Crear un expediente</button>
+            <button id="boton-crear-exp" class="boton"><em class="fas fa-folder-plus"></em> Crear un expediente</button>
 
             <table class="tabla-expedientes">
+                <caption>Expedientes de los pacientes del consultorio.</caption>
                 <thead>
                     <tr>
                         <th scope="col">Nombre(s)</th>
@@ -70,8 +71,8 @@
                             <td><%= paciente.sexo %></td>
                             <td><%= paciente.fecha_nacimiento %></td>
                             <td>
-                                <a href="/expediente/<%= paciente.id %>" class="btn-delete"><i class="fas fa-eye"></i></a>
-                                <a href="/borrarExpediente/<%= paciente.id %>" class="btn-delete"><i class="fas fa-trash-alt"></i></a>
+                                <a href="/expediente/<%= paciente.id %>" class="btn-delete"><em class="fas fa-eye"></em></a>
+                                <a href="/borrarExpediente/<%= paciente.id %>" class="btn-delete"><em class="fas fa-trash-alt"></em></a>
                             </td>
                         </tr>
                     <% }); %>
@@ -83,8 +84,9 @@
     </main>
 
     <div id="popup-exp" class="popup-system">
-        <button type="button" id="boton-cerrarCrearExp" class="boton-cerrar"><i
-                class="fas fa-window-close"></i></button>
+        <button type="button" id="boton-cerrarCrearExp" class="boton-cerrar">
+            <em class="fas fa-window-close"></em>
+        </button>
         <div class="exp-paciente div-config">
             <h2 class="sub-title">Crear un expediente</h2>
             <form action="/crearExpediente" id="form-exp" method="post">
@@ -371,39 +373,61 @@
                 
                 <div>
                     <h3 class="tipo-info-title">Inmunizaciones</h3>
-                    <label for="tamiz_neonatal">
+                    <div class="div-checkbox">
                         <span>Tamiz neonatal:</span>
-                        <select multiple name="tamiz_neonatal" id="tamiz_neonatal">
-                            <option value="Metábolico">Metábolico</option>
-                            <option value="Auditivo">Auditivo</option>
-                        </select>
-                    </label>
-                    <label for="bcg">
+                        <label for="tn_met">
+                            <input type="checkbox" name="tn_met" id="tn_met" value="Metábolico">
+                            Metábolico
+                        </label>
+                        <label for="tn_aud">
+                            <input type="checkbox" name="tn_aud" id="tn_aud" value="Auditivo">
+                            Auditivo
+                        </label>
+                    </div>
+                    <div class="div-checkbox">
                         <span>BCG:</span>
-                        <select multiple name="bcg" id="bcg">
-                            <option value="Contra la tuberculosis (al nacimiento)">Tuberculosis (al nacimiento)</option>
-                            <option value="AntiHepatitisB">AntiHepatitisB</option>
-                        </select>
-                    </label>
-                    <label for="poliomelitis">
+                        <label for="bcg_tub">
+                            <input type="checkbox" name="bcg_tub" id="bcg_tub" value="Tuberculosis (nacimiento)">
+                            Tuberculosis (al nacimiento)
+                        </label>
+                        <label for="bcg_aHep">
+                            <input type="checkbox" name="bcg_aHep" id="bcg_aHep" value="AntiHepatitisB">
+                            AntiHepatitisB
+                        </label>
+                    </div>
+                    <div class="div-checkbox">
                         <span>Poliomelitis (gotas via oral):</span>
-                        <select name="poliomelitis" id="poliomelitis">
-                            <option value="2">2 meses</option>
-                            <option value="4">4 meses</option>
-                            <option value="6">6 meses</option>
-                        </select>
-                    </label>
-                    <label for="pentavalente">
+                        <label for="polio2">
+                            <input type="checkbox" name="polio2" id="polio2" value="2 meses">
+                            2 meses
+                        </label>
+                        <label for="polio4">
+                            <input type="checkbox" name="polio4" id="polio4" value="4 meses">
+                            4 meses
+                        </label>
+                        <label for="polio6">
+                            <input type="checkbox" name="polio6" id="polio6" value="6 meses">
+                            6 meses
+                        </label>
+                    </div>
+                    <div class="div-checkbox">
                         <span>
                             Pentavalente (Difteria, Tos ferina, Tétanos, Hepatitis B, Haemofilus Influeza) o 
                             Hexavalente (las anteriores + Polio) intramuscular en muslo: 
                         </span>
-                        <select name="pentavalente" id="pentavalente">
-                            <option value="2">2 meses</option>
-                            <option value="4">4 meses</option>
-                            <option value="6">6 meses</option>
-                        </select>
-                    </label>
+                        <label for="penta2">
+                            <input type="checkbox" name="penta2" id="penta2" value="2 meses">
+                            2 meses
+                        </label>
+                        <label for="penta4">
+                            <input type="checkbox" name="penta4" id="penta4" value="4 meses">
+                            4 meses
+                        </label>
+                        <label for="penta6">
+                            <input type="checkbox" name="penta6" id="penta6" value="6 meses">
+                            6 meses
+                        </label>
+                    </div>
                     <label for="triple_viral">
                         <span>Triple viral (sarampión, rubéola, y parotiditis) intramuscular en glúteo al año de edad:</span>
                         <select name="triple_viral" id="triple_viral">
@@ -411,14 +435,21 @@
                             <option value="No">No</option>
                         </select>
                     </label>
-                    <label for="revacunaciones">
+                    <div class="div-checkbox">
                         <span>Revacunaciones:</span>
-                        <select name="revacunaciones" id="revacunaciones">
-                            <option value="2">2 años</option>
-                            <option value="4">4 años</option>
-                            <option value="6">6 años</option>
-                        </select>
-                    </label>
+                        <label for="revac2">
+                            <input type="checkbox" name="revac2" id="revac2" value="2 años">
+                            2 años
+                        </label>
+                        <label for="revac4">
+                            <input type="checkbox" name="revac4" id="revac4" value="4 años">
+                            4 años
+                        </label>
+                        <label for="revac6">
+                            <input type="checkbox" name="revac6" id="revac6" value="6 años">
+                            6 años
+                        </label>
+                    </div>
                     <label for="influeza">
                         <span>Influenza: </span>
                         <select name="influeza" id="influeza">
@@ -476,15 +507,25 @@
                             <option value="No">No</option>
                         </select>
                     </label>
-                    <label for="exantematicas">
+                    <div class="div-checkbox">
                         <span>Exantematicas:</span>
-                        <select multiples name="exantematicas" id="exantematicas">
-                            <option value="Sarampión">Sarampión</option>
-                            <option value="Rubeola">Rubeola</option>
-                            <option value="Varicela">Varicela</option>
-                            <option value="Escarlatina">Escarlatina</option>
-                        </select>
-                    </label>
+                        <label for="exa_saram">
+                            <input type="checkbox" name="exa_saram" id="exa_saram" value="Sarampión">
+                            Sarampión
+                        </label>
+                        <label for="exa_rube">
+                            <input type="checkbox" name="exa_rube" id="exa_rube" value="Rubeola">
+                            Rubeola
+                        </label>
+                        <label for="exa_varic">
+                            <input type="checkbox" name="exa_varic" id="exa_varic" value="Varicela">
+                            Varicela
+                        </label>
+                        <label for="exa_escar">
+                            <input type="checkbox" name="exa_escar" id="exa_escar" value="Escarlatina">
+                            Escarlatina
+                        </label>
+                    </div>
                     <label for="anemia">
                         <span>Anemia:</span>
                         <select name="anemia" id="anemia">
@@ -534,23 +575,57 @@
                             <option value="No">No</option>
                         </select>
                     </label>
-                    <label for="infecciones_respiratorias">
+                    <div class="div-checkbox">
                         <span>Infecciones respiratorias:</span>
-                        <select multiple name="infecciones_respiratorias" id="infecciones_respiratorias">
-                            <option value="Catarro">Catarro</option>
-                            <option value="Faringitis">Faringitis</option>
-                            <option value="Rinofaringitis">Rinofaringitis</option>
-                            <option value="Amigdalitis">Amigdalitis</option>
-                            <option value="Sinusitis">Sinusitis</option>
-                            <option value="Traqueitis">Traqueitis</option>
-                            <option value="Bronquitis">Bronquitis</option>
-                            <option value="Bronconeumonia">Bronconeumonia</option>
-                            <option value="Neumonia">Neumonia</option>
-                            <option value="Asma">Asma</option>
-                            <option value="Tuberculosis">Tuberculosis</option>
-                            <option value="Tosferina">Tosferina</option>
-                        </select>
-                    </label>
+                        <label for="ir_cat">
+                            <input type="checkbox" name="ir_cat" id="ir_cat" value="Catarro">
+                            Catarro
+                        </label>
+                        <label for="ir_far">
+                            <input type="checkbox" name="ir_far" id="ir_far" value="Faringitis">
+                            Faringitis
+                        </label>
+                        <label for="ir_rino">
+                            <input type="checkbox" name="ir_rino" id="ir_rino" value="Rinofaringitis">
+                            Rinofaringitis
+                        </label>
+                        <label for="ir_amig">
+                            <input type="checkbox" name="ir_amig" id="ir_amig" value="Amigdalitis">
+                            Amigdalitis
+                        </label>
+                        <label for="ir_sinu">
+                            <input type="checkbox" name="ir_sinu" id="ir_sinu" value="Sinusitis">
+                            Sinusitis
+                        </label>
+                        <label for="ir_traq">
+                            <input type="checkbox" name="ir_traq" id="ir_traq" value="Traqueitis">
+                            Traqueitis
+                        </label>
+                        <label for="ir_bronq">
+                            <input type="checkbox" name="ir_bronq" id="ir_bronq" value="Bronquitis">
+                            Bronquitis
+                        </label>
+                        <label for="ir_broncon">
+                            <input type="checkbox" name="ir_broncon" id="ir_broncon" value="Bronconeumonia">
+                            Bronconeumonia
+                        </label>
+                        <label for="ir_neum">
+                            <input type="checkbox" name="ir_neum" id="ir_neum" value="Neumonia">
+                            Neumonia
+                        </label>
+                        <label for="ir_asma">
+                            <input type="checkbox" name="ir_asma" id="ir_asma" value="Asma">
+                            Asma
+                        </label>
+                        <label for="ir_tuber">
+                            <input type="checkbox" name="ir_tuber" id="ir_tuber" value="Tuberculosis">
+                            Tuberculosis
+                        </label>
+                        <label for="ir_tos">
+                            <input type="checkbox" name="ir_tos" id="ir_tos" value="Tosferina">
+                            Tosferina
+                        </label>
+                    </div>
                     <label for="paperas">
                         <span>Paperas:</span>
                         <select name="paperas" id="paperas">
@@ -612,7 +687,7 @@
     <footer id="page-footer" class="contenedor">
         <div>
             <p>
-                Copyright <i class="fas fa-copyright"></i>
+                Copyright <em class="fas fa-copyright"></em>
                 2020. Todos los
                 derechos reservados
             </p>
