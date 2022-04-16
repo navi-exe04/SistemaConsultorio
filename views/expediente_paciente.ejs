@@ -99,69 +99,72 @@
 
             <div class="div-info_antecedentes_perinatales">
                 <h2>Información de antecedentes perinatales</h2>
-                <p>No. de hijo del paciente: <%= antecedentes_perinatales[0].numero_hijo %></p>
-                <p>Control medico: <%= antecedentes_perinatales[0].control_medico %></p>
-                <p>Semanas de gestacion: <%= antecedentes_perinatales[0].semanas_gestacion %></p>
-                <p>Tipo: <%= antecedentes_perinatales[0].tipo %></p>
-                <p>Razon: <%= antecedentes_perinatales[0].razon %></p>
-                <p>Lugar de nacimiento: <%= antecedentes_perinatales[0].lugar_nacimiento %></p>
-                <p>Nombre del medico tratante: <%= antecedentes_perinatales[0].nombre_medico %></p>
-                <p>Peso: <%= antecedentes_perinatales[0].peso %></p>
-                <p>Talla: <%= antecedentes_perinatales[0].talla %></p>
-                <p>Reacción al nacer: <%= antecedentes_perinatales[0].reaccion %></p>
-                <p>Requerimientos al nacer: <%= antecedentes_perinatales[0].requerimientos %></p>
-                <p>Tiempo: <%= antecedentes_perinatales[0].tiempo %></p>
-                <p>Sangre y/o derivados: <%= antecedentes_perinatales[0].sangre_derivados %></p>
-                <p>Asfixia: <%= antecedentes_perinatales[0].asfixia %></p>
-                <p>Razón de asfixia: <%= antecedentes_perinatales[0].razon_asfixia %></p>
-                <p>APGAR: <%= antecedentes_perinatales[0].apgar %></p>
-                <p>Diagnostico de alta: <%= antecedentes_perinatales[0].diagnostico_alta %></p>
+                <p>No. de hijo del paciente: <%= antc_perinatales.numero_hijo%> ></p>
+                <p>Control medico: <%= antc_perinatales.control_medico%></p>
+                <p>Semanas de gestacion: <%= antc_perinatales.semanas_gestacion%></p>
+                <p>Tipo: <%= antc_perinatales.tipo%></p>
+                <p>Razon: <%= antc_perinatales.razon%></p>
+                <p>Lugar de nacimiento: <%= antc_perinatales.lugar_nacimiento%></p>
+                <p>Nombre del medico tratante: <%= antc_perinatales.nombre_medico%></p>
+                <p>Peso: <%= antc_perinatales.peso%></p>
+                <p>Talla: <%= antc_perinatales.talla%></p>
+                <p>Reacción al nacer: <%= antc_perinatales.reaccion%></p>
+                <p>Requerimientos al nacer: <%= antc_perinatales.requerimientos%></p>
+                <p>Tiempo: <%= antc_perinatales.tiempo%></p>
+                <p>Sangre y/o derivados: <%= antc_perinatales.sangre_derivados%></p>
+                <p>Asfixia: <%= antc_perinatales.asfixia%></p>
+                <p>Razón de asfixia: <%= antc_perinatales.razon_asfixia%></p>
+                <p>APGAR: <%= antc_perinatales.apgar%></p>
+                <p>Diagnostico de alta: <%= antc_perinatales.diagnostico_alta%></p>
             </div>
 
             <div class="div-info_alimentacion">
-                <p>Seno materno: </p>
-                <p>Formulas: </p>
-                <p>Ablactación: </p>
-                <p>Destete: </p>
-                <p>Dieta actual: </p>
+                <h2>Alimentación del paciente</h2>
+                <p>Seno materno: <%= alimentacion.seno_materno%></p>
+                <p>Formulas: <%= alimentacion.formulas%></p>
+                <p>Ablactación: <%= alimentacion.ablactacion%></p>
+                <p>Destete: <%= alimentacion.destete%></p>
+                <p>Dieta actual: <%= alimentacion.dieta_actual%></p>
             </div>
 
             <div class="div-info_inmunizaciones">
-                <p>Tamiz neonatal: </p>
-                <p>BCG: </p>
-                <p>Poliomelitis: </p>
-                <p>Pentavalente: </p>
-                <p>Triple viral: </p>
-                <p>Revacunaciones: </p>
-                <p>Influenza: </p>
-                <p>Neumococo: </p>
-                <p>Hepatitis: </p>
-                <p>Varicela: </p>
-                <p>Otros: </p>
+                <h2>Inmunizaciones</h2>
+                <p>Tamiz neonatal: <%= inmunizaciones.tamiz_neonatal%></p>
+                <p>BCG: <%= inmunizaciones.bcg%></p>
+                <p>Poliomelitis: <%= inmunizaciones.poliomelitis%></p>
+                <p>Pentavalente: <%= inmunizaciones.pentavalente%></p>
+                <p>Triple viral: <%= inmunizaciones.triple_viral%></p>
+                <p>Revacunaciones: <%= inmunizaciones.revacunaciones%></p>
+                <p>Influenza: <%= inmunizaciones.influeza%></p>
+                <p>Neumococo: <%= inmunizaciones.neumococo%></p>
+                <p>Hepatitis: <%= inmunizaciones.hepatitis%></p>
+                <p>Varicela: <%= inmunizaciones.varicela%></p>
+                <p>Otros: <%= inmunizaciones.otras%></p>
             </div>
 
             <div class="div-info_antecedentes_personales">
-                <p>Reflujo: </p>
-                <p>Ictericia: </p>
-                <p>Onfalitis: Edad: </p>
-                <p>Exantematicas: Edad: </p>
-                <p>Anemia: </p>
-                <p>Bajo peso: </p>
-                <p>Desnutrición: </p>
-                <p>Diarreas: Edad: </p>
-                <p>Deshidratación: </p>
-                <p>Conjuntivitis: </p>
-                <p>Otitis: </p>
-                <p>Infecciones respiratorias: </p>
-                <p>Paperas: </p>
-                <p>Hepatitis: </p>
-                <p>Infecciones urinarias: </p>
-                <p>Tifoidea: </p>
-                <p>Alergias a medicamentos: </p>
-                <p>Alergias a alimentos: </p>
-                <p>Alergias a otros: </p>
-                <p>Hospitalizaciones: </p>
-                <p>Operaciones: </p>
+                <h2>Antecedentes Personales</h2>
+                <p>Reflujo: <%= antc_personales.reflujo%></p>
+                <p>Ictericia: <%= antc_personales.ictericia%></p>
+                <p>Onfalitis: <%= antc_personales.onfalitis%></p>
+                <p>Exantematicas: <%= antc_personales.exantematicas%></p>
+                <p>Anemia: <%= antc_personales.anemia%></p>
+                <p>Bajo peso: <%= antc_personales.baso_peso%></p>
+                <p>Desnutrición: <%= antc_personales.desnutricion%></p>
+                <p>Diarreas: <%= antc_personales.diarreas%></p>
+                <p>Deshidratación: <%= antc_personales.deshidratacion%></p>
+                <p>Conjuntivitis: <%= antc_personales.conjuntivitis%></p>
+                <p>Otitis: <%= antc_personales.otitis%></p>
+                <p>Infecciones respiratorias: <%= antc_personales.infecciones_respiratorias%></p>
+                <p>Paperas: <%= antc_personales.paperas%></p>
+                <p>Hepatitis: <%= antc_personales.hepatitis%></p>
+                <p>Infecciones urinarias: <%= antc_personales.infecciones_urinarias%></p>
+                <p>Tifoidea: <%= antc_personales.tifoidea%></p>
+                <p>Alergias a medicamentos: <%= antc_personales.alergias_medicamentos%></p>
+                <p>Alergias a alimentos: <%= antc_personales.alergias_alimentos%></p>
+                <p>Alergias a otros: <%= antc_personales.alergias_otros%></p>
+                <p>Hospitalizaciones: <%= antc_personales.hospitalizaciones%></p>
+                <p>Operaciones: <%= antc_personales.operaciones%></p>
             </div>
 
         </section>

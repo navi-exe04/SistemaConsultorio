@@ -231,7 +231,7 @@
     transition: all 0.2s;
     border: 2px solid var(--colorVino);
     border-radius: 5px;
-    width: 80%;
+    width: fit-content;
     padding: 5px;
     font-size: 18px;
     text-align: center;
@@ -331,4 +331,5 @@ h3.tipo-info-title {
 #form-exp div {
     margin: 1rem 0;
 }
+
                 /*==== FIN DE ESTILOS DE EXPEDIENTES ====*/

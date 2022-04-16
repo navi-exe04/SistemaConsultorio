@@ -13,23 +13,23 @@ const connection = require('./database/db');
 
 /*Rutas y metodos para el usuario (paciente)*/
 //Ruta para la pagina principal
-router.get('/', (req, res) => {
+router.get('/', (_req, res) => {
     res.render('index');
 });
 
 //Ruta para el apartado de citas
-router.get('/citas', (req, res) => {
+router.get('/citas', (_req, res) => {
     res.render('citas');
 });
 
 //Ruta para el apartado de contacto
-router.get('/contacto', (req, res) => {
+router.get('/contacto', (_req, res) => {
     res.render('contacto');
 });
 
 /*Rutas y metodos para el usuario (medico y secretaria)*/
 //Ruta del login
-router.get('/login', (req, res) => {
+router.get('/login', (_req, res) => {
     res.render('login');
 });
 
@@ -41,7 +41,7 @@ router.get('/system', (req, res) => {
 
         let users;
         if (req.session.rol == "admin") {
-            connection.query('SELECT * FROM users', (error, results) => {
+            connection.query('SELECT * FROM users', (_error, results) => {
                 users = results;
                 res.render('system', {
                     name: req.session.name, //Se manda el nombre del usuario
@@ -78,7 +78,7 @@ router.get('/citas_system', (req, res) => {
     //El usuario esta logeado
     if (req.session.loggedin) {
 
-        connection.query('SELECT * FROM citas', (error, results) => {
+        connection.query('SELECT * FROM citas', (_error, results) => {
 
             const citas = results;
             citas.forEach(cita => {
@@ -87,7 +87,7 @@ router.get('/citas_system', (req, res) => {
 
             if (req.session.rol == "admin") {
 
-                connection.query('SELECT * FROM users', (error, results) => {
+                connection.query('SELECT * FROM users', (_error, results) => {
                     users = results;
                     res.render('system-citas', {
                         citas: citas,
@@ -127,21 +127,13 @@ router.get('/borrar/:id', (req, res) => {
 
     const id = req.params.id;
 
-    connection.query('DELETE FROM citas WHERE id = ?', [id], (error, results) => {
+    connection.query('DELETE FROM citas WHERE id = ?', [id], (error, _results) => {
 
         if (error) {
 
             console.error(error);
 
         } else {
-
-            /* Swal.fire({
-                icon:'success',
-                title: 'Cita eliminada',
-                text: 'La cita se elimino con exito',
-                showConfirmButton: false,
-                timer: 1500
-            }); */
             res.redirect('/citas_system');
 
         }
@@ -156,7 +148,7 @@ router.get('/exp_system', (req, res) => {
     //El usuario ha ingresado correctamente
     if (req.session.loggedin) {
 
-        connection.query('SELECT * FROM pacientes', (error, results) => {
+        connection.query('SELECT * FROM pacientes', (_error, results) => {
 
             const pacientes = results;
             pacientes.forEach(paciente => {
@@ -194,165 +186,52 @@ router.get('/expediente/:id', (req, res) => {
     //El usuario ha ingresado correctamente
     if (req.session.loggedin) {
 
-        //Obtenemos la informacin del paciente registrada en la base de datos
-        connection.query('SELECT * FROM pacientes WHERE id = ?', [id], (error, results) => {
+        let paciente, madre, padre, contacto, antc_perinatales, alimentacion, inmunizaciones, antc_personales;
 
-            if (error) {
-
-                console.error(error);
-
-            } else {
-
-                //Se guarda la información de una constate
-                const paciente = results;
-                paciente[0].fecha_nacimiento = moment(paciente[0].fecha_nacimiento).format('LL');
-
-                //Se obtiene la informacion de la madre
-                connection.query('SELECT * FROM madres WHERE id = ?', [paciente[0].id_madre], (error, results) => {
-
-                    if (error) {
-
-                        console.error(error);
-
-                    } else {
-
-                        //Se guarda la informacion de la madre en una constante
-                        const madre = results;
-
-                        //Se obtiene la informacion del padre
-                        connection.query('SELECT * FROM padres WHERE id = ?', [paciente[0].id_padre], (error, results) => {
-
-                            if (error) {
-
-                                console.error(error);
-
-                            } else {
-
-                                //Se guarda la información del padre en una constante
-                                const padre = results;
-
-                                //Se obtiene la informacion de contacto
-                                connection.query('SELECT * FROM contacto WHERE id = ?', [paciente[0].id_contacto], (error, results) => {
-
-                                    if (error) {
-
-                                        console.error(error);
-
-                                    } else {
-
-                                        //Se guarda la información de contacto en una constante
-                                        const contacto = results;
-
-                                        //Se obtiene la información de los antecedentes perinatales del paciente
-                                        connection.query('SELECT * FROM antecedentes_perinatales WHERE id_paciente = ?', [paciente[0].id], (error, results) => {
-
-                                            if (error) {
-
-                                                console.error(error);
-
-                                            } else {
-
-                                                if (results == []) { //El expediente es de primera vez y no incluye la demás informacion del paciente
-
-                                                    let aviso = 0;
-
-                                                    //Se envia la información a la pagina
-                                                    res.render('expediente_paciente', {
-                                                        paciente: paciente,
-                                                        madre: madre,
-                                                        padre: padre,
-                                                        contacto: contacto,
-                                                        aviso: aviso
-                                                    });
-
-                                                } else { //El paciente ya tiene guardada TODA la información dentro del sistema
-
-                                                    let aviso = 1;
-                                                
-                                                    //Se guarda la informacion de antecedentes perinatales en una constante
-                                                    const antecedentes_perinatales = results;
-
-                                                    //Se obtiene la información de la alimentación del paciente
-                                                    connection.query('SELECT * FROM alimentacion WHERE id_paciente = ?', [paciente[0].id], (error, results) => {
-
-                                                        if (error) {
-
-                                                            console.error(error);
-
-                                                        } else {
-
-                                                            //Se guarda la información de alimentación en una constante
-                                                            const alimentacion = results;
-
-                                                            //Se obtiene la información de inmunizaciones del paciente
-                                                            connection.query('SELECT * FROM inmunizaciones WHERE id_paciente = ?', [paciente[0].id], (error, results) => {
-
-                                                                if (error) {
-
-                                                                    console.error(error);
-
-                                                                } else {
-
-                                                                    //Se guarda la información de las inmunizaciones en una constante
-                                                                    const inmunizaciones = results;
-
-                                                                    //Se obtiene la información de antecedentes personales del paciente
-                                                                    connection.query('SELECT * FROM antecedentes_personales WHERE id_paciente = ?', [paciente[0].id], (error, results) => {
-
-                                                                        if (error) {
-
-                                                                            console.error(error);
-
-                                                                        } else {
-
-                                                                            //Se guarda la información de antecedentes personales en una constante
-                                                                            const antecedentes_personales = results;
-
-                                                                            //Se envia la información a la pagina
-                                                                            res.render('expediente_paciente', {
-                                                                                paciente: paciente,
-                                                                                madre: madre,
-                                                                                padre: padre,
-                                                                                contacto: contacto,
-                                                                                antecedentes_perinatales: antecedentes_perinatales,
-                                                                                alimentacion: alimentacion,
-                                                                                inmunizaciones: inmunizaciones,
-                                                                                antecedentes_personales: antecedentes_personales,
-                                                                                aviso: aviso
-                                                                            });
-
-                                                                        }
-
-                                                                    });
-
-                                                                }
-
-                                                            });
-
-                                                        }
-
-                                                    });
-
-                                                }
-
-                                            }
-
+        //Se recupera la informacion del paciente
+        connection.query('SELECT * FROM pacientes WHERE id = ?', [id], async(_error1, results1) => {
+            paciente = results1;
+            paciente[0].fecha_nacimiento = moment(paciente[0].fecha_nacimiento).format('LL');
+             //Se recupera la información de la madre del paciente
+            connection.query('SELECT * FROM madres WHERE id = ?', [paciente[0].id_madre], async(_error2, results2) => {
+                madre = results2;
+                //Se recupera la información del padre
+                connection.query('SELECT * FROM padres WHERE id = ?', [paciente[0].id_padre], async(_error3, results3) => {
+                    padre = results3;
+                    //Se recupera la información de contacto del paciente
+                    connection.query('SELECT * FROM contacto WHERE id = ?', [paciente[0].id_contacto], async(_error4, results4) => {
+                        contacto = results4;
+                        //Se recupera la información de antecedentes perinatales
+                        connection.query('SELECT * FROM antecedentes_perinatales WHERE id_paciente = ?', [paciente[0].id], async(_error5, results5) => {
+                            antc_perinatales = results5;
+                            //Se recupera la información de alimentación
+                            connection.query('SELECT * FROM alimentacion WHERE id_paciente = ?', [paciente[0].id], async(_error6, results6) => {
+                                alimentacion = results6;
+                                //Se recupera la información de inmunizaciones
+                                connection.query('SELECT * FROM inmunizaciones WHERE id_paciente = ?', [paciente[0].id], async(_error7, results7) => {
+                                    inmunizaciones = results7;
+                                    //Se recupera la información de antecedentes personales
+                                    connection.query('SELECT * FROM antecedentes_personales WHERE id_paciente = ?', [paciente[0].id], async(_error8, results8) => {
+                                        antc_personales = results8;
+                                        //Se envia la información a la pagina
+                                        res.render('expediente_paciente', {
+                                            paciente: paciente,
+                                            madre: madre,
+                                            padre: padre,
+                                            contacto: contacto,
+                                            antc_perinatales: antc_perinatales,
+                                            alimentacion: alimentacion,
+                                            inmunizaciones: inmunizaciones,
+                                            antc_personales: antc_personales,
                                         });
+                                    })
+                                })
+                            })
 
-                                    }
-
-                                });
-
-                            }
-
-                        });
-
-                    }
-
+                        })
+                    });
                 });
-
-            }
-
+            });
         });
 
     } else { //El usuario no ha ingresado
@@ -379,7 +258,7 @@ router.get('/borrarExpediente/:id', (req, res) => {
     //El usuario ha ingresado correctamente
     if (req.session.loggedin) {
 
-        connection.query('DELETE FROM pacientes WHERE id = ?', [id], (error, results) => {
+        connection.query('DELETE FROM pacientes WHERE id = ?', [id], (error, _results) => {
 
             if (error) {
                 console.log(error);
@@ -413,7 +292,7 @@ router.get('/borrarUser/:id', (req, res) => {
     //El usuario ha ingresado correctamente
     if (req.session.loggedin) {
 
-        connection.query('DELETE FROM users WHERE id = ?', [id], (error, results) => {
+        connection.query('DELETE FROM users WHERE id = ?', [id], (error, _results) => {
 
             if (error) {
                 console.error(error);
