@@ -32,27 +32,25 @@
                 <button type="button" id="boton-menu"><i class="fas fa-bars"></i></button>
                 <div id="menu-nav">
                     <ul>
-                        <% if(rol == "admin") { %>
-                            <li><a href="" id="boton-config"><i class="fas fa-cog"></i> Configuracion</a></li>
-                        <% } %>
-                        <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
+                        <li><a href="/logout"><em class="fas fa-sign-out-alt"></em> Cerrar Sesión</a></li>
                     </ul>
                 </div>
             </nav>
         </div>
     </header>
 
-    <main class="main-menu">
+    <main class="center-flex all-display">
 
-        <section class="menu-content center-flex">
+        <div id="title-section">
+            <h1> ¡Bienvenido <%= name %>!</h1>
+        </div>
 
-            <div class="top-menu">
-                <h1> ¡Bienvenido <%= name %>!</h1>
-            </div>
+        <section class="center-flex" id="menu-section">
 
             <div class="option-menu">
-                <section class="section-opcion">
-                    <a href="/consultas_system" class="opcion-container" id="consulta">
+                
+                <section class="section-opcion" id="consulta">
+                    <a href="/consultas_system" class="opcion-container">
                         <div>
                             <h2 class="sub-title">Ver consultas</h2>
                             <i class="fas fa-stethoscope"></i>
@@ -60,8 +58,8 @@
                     </a>
                 </section>
 
-                <section class="section-opcion">
-                    <a href="/exp_system" class="opcion-container" id="expediente">
+                <section class="section-opcion" id="expediente">
+                    <a href="/exp_system" class="opcion-container">
                         <div>
                             <h2 class="sub-title">Expedientes</h2>
                             <i class="fas fa-file-medical-alt"></i>
@@ -69,14 +67,25 @@
                     </a>
                 </section>
 
-                <section class="section-opcion">
-                    <a href="/citas_system" class="opcion-container" id="citas">
+                <section class="section-opcion" id="citas">
+                    <a href="/citas_system" class="opcion-container">
                         <div>
                             <h2 class="sub-title">Citas</h2>
                             <i class="fas fa-calendar-alt"></i>
                         </div>
                     </a>
                 </section>
+
+                <% if(rol == "admin") { %>
+                <section class="section-opcion" id="boton-config">
+                    <a href="" class="opcion-container">
+                        <div>
+                            <h2 class="sub-title">Configuración</h2>
+                            <i class="fas fa-cog"></i>
+                        </div>
+                    </a>
+                </section>
+                <% } %>
             </div>
 
         </section>

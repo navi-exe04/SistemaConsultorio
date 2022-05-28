@@ -1,8 +1,13 @@
                     /*==== ESTILOS DEL LOGIN ====*/
+.all-display {
+    height: 95vh;
+}
+
 .center-flex {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .main-container {
@@ -10,7 +15,7 @@
     box-shadow: 6px 6px 8px var(--sombraNegra);
     backdrop-filter: blur(1px);
     border-radius: 5px;
-    width: 60vh;
+    width: 30vw;
     height: fit-content;
     padding: 20px;
 }
@@ -67,6 +72,14 @@
 
 
                 /*==== ESTILOS DEL SISTEMA ====*/
+#title-section {
+    width: 100%;
+    order: 1;
+}
+#menu-section {
+    width: 100%;
+    order: 2;
+}
 .btn-delete {
     width: fit-content;
     padding: 0.5rem;
@@ -75,18 +88,8 @@
     border-radius: 0.5rem;
 }
 
-.main-menu {
+.option-menu {
     width: 100%;
-    height: 100%;
-    margin: 3rem 0;
-}
-
-.main-menu *{
-    display: block;
-}
-
-.top-menu {
-    margin-bottom: 2rem;
 }
 
 .option-menu, .citas_div, .section_user {
@@ -128,12 +131,22 @@
 
 #consulta {
     background-image: url(../img/consulta_cover.jpg);
+    order: 1;
+    width: 25%;
 }
 #expediente {
     background-image: url(../img/expediente_cover.jpg);
+    order: 2;
+    width: 25%;
 }
 #citas {
     background-image: url(../img/citas_cover.jpg);
+    order: 3;
+    width: 25%;
+}
+#boton-config {
+    order: 4;
+    width: 25%;
 }
 
 /*Estilo del popup de configuracion de usuario*/
