@@ -184,7 +184,7 @@ h2.logo {
 }
 
 #menu-nav a {
-    transition: all 0.5s;
+    transition: all 0.2s;
     height: fit-content;
     padding: 10px;
     border-radius: 5px;
@@ -192,6 +192,11 @@ h2.logo {
     font-weight: bolder;
     text-decoration: none;
     margin: 0;
+    color: var(--colorCarne);
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
 }
 
 #menu-nav a:hover, #menu-nav a.activo{
